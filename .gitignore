@@ -1,0 +1,7 @@
+# Ignorar .pdf's
+*.pdf
+
+# Ignorar ejecutables
+bin/
+*.class
+
