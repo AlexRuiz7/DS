@@ -1,7 +1,5 @@
-# Ignorar .pdf's
+# Excluir todos los ficheros PDF
 *.pdf
 
-# Ignorar ejecutables
-bin/
-*.class
-
+# Excluir todos los ficheros zip
+*.zip
