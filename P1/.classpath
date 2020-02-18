@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="Factoría"/>
-	<classpathentry kind="src" path="Observador"/>
-	<classpathentry kind="src" path="Visitante"/>
-	<classpathentry kind="src" path="Interceptor"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
