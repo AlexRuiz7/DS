@@ -1,7 +1,5 @@
 public interface FactoriaCarreraYBicicleta {
-
-	void crearCarrera();
-
-	void crearBicicleta();
-
+    
+    Carrera crearCarrera(int n);
+    Bicicleta crearBicicleta();
 }

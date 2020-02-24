@@ -1,5 +1,7 @@
 public abstract class Bicicleta {
+    
+    int id;
+    Tipo tipo = null;
 
-	private int id;
-
+    public Bicicleta() {}
 }
