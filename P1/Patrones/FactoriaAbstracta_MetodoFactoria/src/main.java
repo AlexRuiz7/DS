@@ -12,8 +12,8 @@ public class main {
         FactoriaCarretera cc = FactoriaCarretera.getInstance();
         FactoriaMontaña   cm = FactoriaMontaña.getInstance();
         
-//        cc.crearCarrera(n).start();
-        cm.crearCarrera(n).start();
+        cc.crearCarrera(n).start();
+//        cm.crearCarrera(n).start();
     }
 
 }

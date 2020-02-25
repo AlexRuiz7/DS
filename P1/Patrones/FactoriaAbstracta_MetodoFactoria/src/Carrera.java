@@ -7,7 +7,7 @@ public abstract class Carrera extends Thread {
     /* Decalaración de atributos */
     private ArrayList<Bicicleta> bicicletas;
     double porcentage_abandono;
-    private final int duracion = 6; // DEV - cambiar a 60
+    private final int duracion = 15; // DEV - cambiar a 60
     Tipo tipo = null;
 
     
@@ -27,22 +27,23 @@ public abstract class Carrera extends Thread {
      */
     @Override
     public void run() {
-        comenzarCarrera();
-
-        int abandonos = (int) (bicicletas.size() * porcentage_abandono);
-        
         Random rand = new Random();
+        int abandonos = (int) (bicicletas.size() * porcentage_abandono);
+        int tiempo_abandono = rand.nextInt(this.duracion);
+        
+                
         for(int i=0; i<abandonos; i++) {
-            bicicletas.remove(rand.nextInt(bicicletas.size()));
+            bicicletas.get(rand.nextInt(bicicletas.size())).setAbandono(tiempo_abandono);
         }
+        
+        comenzarCarrera();
                 
         try {
             Thread.sleep(duracion*1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        finalizarCarrera();
+
     }
 
     
@@ -51,18 +52,10 @@ public abstract class Carrera extends Thread {
      */
     private void comenzarCarrera() {
         System.out.println(this.toString() + "ha comenzado");
-        for(Bicicleta bici : bicicletas)
-            System.out.println( bici.toString() );
-    }
-
-    
-    /**
-     * 
-     */
-    private void finalizarCarrera() {
-        System.out.println(this.toString() + "ha finalizado");
-        for(Bicicleta bici : bicicletas)
-           System.out.println( bici.toString() );
+        for(Bicicleta bici : bicicletas) {
+            bici.start();
+            System.out.println( bici.toString() + " ha comenzado la carrera");
+        }
     }
 
     
