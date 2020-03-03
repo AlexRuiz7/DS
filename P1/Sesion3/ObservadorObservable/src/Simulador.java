@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package observadorobservable;
+
+import javax.swing.JFrame;
 
 
 /**
  *
  * @author pablorobles
  */
-public class Simulador extends javax.swing.JFrame {
+public class Simulador extends JFrame {
 
     /**
      * Creates new form VentanaPrincipal
