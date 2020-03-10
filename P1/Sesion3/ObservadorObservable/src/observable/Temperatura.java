@@ -34,6 +34,9 @@ public class Temperatura extends Observable implements Runnable {
      */
     public void setTemperatura(double temperatura) {
         this.temperatura = temperatura;
+        setChanged();
+        notifyObservers();
+        System.out.println(toString());
     }
     
     //**********************************************************************//
@@ -53,9 +56,6 @@ public class Temperatura extends Observable implements Runnable {
         while(true) {
             try {
                 setTemperatura( ThreadLocalRandom.current().nextDouble(10, 30) );
-                System.out.println(toString());
-                setChanged();
-                notifyObservers();
                 Thread.sleep(5000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Temperatura.class.getName()).log(Level.SEVERE, null, ex);
