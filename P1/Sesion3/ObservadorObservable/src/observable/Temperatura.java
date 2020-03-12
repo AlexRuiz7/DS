@@ -12,12 +12,14 @@ import java.util.logging.Logger;
 public class Temperatura extends Observable implements Runnable {
 
     private double temperatura;
+    public Thread hebra;
     
     /**
      * Constructor
      */
     public Temperatura() {
         this.temperatura = 0;
+        hebra = new Thread(this, "Temperatura");
     }
 
     /**
@@ -56,7 +58,7 @@ public class Temperatura extends Observable implements Runnable {
         while(true) {
             try {
                 setTemperatura( ThreadLocalRandom.current().nextDouble(10, 30) );
-                Thread.sleep(5000);
+                Thread.sleep(3000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Temperatura.class.getName()).log(Level.SEVERE, null, ex);
             }

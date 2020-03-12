@@ -1,79 +1,65 @@
 package GUI;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
+import observable.Temperatura;
+import observador.BotonCambio;
+import observador.GraficaTemperatura;
+import observador.PantallaTemperatura;
+import observador.Ventana;
+
 
 /**
  *
  * @author alex
  */
-public class Simulador extends JFrame {
-    
-    private JPanel botonCambio, panelTemperatura, graficaTemperatura;
-    
-
-    /**
-     * Creates new form Simulador
-     */
-    public Simulador() {
-        initComponents();
-    }
-
-
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+public class Simulador {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Simulador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Simulador().setVisible(true);
-            }
-        });
+    public static void main(String[] args) {
+        // Instanciación de observable
+        Temperatura t = new Temperatura();
+        
+        // Instanciación de observadores
+        PantallaTemperatura p = new PantallaTemperatura(t);
+        GraficaTemperatura g = new GraficaTemperatura(t);
+        BotonCambio b = new BotonCambio(t);
+        
+        // Frame
+        Ventana ventana_grafica = new Ventana();
+        ventana_grafica.setTitle("Gráfica temperatura");
+        ventana_grafica.setLayout(new BorderLayout());
+        ventana_grafica.add(g, BorderLayout.CENTER);
+//        ventana_grafica.setResizable(false);
+        ventana_grafica.pack();
+        ventana_grafica.setVisible(true);
+        
+        Ventana ventana_pantalla = new Ventana();
+        ventana_pantalla.setTitle("Pantalla temperatura");
+        ventana_pantalla.setLayout(new BorderLayout());
+        ventana_pantalla.add(p, BorderLayout.CENTER);
+//        ventana_pantalla.setResizable(false);
+        ventana_pantalla.pack();
+        ventana_pantalla.setVisible(true);
+        
+        Ventana ventana_boton = new Ventana();
+        ventana_boton.setTitle("Botón cambiar temperatura");
+        ventana_boton.setLayout(new BorderLayout());
+        ventana_boton.add(b, BorderLayout.CENTER);
+//        ventana_boton.setResizable(false);
+        ventana_boton.pack();
+        ventana_boton.setVisible(true);
+        
+        // Añadir los observadores al observable
+        // t.addObserver(p);
+        t.addObserver(g);
+        t.addObserver(b);
+        
+        // Lanzar la hebra del observable
+        t.hebra.start();
+        p.hebra.start();
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
+    
 }

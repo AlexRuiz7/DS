@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package observador;
 
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import observable.Temperatura;
 
 /**
@@ -13,7 +10,8 @@ import observable.Temperatura;
  * @author alex
  */
 public class PantallaTemperatura extends ObservadorTemperatura implements Runnable {
-
+    
+    public Thread hebra;
     
     /**
      * Constructor
@@ -22,11 +20,20 @@ public class PantallaTemperatura extends ObservadorTemperatura implements Runnab
     public PantallaTemperatura(Temperatura t) {
         super(t);
         initComponents();
+        hebra = new Thread(this, "Pantalla temp.");
     }
     
     @Override
     public void run() {
-        // TODO
+        System.out.println("RUN");
+        while(true) {
+            try {
+                update(miObservable, null);
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Temperatura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     @Override
