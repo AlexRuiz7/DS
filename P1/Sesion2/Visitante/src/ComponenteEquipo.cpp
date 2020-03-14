@@ -1,19 +1,16 @@
 #include "ComponenteEquipo.h"
 
-double ComponenteEquipo::getPrecio() {
-	return this->precio;
+/**
+ * Constructor
+ */
+ComponenteEquipo::ComponenteEquipo(string n, double p) : nombre(n), precio(p) {}
+
+
+double ComponenteEquipo::getPrecio() const {
+    return precio;
 }
 
-String ComponenteEquipo::getNombre() {
-	return this->nombre;
-}
 
-ComponenteEquipo::ComponenteEquipo() {
-	// TODO - implement ComponenteEquipo::ComponenteEquipo
-	throw "Not yet implemented";
-}
-
-void ComponenteEquipo::aceptar(Visitante v) {
-	// TODO - implement ComponenteEquipo::aceptar
-	throw "Not yet implemented";
+string ComponenteEquipo::getNombre() const {
+    return nombre;
 }

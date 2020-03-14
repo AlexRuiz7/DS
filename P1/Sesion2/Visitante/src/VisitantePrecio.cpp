@@ -1,11 +1,20 @@
 #include "VisitantePrecio.h"
+#include "Bus.h"
+#include "Disco.h"
+#include "Tarjeta.h"
 
-VisitantePrecio::VisitantePrecio() {
-	// TODO - implement VisitantePrecio::VisitantePrecio
-	throw "Not yet implemented";
+float VisitantePrecio::obtenerPrecioTotal() const {
+    return total;
 }
 
-double VisitantePrecio::obtenerPrecioTotal() {
-	// TODO - implement VisitantePrecio::obtenerPrecioTotal
-	throw "Not yet implemented";
+void VisitantePrecio::visitarBus(const Bus & bus) {
+    total += bus.getPrecio();
+}
+
+void VisitantePrecio::visitarDisco(const Disco & disco) {
+    total += disco.getPrecio();
+}
+
+void VisitantePrecio::visitarTarjeta(const Tarjeta & tarjeta) {
+    total += tarjeta.getPrecio();
 }

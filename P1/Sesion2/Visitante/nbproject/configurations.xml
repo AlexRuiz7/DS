@@ -20,12 +20,16 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>src/Bus.cpp</itemPath>
       <itemPath>src/ComponenteEquipo.cpp</itemPath>
+      <itemPath>src/Disco.cpp</itemPath>
       <itemPath>src/Equipo.cpp</itemPath>
-      <itemPath>src/VisitanteEquipo.cpp</itemPath>
+      <itemPath>src/Tarjeta.cpp</itemPath>
       <itemPath>src/VisitantePrecio.cpp</itemPath>
       <itemPath>src/VisitantePrecioDetalle.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="src" displayName="src" projectFiles="true">
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -54,11 +58,15 @@
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Bus.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Bus.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/ComponenteEquipo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/ComponenteEquipo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Disco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Disco.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -66,9 +74,9 @@
       </item>
       <item path="src/Equipo.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/Tarjeta.h" ex="false" tool="3" flavor2="0">
+      <item path="src/Tarjeta.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/VisitanteEquipo.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Tarjeta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -103,11 +111,15 @@
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Bus.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Bus.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/ComponenteEquipo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/ComponenteEquipo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Disco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Disco.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -115,9 +127,9 @@
       </item>
       <item path="src/Equipo.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/Tarjeta.h" ex="false" tool="3" flavor2="0">
+      <item path="src/Tarjeta.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/VisitanteEquipo.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Tarjeta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>

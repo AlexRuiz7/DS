@@ -1,22 +1,28 @@
 #ifndef COMPONENTEEQUIPO_H
 #define COMPONENTEEQUIPO_H
 
+#include <string>
+using namespace std;
+
+class VisitanteEquipo;
+
+
 class ComponenteEquipo {
-
+    
+private:
+    const string nombre;
+    const double precio;
+    
 protected:
-	String nombre;
-	double precio;
-
+    ComponenteEquipo(string n, double p);
+    
 public:
-	double getPrecio();
-
-	String getNombre();
-
-protected:
-	ComponenteEquipo();
-
-public:
-	void aceptar(Visitante v);
+    virtual ~ComponenteEquipo() = default;
+    
+    virtual void aceptar(VisitanteEquipo &) const = 0;
+    
+    double getPrecio() const;
+    string getNombre() const;
 };
 
 #endif
