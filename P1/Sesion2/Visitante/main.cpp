@@ -1,4 +1,3 @@
-
 /* 
  * File:   main.cpp
  * Author: alex
@@ -12,18 +11,43 @@
 #include "src/Disco.h"
 #include "src/Tarjeta.h"
 #include "src/VisitantePrecio.h"
+#include "src/VisitantePrecioDetalle.h"
 #include "src/Equipo.h"
 
 using namespace std;
 
 int main(int argc, char** argv) {
-    Equipo equipo_1( Bus("Bus", 5), Disco("Disco", 30), Tarjeta("Tarjeta", 100) );
-
-    VisitantePrecio vp;
-    equipo_1.aceptar(vp);
+    VisitantePrecio * vp;
+    VisitantePrecioDetalle * vpd;
+    Equipo * equipo;
     
+    /**/
     
-    cout << "  -  Precio total: " << vp.obtenerPrecioTotal() << endl;
+    equipo = new Equipo( Bus("Bus", 5), Disco("Disco", 30), Tarjeta("Tarjeta", 100) );
+    vp = new VisitantePrecio;
+    vpd = new VisitantePrecioDetalle;
+    
+    equipo->aceptar(*vp);
+    equipo->aceptar(*vpd);
+    
+    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << endl << endl;
+    
+    /**/
+    
+    equipo = new Equipo( Bus("Bus", 15), Disco("Disco", 60), Tarjeta("Tarjeta", 600) );
+    vp = new VisitantePrecio;
+    vpd = new VisitantePrecioDetalle;
+    
+    equipo->aceptar(*vp);
+    equipo->aceptar(*vpd);
+    
+    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << endl << endl;
+    
+    /**/
+    
+    delete vp;
+    delete vpd;
+    delete equipo;
     
     return 0;
 }

@@ -6,9 +6,7 @@
 class VisitantePrecioDetalle : public VisitanteEquipo {
 
     
-public:
-    void obtenerPrecioDetalle() const;
-    
+public:    
     void visitarBus(const Bus &);
     void visitarDisco(const Disco &);
     void visitarTarjeta(const Tarjeta &);    

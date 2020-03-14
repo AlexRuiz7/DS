@@ -5,18 +5,14 @@
 #include "Disco.h"
 #include "Tarjeta.h"
 
-void VisitantePrecioDetalle::obtenerPrecioDetalle() const{
-    // TODO
-}
-
 void VisitantePrecioDetalle::visitarBus(const Bus & b) {
-    // TODO
+    cout << "Bus: " << b.getNombre() << " - (" << b.getPrecio() << ")\n";
 }
 
 void VisitantePrecioDetalle::visitarDisco(const Disco & d) {
-    // TODO
+    cout << "Disco: " << d.getNombre() << " - (" << d.getPrecio() << ")\n";
 }
 
 void VisitantePrecioDetalle::visitarTarjeta(const Tarjeta & t) {
-    // TODO
+    cout << "Tarjeta: " << t.getNombre() << " - (" << t.getPrecio() << ")\n";
 }
