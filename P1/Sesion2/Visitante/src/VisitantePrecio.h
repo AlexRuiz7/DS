@@ -1,14 +1,20 @@
 #ifndef VISITANTEPRECIO_H
 #define VISITANTEPRECIO_H
 
-class VisitantePrecio : VisitanteEquipo {
+#include "VisitanteEquipo.h"
+
+class VisitantePrecio : public VisitanteEquipo {
+    
 
 public:
-	double total;
+    float obtenerPrecioTotal() const;
 
-	VisitantePrecio();
-
-	double obtenerPrecioTotal();
+    void visitarBus(const Bus &);
+    void visitarDisco(const Disco &);
+    void visitarTarjeta(const Tarjeta &);
+    
+private:
+    float total; 
 };
 
 #endif

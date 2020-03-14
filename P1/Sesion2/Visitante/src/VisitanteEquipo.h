@@ -1,18 +1,19 @@
 #ifndef VISITANTEEQUIPO_H
 #define VISITANTEEQUIPO_H
 
+class Bus;
+class Disco;
+class Tarjeta;
+
 class VisitanteEquipo {
 
 
 public:
-	virtual void visitarDisco(Disco d) = 0;
-
-	virtual void visitarBus(Bus b) = 0;
-
-	virtual void visitarTarjeta(Tarjeta t) = 0;
-
-protected:
-	VisitanteEquipo();
+    virtual ~VisitanteEquipo() = default;
+    
+    virtual void visitarBus(const Bus &) = 0;
+    virtual void visitarDisco(const Disco &) = 0;
+    virtual void visitarTarjeta(const Tarjeta &) = 0;
 };
 
 #endif
