@@ -2,6 +2,7 @@
 #define VISITANTEPRECIODETALLE_H
 
 #include "VisitanteEquipo.h"
+#include "TipoCliente.h"
 
 class VisitantePrecioDetalle : public VisitanteEquipo {
 

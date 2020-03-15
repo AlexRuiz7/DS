@@ -13,6 +13,7 @@
 #include "src/VisitantePrecio.h"
 #include "src/VisitantePrecioDetalle.h"
 #include "src/Equipo.h"
+#include "src/TipoCliente.h"
 
 using namespace std;
 
@@ -20,28 +21,33 @@ int main(int argc, char** argv) {
     VisitantePrecio * vp;
     VisitantePrecioDetalle * vpd;
     Equipo * equipo;
+    TipoCliente tc = estudiante; 
     
     /**/
     
     equipo = new Equipo( Bus("Bus", 5), Disco("Disco", 30), Tarjeta("Tarjeta", 100) );
     vp = new VisitantePrecio;
     vpd = new VisitantePrecioDetalle;
+    vp->setCliente(tc);
     
     equipo->aceptar(*vp);
     equipo->aceptar(*vpd);
     
-    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << endl << endl;
+    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << "€ (-" << tc << "%)";
+    cout << endl << endl;
     
     /**/
     
     equipo = new Equipo( Bus("Bus", 15), Disco("Disco", 60), Tarjeta("Tarjeta", 600) );
     vp = new VisitantePrecio;
     vpd = new VisitantePrecioDetalle;
+    vp->setCliente(tc);
     
     equipo->aceptar(*vp);
     equipo->aceptar(*vpd);
     
-    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << endl << endl;
+    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << "€ (-" << tc << "%)";
+    cout << endl << endl;
     
     /**/
     
