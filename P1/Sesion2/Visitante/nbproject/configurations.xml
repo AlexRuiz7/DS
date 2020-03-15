@@ -9,6 +9,7 @@
       <itemPath>src/Disco.h</itemPath>
       <itemPath>src/Equipo.h</itemPath>
       <itemPath>src/Tarjeta.h</itemPath>
+      <itemPath>src/TipoCliente.h</itemPath>
       <itemPath>src/VisitanteEquipo.h</itemPath>
       <itemPath>src/VisitantePrecio.h</itemPath>
       <itemPath>src/VisitantePrecioDetalle.h</itemPath>
@@ -78,6 +79,8 @@
       </item>
       <item path="src/Tarjeta.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TipoCliente.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/VisitantePrecio.cpp" ex="false" tool="1" flavor2="0">
@@ -130,6 +133,8 @@
       <item path="src/Tarjeta.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Tarjeta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TipoCliente.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
