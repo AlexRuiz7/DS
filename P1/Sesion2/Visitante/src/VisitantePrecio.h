@@ -9,7 +9,7 @@ class VisitantePrecio : public VisitanteEquipo {
 
 public:
     float obtenerPrecioTotal() const;
-    int setCliente(const TipoCliente &);
+    void setCliente(const TipoCliente &);
 
     void visitarBus(const Bus &);
     void visitarDisco(const Disco &);
