@@ -36,9 +36,9 @@ public class Temperatura extends Observable implements Runnable {
      */
     public void setTemperatura(double temperatura) {
         this.temperatura = temperatura;
+        System.out.println(toString());
         setChanged();
         notifyObservers();
-        System.out.println(toString());
     }
     
     //**********************************************************************//
@@ -65,6 +65,8 @@ public class Temperatura extends Observable implements Runnable {
         }
         
     }
+    
+    
 
     /**
      * Redefinición del método toString
@@ -72,7 +74,7 @@ public class Temperatura extends Observable implements Runnable {
      */
     @Override
     public String toString() {
-        return "\nTemperatura: " + getTemperatura() + "ºC";
+        return "\nTemperatura "+this.hebra.getId()+": " + getTemperatura() + "ºC";
     }
 
 }

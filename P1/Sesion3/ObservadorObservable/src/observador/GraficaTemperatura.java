@@ -28,6 +28,7 @@ public class GraficaTemperatura extends ObservadorTemperatura {
     public void update(Observable o, Object arg) {
         super.update(o, arg);
         this.progressBar.setValue((int) this.miTemperatura);
+        
     }
 
     /**
@@ -44,6 +45,8 @@ public class GraficaTemperatura extends ObservadorTemperatura {
         setPreferredSize(new java.awt.Dimension(200, 30));
         setLayout(new java.awt.BorderLayout());
 
+        progressBar.setBackground(new java.awt.Color(204, 204, 204));
+        progressBar.setForeground(new java.awt.Color(204, 204, 204));
         progressBar.setMaximum(30);
         progressBar.setValue(5);
         add(progressBar, java.awt.BorderLayout.CENTER);

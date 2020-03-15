@@ -25,11 +25,10 @@ public class PantallaTemperatura extends ObservadorTemperatura implements Runnab
     
     @Override
     public void run() {
-        System.out.println("RUN");
         while(true) {
             try {
                 update(miObservable, null);
-                Thread.sleep(3000);
+                Thread.sleep(3001);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Temperatura.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -57,11 +56,17 @@ public class PantallaTemperatura extends ObservadorTemperatura implements Runnab
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         etiqueta_temp = new javax.swing.JLabel();
 
+        jLabel1.setText("Temperatura en Granada:");
+        add(jLabel1);
+
+        etiqueta_temp.setBackground(new java.awt.Color(255, 255, 255));
         etiqueta_temp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiqueta_temp.setText("--.-ºC");
+        etiqueta_temp.setText("--.--ºC");
         etiqueta_temp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        etiqueta_temp.setOpaque(true);
         etiqueta_temp.setPreferredSize(new java.awt.Dimension(100, 20));
         add(etiqueta_temp);
     }// </editor-fold>//GEN-END:initComponents
@@ -69,5 +74,6 @@ public class PantallaTemperatura extends ObservadorTemperatura implements Runnab
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel etiqueta_temp;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
