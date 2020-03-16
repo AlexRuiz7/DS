@@ -6,4 +6,7 @@ package controlVelocidad;
  */
 public class CalcularVelocidad implements Filtro{
     
+    double ejecutar(double revoluciones, EstadoMotor estadoMotor){
+        
+    }
 }
