@@ -48,7 +48,7 @@ public class Objetivo extends Observable {
     /**************************/
     
     /**
-     * Al ser un objeto Observable, los observadores (la clases que implementan 
+     * Al ser un objeto Observable, los observadores (las clases que implementan 
      * la interfaz visual en nuestro caso) puede obtener este objeto en el
      * método update(). Teniendo la referencia a este objeto pueden llamar a los
      * getters para obtener la información que necesiten y actualizar su estado.

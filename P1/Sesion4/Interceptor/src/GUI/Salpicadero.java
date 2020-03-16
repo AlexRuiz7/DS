@@ -14,9 +14,6 @@ import GUI.CuentaKilometros;
  */
 public class Salpicadero extends javax.swing.JPanel {
     
-    Velocimetro velocimetro = new Velocimetro();
-    CuentaKilometros cuentaKilometros = new CuentaKilometros();
-    CuentaRevoluciones cuentaRevoluciones = new CuentaRevoluciones();
     
     /**
      * Creates new form Salpicadero
@@ -34,11 +31,21 @@ public class Salpicadero extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        velocimetro = new GUI.Velocimetro();
+        cuentaKilometros = new GUI.CuentaKilometros();
+        cuentaRevoluciones = new GUI.CuentaRevoluciones();
+
         setBorder(javax.swing.BorderFactory.createTitledBorder("Salpicadero"));
         setLayout(new java.awt.GridLayout(3, 1));
+        add(velocimetro);
+        add(cuentaKilometros);
+        add(cuentaRevoluciones);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GUI.CuentaKilometros cuentaKilometros;
+    private GUI.CuentaRevoluciones cuentaRevoluciones;
+    private GUI.Velocimetro velocimetro;
     // End of variables declaration//GEN-END:variables
 }

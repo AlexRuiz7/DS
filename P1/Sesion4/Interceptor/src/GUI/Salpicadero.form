@@ -25,4 +25,12 @@
     <Property name="columns" type="int" value="1"/>
     <Property name="rows" type="int" value="3"/>
   </Layout>
+  <SubComponents>
+    <Component class="GUI.Velocimetro" name="velocimetro">
+    </Component>
+    <Component class="GUI.CuentaKilometros" name="cuentaKilometros">
+    </Component>
+    <Component class="GUI.CuentaRevoluciones" name="cuentaRevoluciones">
+    </Component>
+  </SubComponents>
 </Form>

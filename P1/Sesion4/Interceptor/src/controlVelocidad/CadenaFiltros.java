@@ -7,6 +7,7 @@ import java.util.ArrayList;
  *
  * @author pablorobles
  */
+
 public class CadenaFiltros {
     private ArrayList<Filtro> filtros;
     private Objetivo objetivo;
@@ -29,15 +30,15 @@ public class CadenaFiltros {
      * Llama a cada uno de los filtros en la cadena, para que procesen y 
      * actualicen las revoluciones por minuto del motor (RPM).
      * 
-     * Finalmente se progaga el nuevo estado al motor (objetivo).
+     * Finalmente se propaga el nuevo estado al motor (objetivo).
      * 
      * @param estadoMotor 
      */
     public void ejecutar(EstadoMotor estadoMotor) {
         
-        for(Filtro f : filtros) {
+        filtros.forEach((f) -> {
             RPM = f.ejecutar(RPM, estadoMotor);
-        }
+        });
         
         objetivo.ejecutar(RPM, estadoMotor);
     }
