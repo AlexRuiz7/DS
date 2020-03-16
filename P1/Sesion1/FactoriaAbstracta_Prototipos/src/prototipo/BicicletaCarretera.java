@@ -1,3 +1,5 @@
+package prototipo;
+
 public class BicicletaCarretera extends Bicicleta {
 
     private static int COUNT = 0;

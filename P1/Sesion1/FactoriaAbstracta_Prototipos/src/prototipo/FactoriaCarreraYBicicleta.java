@@ -1,3 +1,5 @@
+package prototipo;
+
 public class FactoriaCarreraYBicicleta {
 
     private static CarreraMontaña      _prototipoCarreraMontaña;
