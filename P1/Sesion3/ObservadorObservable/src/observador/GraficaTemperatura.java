@@ -45,10 +45,9 @@ public class GraficaTemperatura extends ObservadorTemperatura {
         setPreferredSize(new java.awt.Dimension(200, 30));
         setLayout(new java.awt.BorderLayout());
 
-        progressBar.setBackground(new java.awt.Color(204, 204, 204));
-        progressBar.setForeground(new java.awt.Color(204, 204, 204));
         progressBar.setMaximum(30);
         progressBar.setValue(5);
+        progressBar.setPreferredSize(new java.awt.Dimension(500, 20));
         add(progressBar, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 

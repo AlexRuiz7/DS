@@ -41,6 +41,7 @@ public class BotonCambio extends ObservadorTemperatura {
 
         textField_temp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textField_temp.setText("0.00");
+        textField_temp.setMinimumSize(new java.awt.Dimension(200, 30));
         textField_temp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField_tempActionPerformed(evt);
@@ -49,6 +50,7 @@ public class BotonCambio extends ObservadorTemperatura {
         add(textField_temp);
 
         boton.setText("Cambiar");
+        boton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonActionPerformed(evt);
