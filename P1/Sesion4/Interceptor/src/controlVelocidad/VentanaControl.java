@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlVelocidad;
 
 import java.awt.Color;
@@ -12,7 +7,9 @@ import java.awt.Color;
  * @author pablorobles
  */
 public class VentanaControl extends javax.swing.JFrame {
-
+    
+    protected EstadoMotor estado = EstadoMotor.APAGADO;
+    
     /**
      * Creates new form VentanaControl
      */
@@ -20,6 +17,15 @@ public class VentanaControl extends javax.swing.JFrame {
         initComponents();
     }
 
+    public EstadoMotor getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoMotor estado) {
+        this.estado = estado;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,10 +100,12 @@ public class VentanaControl extends javax.swing.JFrame {
     private void boton_encendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_encendidoActionPerformed
         if(this.etiqueta_estado.getText().equals("APAGADO")){
             this.etiqueta_estado.setText("ENCENDIDO");
+            this.setEstado(EstadoMotor.ENCENDIDO);
             this.boton_encendido.setText("APAGAR");
             this.boton_encendido.setForeground(Color.red);
         }else{
             this.etiqueta_estado.setText("APAGADO");
+            this.setEstado(EstadoMotor.APAGADO);
             this.boton_encendido.setText("ENCENDER");
             this.boton_encendido.setForeground(Color.green);
         }
@@ -106,6 +114,7 @@ public class VentanaControl extends javax.swing.JFrame {
     private void boton_aceleradorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMousePressed
         if(this.etiqueta_estado.getText().equals("ENCENDIDO")){
             this.etiqueta_estado.setText("ACELERANDO");
+            this.setEstado(EstadoMotor.ACELERANDO);
             this.etiqueta_estado.setForeground(Color.red);
             this.boton_acelerador.setText("Soltar acelerador");
             this.boton_acelerador.setForeground(Color.red);
@@ -115,6 +124,7 @@ public class VentanaControl extends javax.swing.JFrame {
     private void boton_aceleradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMouseReleased
         if(this.etiqueta_estado.getText().equals("ACELERANDO")){  
             this.etiqueta_estado.setText("ENCENDIDO");
+            this.setEstado(EstadoMotor.ENCENDIDO);
             this.etiqueta_estado.setForeground(Color.black);
             this.boton_acelerador.setText("ACELERAR");
             this.boton_acelerador.setForeground(Color.black);
@@ -124,6 +134,7 @@ public class VentanaControl extends javax.swing.JFrame {
     private void boton_frenoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMousePressed
         if(this.etiqueta_estado.getText().equals("ENCENDIDO")){
             this.etiqueta_estado.setText("FRENANDO");
+            this.setEstado(EstadoMotor.FRENANDO);
             this.etiqueta_estado.setForeground(Color.red);
             this.boton_freno.setText("Soltar freno");
             this.boton_freno.setForeground(Color.red);
@@ -133,6 +144,7 @@ public class VentanaControl extends javax.swing.JFrame {
     private void boton_frenoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMouseReleased
         if(this.etiqueta_estado.getText().equals("FRENANDO")){
             this.etiqueta_estado.setText("ENCENDIDO");
+            this.setEstado(EstadoMotor.ENCENDIDO);
             this.etiqueta_estado.setForeground(Color.black);
             this.boton_freno.setText("FRENAR");
             this.boton_freno.setForeground(Color.black);

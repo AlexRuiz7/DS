@@ -1,10 +1,10 @@
+
 package controlVelocidad;
 
 /**
  *
  * @author pablorobles
  */
-
-public class RepercutirRozamiento implements Filtro{
+public class main {
     
 }
