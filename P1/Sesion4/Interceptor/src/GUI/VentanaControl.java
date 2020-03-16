@@ -1,5 +1,6 @@
-package controlVelocidad;
+package GUI;
 
+import controlVelocidad.EstadoMotor;
 import java.awt.Color;
 
 /**

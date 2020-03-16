@@ -3,18 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlVelocidad;
+package GUI;
+
+import GUI.CuentaRevoluciones;
+import GUI.CuentaKilometros;
 
 /**
  *
  * @author pablorobles
  */
-public class Velocimetro extends javax.swing.JPanel {
-
+public class Salpicadero extends javax.swing.JPanel {
+    
+    Velocimetro velocimetro = new Velocimetro();
+    CuentaKilometros cuentaKilometros = new CuentaKilometros();
+    CuentaRevoluciones cuentaRevoluciones = new CuentaRevoluciones();
+    
     /**
-     * Creates new form Velocimetro
+     * Creates new form Salpicadero
      */
-    public Velocimetro() {
+    public Salpicadero() {
         initComponents();
     }
 
@@ -27,24 +34,11 @@ public class Velocimetro extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel_kmh = new javax.swing.JPanel();
-        etiqueta_km = new javax.swing.JLabel();
-
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Velocímetro"));
-        setLayout(new java.awt.BorderLayout());
-
-        panel_kmh.setBorder(javax.swing.BorderFactory.createTitledBorder("km/h"));
-        panel_kmh.setLayout(new java.awt.BorderLayout());
-
-        etiqueta_km.setText("00.00");
-        panel_kmh.add(etiqueta_km, java.awt.BorderLayout.CENTER);
-
-        add(panel_kmh, java.awt.BorderLayout.CENTER);
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Salpicadero"));
+        setLayout(new java.awt.GridLayout(3, 1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel etiqueta_km;
-    private javax.swing.JPanel panel_kmh;
     // End of variables declaration//GEN-END:variables
 }

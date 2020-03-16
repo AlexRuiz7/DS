@@ -1,6 +1,6 @@
 package controlVelocidad;
 
-import java.awt.List;
+import Filtros.Filtro;
 import java.util.ArrayList;
 
 /**
@@ -8,21 +8,38 @@ import java.util.ArrayList;
  * @author pablorobles
  */
 public class CadenaFiltros {
-    private ArrayList<Filtro> filtros = new ArrayList<Filtro>();
+    private ArrayList<Filtro> filtros;
     private Objetivo objetivo;
+    private int RPM;
+
     
-    public void añadirFiltro(Filtro filtro){
+    public CadenaFiltros(Objetivo objetivo) {
+        this.objetivo = objetivo;
+        filtros = new ArrayList();
+        RPM = 0;
+    }
+    
+        
+    public void añadirFiltro(Filtro filtro) {
         filtros.add(filtro);
     }
     
-    public void ejecutar(String peticion){
-        for(Filtro f : filtros){
-            f.ejecutar(0, EstadoMotor.APAGADO)
+    
+    /**
+     * Llama a cada uno de los filtros en la cadena, para que procesen y 
+     * actualicen las revoluciones por minuto del motor (RPM).
+     * 
+     * Finalmente se progaga el nuevo estado al motor (objetivo).
+     * 
+     * @param estadoMotor 
+     */
+    public void ejecutar(EstadoMotor estadoMotor) {
+        
+        for(Filtro f : filtros) {
+            RPM = f.ejecutar(RPM, estadoMotor);
         }
-        objetivo.ejecutar();
+        
+        objetivo.ejecutar(RPM, estadoMotor);
     }
     
-    public void setObjetivo(Objetivo ob){
-        objetivo = ob;
-    }
 }
