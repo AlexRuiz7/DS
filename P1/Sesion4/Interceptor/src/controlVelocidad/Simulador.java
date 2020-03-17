@@ -1,5 +1,7 @@
 package controlVelocidad;
 
+import Filtros.FiltroCalcularRPM;
+import Filtros.FiltroRozamiento;
 import GUI.Salpicadero;
 import GUI.Ventana;
 import GUI.Controles;
@@ -19,6 +21,13 @@ public class Simulador {
         Objetivo motor = new Objetivo();
         GestorFiltros gestor = new GestorFiltros(motor);
         Cliente controlador = new Cliente(gestor);
+        
+        /****/
+        
+        FiltroCalcularRPM filtro_velocidad = new FiltroCalcularRPM();
+        FiltroRozamiento filtro_rozamiento = new FiltroRozamiento();
+        gestor.setFiltro(filtro_velocidad);
+        gestor.setFiltro(filtro_rozamiento);
         
         /****/
         

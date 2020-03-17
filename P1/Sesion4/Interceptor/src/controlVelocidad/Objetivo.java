@@ -26,6 +26,11 @@ public class Objetivo extends Observable {
         setVelocidadLineal();       // Calcular Velocidad Lineal
         setDistanciaRecorrida();    // Calcular Distancia recorrida
         
+        System.out.println("\nPeticion: " + estado.name() );
+        System.out.println("RPM: " + RPM );
+        System.out.println("Vel.: " + velocidad );
+        System.out.println("Distancia: " + distancia_recorrida );
+        
         // Notificar observadores (GUI) para actualicen su estados
         this.setChanged();
         this.notifyObservers();

@@ -38,6 +38,7 @@ public class CadenaFiltros {
         
         for(Filtro f: filtros) {
             RPM = f.ejecutar(RPM, estadoMotor);
+            System.out.println("Filtro RPM: " + RPM);
         }
         
         objetivo.ejecutar(RPM, estadoMotor);
