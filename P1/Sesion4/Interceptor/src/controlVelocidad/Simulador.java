@@ -1,9 +1,9 @@
 package controlVelocidad;
 
 import GUI.Salpicadero;
+import GUI.Ventana;
 import GUI.VentanaControl;
 import java.io.IOException;
-import java.util.Observer;
 
 /**
  *
@@ -16,21 +16,16 @@ public class Simulador {
      */
     public static void main(String[] args) throws IOException {
         
-        //Objetivo
+        // Objetivo
         Objetivo obj = new Objetivo();
         
         // Instanciación de observadores
         Salpicadero salpicadero = new Salpicadero();
+        salpicadero.setObjetivo(obj);
         salpicadero.setLocation(200, 200);
+        Ventana ventana_salpicadero = new Ventana(salpicadero, "Salpicadero");
+        
         VentanaControl controles = new VentanaControl();
         controles.setLocation(200, 400);
-        
-        
-        // Añadir los observadores al observable
-        obj.addObserver((Observer) salpicadero);
-        obj.addObserver((Observer) controles);
-        
-        
-        
     }
 }

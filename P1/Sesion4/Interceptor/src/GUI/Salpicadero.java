@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
-import GUI.CuentaRevoluciones;
-import GUI.CuentaKilometros;
+import controlVelocidad.Objetivo;
 
 /**
  *
@@ -20,6 +14,13 @@ public class Salpicadero extends javax.swing.JPanel {
      */
     public Salpicadero() {
         initComponents();
+    }
+    
+    
+    public void setObjetivo(Objetivo motor) {
+        cuentaKilometros.setObservable(motor);
+        cuentaRevoluciones.setObservable(motor);
+        velocimetro.setObservable(motor);
     }
 
     /**

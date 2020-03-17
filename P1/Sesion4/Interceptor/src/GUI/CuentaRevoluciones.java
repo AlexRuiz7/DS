@@ -1,23 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
+
+import java.util.Observable;
 
 /**
  *
  * @author pablorobles
  */
-public class CuentaRevoluciones extends javax.swing.JPanel {
+public class CuentaRevoluciones extends ObservadorMotor {
 
-    /**
-     * Creates new form CuentaRevoluciones
-     */
+    private int RPM;
+    
+    
     public CuentaRevoluciones() {
         initComponents();
+        
+        RPM = 0;
     }
 
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        RPM = this.miObservable.getRPM();
+        
+        etiqueta_rpm.setText(Double.toString(RPM));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

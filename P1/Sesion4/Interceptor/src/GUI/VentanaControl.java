@@ -16,6 +16,7 @@ public class VentanaControl extends javax.swing.JFrame {
      */
     public VentanaControl() {
         initComponents();
+        this.setVisible(true);
     }
 
     public EstadoMotor getEstado() {
@@ -94,6 +95,7 @@ public class VentanaControl extends javax.swing.JFrame {
         panel_mandos.add(panel_botones);
 
         getContentPane().add(panel_mandos, java.awt.BorderLayout.PAGE_START);
+        panel_mandos.getAccessibleContext().setAccessibleName("Mandos");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

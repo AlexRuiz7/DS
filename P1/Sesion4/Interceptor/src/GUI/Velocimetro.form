@@ -39,7 +39,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="etiqueta_km">
+        <Component class="javax.swing.JLabel" name="etiqueta_velocidad">
           <Properties>
             <Property name="text" type="java.lang.String" value="00.00"/>
           </Properties>

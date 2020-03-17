@@ -1,23 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
+
+import java.util.Observable;
 
 /**
  *
  * @author pablorobles
  */
-public class Velocimetro extends javax.swing.JPanel {
+public class Velocimetro extends ObservadorMotor {
 
-    /**
-     * Creates new form Velocimetro
-     */
+    private double velocidad;
+    
+    
     public Velocimetro() {
         initComponents();
+        
+        velocidad = 0;
     }
 
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        velocidad = this.miObservable.getVelocidad();
+        
+        etiqueta_velocidad.setText(Double.toString(velocidad));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +35,7 @@ public class Velocimetro extends javax.swing.JPanel {
     private void initComponents() {
 
         panel_kmh = new javax.swing.JPanel();
-        etiqueta_km = new javax.swing.JLabel();
+        etiqueta_velocidad = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Velocímetro"));
         setLayout(new java.awt.BorderLayout());
@@ -36,15 +43,15 @@ public class Velocimetro extends javax.swing.JPanel {
         panel_kmh.setBorder(javax.swing.BorderFactory.createTitledBorder("km/h"));
         panel_kmh.setLayout(new java.awt.BorderLayout());
 
-        etiqueta_km.setText("00.00");
-        panel_kmh.add(etiqueta_km, java.awt.BorderLayout.CENTER);
+        etiqueta_velocidad.setText("00.00");
+        panel_kmh.add(etiqueta_velocidad, java.awt.BorderLayout.CENTER);
 
         add(panel_kmh, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel etiqueta_km;
+    private javax.swing.JLabel etiqueta_velocidad;
     private javax.swing.JPanel panel_kmh;
     // End of variables declaration//GEN-END:variables
 }
