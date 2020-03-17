@@ -2,7 +2,7 @@ package controlVelocidad;
 
 import GUI.Salpicadero;
 import GUI.Ventana;
-import GUI.VentanaControl;
+import GUI.Controles;
 import java.io.IOException;
 
 /**
@@ -25,7 +25,7 @@ public class Simulador {
         salpicadero.setLocation(200, 200);
         Ventana ventana_salpicadero = new Ventana(salpicadero, "Salpicadero");
         
-        VentanaControl controles = new VentanaControl();
+        Controles controles = new Controles();
         controles.setLocation(200, 400);
     }
 }

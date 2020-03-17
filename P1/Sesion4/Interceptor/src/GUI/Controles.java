@@ -7,14 +7,14 @@ import java.awt.Color;
  *
  * @author pablorobles
  */
-public class VentanaControl extends javax.swing.JFrame {
+public class Controles extends javax.swing.JFrame {
     
     protected EstadoMotor estado = EstadoMotor.APAGADO;
     
     /**
      * Creates new form VentanaControl
      */
-    public VentanaControl() {
+    public Controles() {
         initComponents();
         this.setVisible(true);
     }
@@ -171,20 +171,20 @@ public class VentanaControl extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(VentanaControl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(VentanaControl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(VentanaControl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(VentanaControl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new VentanaControl().setVisible(true);
+//                new Controles().setVisible(true);
 //            }
 //        });
 //    }
