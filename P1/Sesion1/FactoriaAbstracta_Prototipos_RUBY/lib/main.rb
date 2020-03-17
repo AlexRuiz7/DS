@@ -1,5 +1,18 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+module FactoriaAbstracta_Prototipos_RUBY
+  
 
-puts "Hello World"
+  class Main
+
+    def self.main()
+      b = Bicicleta.new
+      b1 = BicicletaCarretera.new(b)
+      puts "\nID:" + b1.id
+      puts b1.tipo
+      puts b1.ttl
+    end
+
+  end
+
+end
+
+FactoriaAbstracta_Prototipos_RUBY::Main.main

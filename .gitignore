@@ -1,5 +1,5 @@
-# Excluir todos los ficheros PDF
-*.pdf
+# Excluir todos los ficheros .bak
+*.bak*
 
 # Excluir todos los ficheros zip
 *.zip

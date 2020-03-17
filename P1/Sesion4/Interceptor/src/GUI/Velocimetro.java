@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,10 +6,17 @@
  */
 package GUI;
 
+=======
+package GUI;
+
+import java.util.Observable;
+
+>>>>>>> origin/master
 /**
  *
  * @author pablorobles
  */
+<<<<<<< HEAD
 public class Velocimetro extends javax.swing.JPanel {
 
     /**
@@ -21,6 +29,27 @@ public class Velocimetro extends javax.swing.JPanel {
     public void actualizar(double v){
         this.etiqueta_velocidad.setText(""+v);
     }
+=======
+public class Velocimetro extends ObservadorMotor {
+
+    private double velocidad;
+    
+    
+    public Velocimetro() {
+        initComponents();
+        
+        velocidad = 0;
+    }
+
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        velocidad = this.miObservable.getVelocidad();
+        
+        etiqueta_velocidad.setText(Double.toString(velocidad));
+    }
+    
+>>>>>>> origin/master
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

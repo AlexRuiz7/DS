@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,10 +6,17 @@
  */
 package GUI;
 
+=======
+package GUI;
+
+import java.util.Observable;
+
+>>>>>>> origin/master
 /**
  *
  * @author pablorobles
  */
+<<<<<<< HEAD
 public class CuentaKilometros extends javax.swing.JPanel {
 
     /**
@@ -25,6 +33,36 @@ public class CuentaKilometros extends javax.swing.JPanel {
     public void actualizarTotal(double distancia){
         this.etiqueta_km_total.setText(""+distancia);
     }
+=======
+public class CuentaKilometros extends ObservadorMotor {
+
+    private double kms_recientes, kms_totales;
+
+    public CuentaKilometros() {
+        initComponents();
+        
+        kms_recientes = kms_totales = 0;
+    }
+
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        kms_totales = this.miObservable.getDistanciaRecorrida();
+        kms_recientes += kms_totales;
+        
+        etiqueta_km_total.setText(Double.toString(kms_totales));
+        etiqueta_km_rec.setText(Double.toString(kms_recientes));
+    }
+    
+    
+    /**
+     * Salpicadero llama a este método cada vez que el motor se apaga
+     */
+    public void resetKilometrosRecientes() {
+        kms_recientes = 0;
+    }
+    
+>>>>>>> origin/master
 
     /**
      * This method is called from within the constructor to initialize the form.

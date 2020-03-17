@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,14 +11,24 @@ import GUI.CuentaKilometros;
 import controlVelocidad.Objetivo;
 import java.util.Observable;
 import java.util.Observer;
+=======
+package GUI;
+
+import controlVelocidad.Objetivo;
+>>>>>>> origin/master
 
 /**
  *
  * @author pablorobles
  */
+<<<<<<< HEAD
 public class Salpicadero extends javax.swing.JPanel implements Observer{
     
     protected Objetivo miObjetivo;
+=======
+public class Salpicadero extends javax.swing.JPanel {
+    
+>>>>>>> origin/master
     
     /**
      * Creates new form Salpicadero
@@ -26,6 +37,7 @@ public class Salpicadero extends javax.swing.JPanel implements Observer{
         initComponents();
     }
     
+<<<<<<< HEAD
     public void actualizarVelocidad(double v){
         this.velocimetro.actualizar(v);
     }
@@ -37,6 +49,13 @@ public class Salpicadero extends javax.swing.JPanel implements Observer{
     
     public void actualizarRPM(double rpm){
         this.cuentaRevoluciones.actualizar(rpm);
+=======
+    
+    public void setObjetivo(Objetivo motor) {
+        cuentaKilometros.setObservable(motor);
+        cuentaRevoluciones.setObservable(motor);
+        velocimetro.setObservable(motor);
+>>>>>>> origin/master
     }
 
     /**
@@ -66,6 +85,7 @@ public class Salpicadero extends javax.swing.JPanel implements Observer{
     private GUI.CuentaRevoluciones cuentaRevoluciones;
     private GUI.Velocimetro velocimetro;
     // End of variables declaration//GEN-END:variables
+<<<<<<< HEAD
 
     @Override
     public void update(Observable o, Object arg) {
@@ -73,4 +93,6 @@ public class Salpicadero extends javax.swing.JPanel implements Observer{
         this.actualizarDistancias(this.miObjetivo.getDistanciaRecorrida());
         this.actualizarRPM(this.miObjetivo.getRPM());
     }
+=======
+>>>>>>> origin/master
 }

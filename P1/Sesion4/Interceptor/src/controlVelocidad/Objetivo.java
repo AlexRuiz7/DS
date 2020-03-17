@@ -26,6 +26,14 @@ public class Objetivo extends Observable {
         setVelocidadLineal();       // Calcular Velocidad Lineal
         setDistanciaRecorrida();    // Calcular Distancia recorrida
         
+<<<<<<< HEAD
+=======
+        System.out.println("\nPeticion: " + estado.name() );
+        System.out.println("RPM: " + RPM );
+        System.out.println("Vel.: " + velocidad );
+        System.out.println("Distancia: " + distancia_recorrida );
+        
+>>>>>>> origin/master
         // Notificar observadores (GUI) para actualicen su estados
         this.setChanged();
         this.notifyObservers();
@@ -63,11 +71,19 @@ public class Objetivo extends Observable {
     }
 
     public double getVelocidad() {
+<<<<<<< HEAD
         return velocidad;
     }
 
     public double getDistanciaRecorrida() {
         return distancia_recorrida;
+=======
+        return (double)Math.round(velocidad * 100d)/100d;
+    }
+
+    public double getDistanciaRecorrida() {
+        return (double)Math.round(distancia_recorrida * 100d)/100d;
+>>>>>>> origin/master
     }
    
 }

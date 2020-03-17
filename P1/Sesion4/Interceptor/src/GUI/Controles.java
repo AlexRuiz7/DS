@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,30 +11,87 @@ import controlVelocidad.Objetivo;
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
+=======
+package GUI;
+
+import controlVelocidad.Cliente;
+import controlVelocidad.EstadoMotor;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+>>>>>>> origin/master
 
 /**
  *
  * @author pablorobles
  */
+<<<<<<< HEAD
 public class Controles extends javax.swing.JPanel implements Observer{
 
     protected EstadoMotor estado = EstadoMotor.APAGADO;
     protected Objetivo miObjetivo;
+=======
+public class Controles extends javax.swing.JPanel implements Runnable {
+
+    protected EstadoMotor estado;
+    private Cliente controlador;
+    public Thread hebra;
+    
+>>>>>>> origin/master
     
     /**
      * Creates new form VentanaControl
      */
     public Controles() {
         initComponents();
+<<<<<<< HEAD
     }
 
+=======
+        estado = EstadoMotor.APAGADO;
+        hebra = new Thread(this, "Controles");
+    }
+    
+    
+    @Override
+    public void run() {
+        while(true) {
+            try {
+                enviarPeticion();
+                Thread.sleep(500);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Controles.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    
+>>>>>>> origin/master
     public EstadoMotor getEstado() {
         return estado;
     }
 
+<<<<<<< HEAD
     public void setEstado(EstadoMotor estado) {
         this.estado = estado;
     }
+=======
+    
+    public void setEstado(EstadoMotor estado) {
+        this.estado = estado;
+    }
+    
+    
+    public void setControlador(Cliente c) {
+        controlador = c;
+        hebra.start();
+    }
+    
+    private void enviarPeticion() {
+        controlador.enviarPeticion(estado);
+    }
+    
+>>>>>>> origin/master
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,57 +179,102 @@ public class Controles extends javax.swing.JPanel implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_encendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_encendidoActionPerformed
+<<<<<<< HEAD
         if(this.etiqueta_estado.getText().equals("APAGADO")){
+=======
+        if(this.etiqueta_estado.getText().equals("APAGADO")) {
+>>>>>>> origin/master
             this.etiqueta_estado.setText("ENCENDIDO");
             this.setEstado(EstadoMotor.ENCENDIDO);
             this.boton_encendido.setText("APAGAR");
             this.boton_encendido.setForeground(Color.red);
+<<<<<<< HEAD
         }else{
+=======
+        } 
+        else {
+>>>>>>> origin/master
             this.etiqueta_estado.setText("APAGADO");
             this.setEstado(EstadoMotor.APAGADO);
             this.boton_encendido.setText("ENCENDER");
             this.boton_encendido.setForeground(Color.green);
         }
+<<<<<<< HEAD
     }//GEN-LAST:event_boton_encendidoActionPerformed
 
     private void boton_aceleradorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMousePressed
         if(this.etiqueta_estado.getText().equals("ENCENDIDO")){
+=======
+        enviarPeticion();
+    }//GEN-LAST:event_boton_encendidoActionPerformed
+
+    private void boton_aceleradorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMousePressed
+        if(this.etiqueta_estado.getText().equals("ENCENDIDO")) {
+>>>>>>> origin/master
             this.etiqueta_estado.setText("ACELERANDO");
             this.setEstado(EstadoMotor.ACELERANDO);
             this.etiqueta_estado.setForeground(Color.red);
             this.boton_acelerador.setText("Soltar acelerador");
             this.boton_acelerador.setForeground(Color.red);
         }
+<<<<<<< HEAD
     }//GEN-LAST:event_boton_aceleradorMousePressed
 
     private void boton_aceleradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMouseReleased
         if(this.etiqueta_estado.getText().equals("ACELERANDO")){
+=======
+        enviarPeticion();
+    }//GEN-LAST:event_boton_aceleradorMousePressed
+
+    private void boton_aceleradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMouseReleased
+        if(this.etiqueta_estado.getText().equals("ACELERANDO")) {
+>>>>>>> origin/master
             this.etiqueta_estado.setText("ENCENDIDO");
             this.setEstado(EstadoMotor.ENCENDIDO);
             this.etiqueta_estado.setForeground(Color.black);
             this.boton_acelerador.setText("ACELERAR");
             this.boton_acelerador.setForeground(Color.black);
         }
+<<<<<<< HEAD
     }//GEN-LAST:event_boton_aceleradorMouseReleased
 
     private void boton_frenoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMousePressed
         if(this.etiqueta_estado.getText().equals("ENCENDIDO")){
+=======
+        enviarPeticion();
+    }//GEN-LAST:event_boton_aceleradorMouseReleased
+
+    private void boton_frenoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMousePressed
+        if(this.etiqueta_estado.getText().equals("ENCENDIDO")) {
+>>>>>>> origin/master
             this.etiqueta_estado.setText("FRENANDO");
             this.setEstado(EstadoMotor.FRENANDO);
             this.etiqueta_estado.setForeground(Color.red);
             this.boton_freno.setText("Soltar freno");
             this.boton_freno.setForeground(Color.red);
         }
+<<<<<<< HEAD
     }//GEN-LAST:event_boton_frenoMousePressed
 
     private void boton_frenoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMouseReleased
         if(this.etiqueta_estado.getText().equals("FRENANDO")){
+=======
+        enviarPeticion();
+    }//GEN-LAST:event_boton_frenoMousePressed
+
+    private void boton_frenoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMouseReleased
+        if(this.etiqueta_estado.getText().equals("FRENANDO")) {
+>>>>>>> origin/master
             this.etiqueta_estado.setText("ENCENDIDO");
             this.setEstado(EstadoMotor.ENCENDIDO);
             this.etiqueta_estado.setForeground(Color.black);
             this.boton_freno.setText("FRENAR");
             this.boton_freno.setForeground(Color.black);
         }
+<<<<<<< HEAD
+=======
+        enviarPeticion();
+>>>>>>> origin/master
     }//GEN-LAST:event_boton_frenoMouseReleased
 
 
@@ -183,9 +286,12 @@ public class Controles extends javax.swing.JPanel implements Observer{
     private javax.swing.JPanel panel_botones;
     private javax.swing.JPanel panel_estado;
     // End of variables declaration//GEN-END:variables
+<<<<<<< HEAD
 
     @Override
     public void update(Observable o, Object arg) {
         
     }
+=======
+>>>>>>> origin/master
 }

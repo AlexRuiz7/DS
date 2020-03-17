@@ -5,12 +5,21 @@ import java.awt.Component;
 
 /**
  *
+<<<<<<< HEAD
  * @author pablorobles
+=======
+ * @author alex
+>>>>>>> origin/master
  */
 public class Ventana extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana
+<<<<<<< HEAD
+=======
+     * @param c
+     * @param titulo
+>>>>>>> origin/master
      */
     public Ventana(Component c, String titulo) {
         super();
@@ -46,7 +55,10 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
