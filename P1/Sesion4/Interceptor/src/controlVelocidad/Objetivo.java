@@ -68,11 +68,11 @@ public class Objetivo extends Observable {
     }
 
     public double getVelocidad() {
-        return velocidad;
+        return (double)Math.round(velocidad * 100d)/100d;
     }
 
     public double getDistanciaRecorrida() {
-        return distancia_recorrida;
+        return (double)Math.round(distancia_recorrida * 100d)/100d;
     }
    
 }

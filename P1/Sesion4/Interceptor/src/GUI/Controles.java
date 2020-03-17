@@ -3,15 +3,18 @@ package GUI;
 import controlVelocidad.Cliente;
 import controlVelocidad.EstadoMotor;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author pablorobles
  */
-public class Controles extends javax.swing.JPanel {
+public class Controles extends javax.swing.JPanel implements Runnable {
 
     protected EstadoMotor estado;
     private Cliente controlador;
+    public Thread hebra;
     
     
     /**
@@ -20,6 +23,20 @@ public class Controles extends javax.swing.JPanel {
     public Controles() {
         initComponents();
         estado = EstadoMotor.APAGADO;
+        hebra = new Thread(this, "Controles");
+    }
+    
+    
+    @Override
+    public void run() {
+        while(true) {
+            try {
+                enviarPeticion();
+                Thread.sleep(500);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Controles.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     
@@ -35,6 +52,7 @@ public class Controles extends javax.swing.JPanel {
     
     public void setControlador(Cliente c) {
         controlador = c;
+        hebra.start();
     }
     
     private void enviarPeticion() {

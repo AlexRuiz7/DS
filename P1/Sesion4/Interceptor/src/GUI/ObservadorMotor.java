@@ -20,6 +20,7 @@ public abstract class ObservadorMotor extends JPanel implements Observer {
     
     public void setObservable(Objetivo obs) {
         this.miObservable = obs;
+        this.miObservable.addObserver(this);
     }
     
 }
