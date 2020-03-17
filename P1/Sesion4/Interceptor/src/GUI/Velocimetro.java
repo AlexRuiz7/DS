@@ -7,22 +7,18 @@ import java.util.Observable;
  * @author pablorobles
  */
 public class Velocimetro extends ObservadorMotor {
-
-    private double velocidad;
     
     
     public Velocimetro() {
-        initComponents();
-        
-        velocidad = 0;
+        initComponents();        
     }
 
     
     @Override
     public void update(Observable o, Object arg) {
-        velocidad = this.miObservable.getVelocidad();
-        
-        etiqueta_velocidad.setText(Double.toString(velocidad));
+        etiqueta_velocidad.setText(
+                String.format("%.2f", miObservable.getVelocidad())
+        );
     }
     
     /**

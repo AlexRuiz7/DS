@@ -8,14 +8,14 @@ import java.util.Observable;
  */
 public class Objetivo extends Observable {
     
-    private double velocidad, distancia_recorrida; 
+    private double velocidad, distancia_recorrida, distancia_reciente; 
     private int RPM;
     private EstadoMotor estado;
     private final float R = 0.15f;
 
     
     public Objetivo() {
-        velocidad = distancia_recorrida = 0;
+        velocidad = distancia_recorrida = distancia_reciente = 0;
         RPM = 0;
     }
 
@@ -25,6 +25,9 @@ public class Objetivo extends Observable {
         RPM = revoluciones;         // Actualizar Velocidad Angular
         setVelocidadLineal();       // Calcular Velocidad Lineal
         setDistanciaRecorrida();    // Calcular Distancia recorrida
+        
+        if(estado == EstadoMotor.APAGADO)
+            distancia_reciente = 0;
         
         System.out.println("\nPeticion: " + estado.name() );
         System.out.println("RPM: " + RPM );
@@ -45,8 +48,12 @@ public class Objetivo extends Observable {
     }
     
     private void setDistanciaRecorrida() {
-        distancia_recorrida += velocidad * 0.06 /* x t */;
+        double distancia = velocidad * 0.0015;
+        
+        distancia_recorrida += distancia;
+        distancia_reciente  += distancia;
     }
+    
     
     /**************************/
     /******* GETTERS **********/
@@ -68,11 +75,14 @@ public class Objetivo extends Observable {
     }
 
     public double getVelocidad() {
-        return (double)Math.round(velocidad * 100d)/100d;
+        return velocidad;
     }
 
     public double getDistanciaRecorrida() {
-        return (double)Math.round(distancia_recorrida * 100d)/100d;
+        return distancia_recorrida;
     }
    
+    public double getDistanciaReciente() {
+        return distancia_reciente;
+    }
 }

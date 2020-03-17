@@ -8,21 +8,15 @@ import java.util.Observable;
  */
 public class CuentaRevoluciones extends ObservadorMotor {
 
-    private int RPM;
-    
     
     public CuentaRevoluciones() {
         initComponents();
-        
-        RPM = 0;
     }
 
     
     @Override
-    public void update(Observable o, Object arg) {
-        RPM = this.miObservable.getRPM();
-        
-        etiqueta_rpm.setText(Double.toString(RPM));
+    public void update(Observable o, Object arg) {        
+        etiqueta_rpm.setText( String.format("%d", miObservable.getRPM()) );
     }
     
     /**

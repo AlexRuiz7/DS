@@ -158,7 +158,6 @@ public class Controles extends javax.swing.JPanel implements Runnable {
             this.boton_encendido.setText("ENCENDER");
             this.boton_encendido.setForeground(Color.green);
         }
-        enviarPeticion();
     }//GEN-LAST:event_boton_encendidoActionPerformed
 
     private void boton_aceleradorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMousePressed
@@ -169,7 +168,6 @@ public class Controles extends javax.swing.JPanel implements Runnable {
             this.boton_acelerador.setText("Soltar acelerador");
             this.boton_acelerador.setForeground(Color.red);
         }
-        enviarPeticion();
     }//GEN-LAST:event_boton_aceleradorMousePressed
 
     private void boton_aceleradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMouseReleased
@@ -180,7 +178,6 @@ public class Controles extends javax.swing.JPanel implements Runnable {
             this.boton_acelerador.setText("ACELERAR");
             this.boton_acelerador.setForeground(Color.black);
         }
-        enviarPeticion();
     }//GEN-LAST:event_boton_aceleradorMouseReleased
 
     private void boton_frenoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMousePressed
@@ -191,7 +188,6 @@ public class Controles extends javax.swing.JPanel implements Runnable {
             this.boton_freno.setText("Soltar freno");
             this.boton_freno.setForeground(Color.red);
         }
-        enviarPeticion();
     }//GEN-LAST:event_boton_frenoMousePressed
 
     private void boton_frenoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMouseReleased
@@ -202,7 +198,6 @@ public class Controles extends javax.swing.JPanel implements Runnable {
             this.boton_freno.setText("FRENAR");
             this.boton_freno.setForeground(Color.black);
         }
-        enviarPeticion();
     }//GEN-LAST:event_boton_frenoMouseReleased
 
 

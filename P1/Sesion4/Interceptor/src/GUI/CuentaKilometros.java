@@ -1,5 +1,6 @@
 package GUI;
 
+import controlVelocidad.EstadoMotor;
 import java.util.Observable;
 
 /**
@@ -8,31 +9,22 @@ import java.util.Observable;
  */
 public class CuentaKilometros extends ObservadorMotor {
 
-    private double kms_recientes, kms_totales;
 
     public CuentaKilometros() {
         initComponents();
-        
-        kms_recientes = kms_totales = 0;
     }
 
     
     @Override
-    public void update(Observable o, Object arg) {
-        kms_totales = this.miObservable.getDistanciaRecorrida();
-        kms_recientes += kms_totales;
-        
-        etiqueta_km_total.setText(Double.toString(kms_totales));
-        etiqueta_km_rec.setText(Double.toString(kms_recientes));
+    public void update(Observable o, Object arg) {        
+        etiqueta_km_total.setText(
+                String.format("%.2f", miObservable.getDistanciaRecorrida())
+        );
+        etiqueta_km_rec.setText(
+                String.format("%.2f", miObservable.getDistanciaReciente())
+        );
     }
     
-    
-    /**
-     * Salpicadero llama a este método cada vez que el motor se apaga
-     */
-    public void resetKilometrosRecientes() {
-        kms_recientes = 0;
-    }
     
 
     /**
