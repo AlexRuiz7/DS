@@ -37,6 +37,7 @@ public class Salpicadero extends javax.swing.JPanel {
         cuentaRevoluciones = new GUI.CuentaRevoluciones();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Salpicadero"));
+        setPreferredSize(new java.awt.Dimension(400, 300));
         setLayout(new java.awt.GridLayout(3, 1));
         add(velocimetro);
         add(cuentaKilometros);

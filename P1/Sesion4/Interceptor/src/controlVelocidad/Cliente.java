@@ -28,6 +28,7 @@ public class Cliente {
      */
     public void enviarPeticion(EstadoMotor estado) {
         gestor.filtrarPeticion(estado);
+        System.out.println("Peticion: " + estado.name() );
     }
     
 }

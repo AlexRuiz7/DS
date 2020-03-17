@@ -1,5 +1,6 @@
 package GUI;
 
+import controlVelocidad.Cliente;
 import controlVelocidad.EstadoMotor;
 import java.awt.Color;
 
@@ -7,26 +8,38 @@ import java.awt.Color;
  *
  * @author pablorobles
  */
-public class Controles extends javax.swing.JFrame {
+public class Controles extends javax.swing.JPanel {
+
+    protected EstadoMotor estado;
+    private Cliente controlador;
     
-    protected EstadoMotor estado = EstadoMotor.APAGADO;
     
     /**
      * Creates new form VentanaControl
      */
     public Controles() {
         initComponents();
-        this.setVisible(true);
+        estado = EstadoMotor.APAGADO;
     }
 
+    
     public EstadoMotor getEstado() {
         return estado;
     }
 
+    
     public void setEstado(EstadoMotor estado) {
         this.estado = estado;
     }
     
+    
+    public void setControlador(Cliente c) {
+        controlador = c;
+    }
+    
+    private void enviarPeticion() {
+        controlador.enviarPeticion(estado);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +50,6 @@ public class Controles extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel_mandos = new javax.swing.JPanel();
         panel_estado = new javax.swing.JPanel();
         etiqueta_estado = new javax.swing.JLabel();
         panel_botones = new javax.swing.JPanel();
@@ -45,23 +57,20 @@ public class Controles extends javax.swing.JFrame {
         boton_acelerador = new javax.swing.JButton();
         boton_freno = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        panel_mandos.setBorder(javax.swing.BorderFactory.createTitledBorder("mandos"));
-        panel_mandos.setLayout(new java.awt.GridLayout(2, 1));
+        setBorder(javax.swing.BorderFactory.createTitledBorder("mandos"));
 
         panel_estado.setLayout(new java.awt.BorderLayout());
 
+        etiqueta_estado.setForeground(java.awt.Color.red);
         etiqueta_estado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiqueta_estado.setText("APAGADO");
         etiqueta_estado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         etiqueta_estado.setOpaque(true);
         panel_estado.add(etiqueta_estado, java.awt.BorderLayout.CENTER);
 
-        panel_mandos.add(panel_estado);
-
         panel_botones.setLayout(new java.awt.GridLayout(1, 3));
 
+        boton_encendido.setForeground(java.awt.Color.green);
         boton_encendido.setText("ENCENDER");
         boton_encendido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,102 +101,92 @@ public class Controles extends javax.swing.JFrame {
         });
         panel_botones.add(boton_freno);
 
-        panel_mandos.add(panel_botones);
-
-        getContentPane().add(panel_mandos, java.awt.BorderLayout.PAGE_START);
-        panel_mandos.getAccessibleContext().setAccessibleName("Mandos");
-
-        pack();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 672, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panel_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panel_botones, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 82, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 12, Short.MAX_VALUE)
+                    .addComponent(panel_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, 0)
+                    .addComponent(panel_botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 12, Short.MAX_VALUE)))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_encendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_encendidoActionPerformed
-        if(this.etiqueta_estado.getText().equals("APAGADO")){
+        if(this.etiqueta_estado.getText().equals("APAGADO")) {
             this.etiqueta_estado.setText("ENCENDIDO");
             this.setEstado(EstadoMotor.ENCENDIDO);
             this.boton_encendido.setText("APAGAR");
             this.boton_encendido.setForeground(Color.red);
-        }else{
+        } 
+        else {
             this.etiqueta_estado.setText("APAGADO");
             this.setEstado(EstadoMotor.APAGADO);
             this.boton_encendido.setText("ENCENDER");
             this.boton_encendido.setForeground(Color.green);
         }
+        enviarPeticion();
     }//GEN-LAST:event_boton_encendidoActionPerformed
 
     private void boton_aceleradorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMousePressed
-        if(this.etiqueta_estado.getText().equals("ENCENDIDO")){
+        if(this.etiqueta_estado.getText().equals("ENCENDIDO")) {
             this.etiqueta_estado.setText("ACELERANDO");
             this.setEstado(EstadoMotor.ACELERANDO);
             this.etiqueta_estado.setForeground(Color.red);
             this.boton_acelerador.setText("Soltar acelerador");
             this.boton_acelerador.setForeground(Color.red);
         }
+        enviarPeticion();
     }//GEN-LAST:event_boton_aceleradorMousePressed
 
     private void boton_aceleradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_aceleradorMouseReleased
-        if(this.etiqueta_estado.getText().equals("ACELERANDO")){  
+        if(this.etiqueta_estado.getText().equals("ACELERANDO")) {
             this.etiqueta_estado.setText("ENCENDIDO");
             this.setEstado(EstadoMotor.ENCENDIDO);
             this.etiqueta_estado.setForeground(Color.black);
             this.boton_acelerador.setText("ACELERAR");
             this.boton_acelerador.setForeground(Color.black);
         }
+        enviarPeticion();
     }//GEN-LAST:event_boton_aceleradorMouseReleased
 
     private void boton_frenoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMousePressed
-        if(this.etiqueta_estado.getText().equals("ENCENDIDO")){
+        if(this.etiqueta_estado.getText().equals("ENCENDIDO")) {
             this.etiqueta_estado.setText("FRENANDO");
             this.setEstado(EstadoMotor.FRENANDO);
             this.etiqueta_estado.setForeground(Color.red);
             this.boton_freno.setText("Soltar freno");
             this.boton_freno.setForeground(Color.red);
         }
+        enviarPeticion();
     }//GEN-LAST:event_boton_frenoMousePressed
 
     private void boton_frenoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_frenoMouseReleased
-        if(this.etiqueta_estado.getText().equals("FRENANDO")){
+        if(this.etiqueta_estado.getText().equals("FRENANDO")) {
             this.etiqueta_estado.setText("ENCENDIDO");
             this.setEstado(EstadoMotor.ENCENDIDO);
             this.etiqueta_estado.setForeground(Color.black);
             this.boton_freno.setText("FRENAR");
             this.boton_freno.setForeground(Color.black);
         }
+        enviarPeticion();
     }//GEN-LAST:event_boton_frenoMouseReleased
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Controles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Controles().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_acelerador;
@@ -196,6 +195,5 @@ public class Controles extends javax.swing.JFrame {
     private javax.swing.JLabel etiqueta_estado;
     private javax.swing.JPanel panel_botones;
     private javax.swing.JPanel panel_estado;
-    private javax.swing.JPanel panel_mandos;
     // End of variables declaration//GEN-END:variables
 }

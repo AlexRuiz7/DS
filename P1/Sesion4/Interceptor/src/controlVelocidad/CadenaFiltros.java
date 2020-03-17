@@ -36,9 +36,9 @@ public class CadenaFiltros {
      */
     public void ejecutar(EstadoMotor estadoMotor) {
         
-        filtros.forEach((f) -> {
+        for(Filtro f: filtros) {
             RPM = f.ejecutar(RPM, estadoMotor);
-        });
+        }
         
         objetivo.ejecutar(RPM, estadoMotor);
     }
