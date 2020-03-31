@@ -13,32 +13,32 @@ public class RelojMonitor extends Thread {
     private double tiempo_total;
 
     public RelojMonitor(Monitor monitor, int intervalo) {
-            this.monitor = monitor;
-            ejecutando = true;
-            tiempo_total = 0.0;
-            this.intervalo = intervalo;
+        this.monitor = monitor;
+        ejecutando = true;
+        tiempo_total = 0.0;
+        this.intervalo = intervalo;
     }
 
     public void run() {
-            while(ejecutando) {
+        while(ejecutando) {
 
-                    try {
-                            sleep(intervalo);
-                            tiempo_total += intervalo;
-                    } catch (InterruptedException e) {
-                            e.printStackTrace();
-                            ejecutando = false;
-                    }
-                    monitor.monitorizar();
+            try {
+                sleep(intervalo);
+                tiempo_total += intervalo;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                ejecutando = false;
             }
+            monitor.monitorizar();
+        }
     }
 
     public void terminate() {
-            ejecutando = false;
+        ejecutando = false;
     }
 
     public double getTiempoTotal() {
-            return tiempo_total/1000; //segundos
+        return tiempo_total/1000; //segundos
     }
 }
 

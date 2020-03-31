@@ -17,78 +17,78 @@ public class Monitor {
     private ControlVelocidad controlVelocidad;
 
     public Monitor(ControlVelocidad controlVelocidad, int intervalo) {
-            this.controlVelocidad = controlVelocidad;
-            deposito = new Deposito();
-            manejadorNotificaciones = new ManejadorNotificaciones();
-            velocidadMedia = new VelocidadMedia();
-            consumoMedio = new ConsumoMedio(deposito);
-            relojMonitor = new RelojMonitor(this, intervalo);
+        this.controlVelocidad = controlVelocidad;
+        deposito = new Deposito();
+        manejadorNotificaciones = new ManejadorNotificaciones();
+        velocidadMedia = new VelocidadMedia();
+        consumoMedio = new ConsumoMedio(deposito);
+        relojMonitor = new RelojMonitor(this, intervalo);
     }
 
     public void start() {
-            relojMonitor.start();
+        relojMonitor.start();
     }
 
     public void monitorizar() {
-            deposito.actualizar(controlVelocidad.getVelocidad());
-            velocidadMedia.calcular(controlVelocidad.getVelocidad());
-            consumoMedio.calcular();
-            manejadorNotificaciones.actualizar(controlVelocidad.getVueltasTotales());
+        deposito.actualizar(controlVelocidad.getVelocidad());
+        velocidadMedia.calcular(controlVelocidad.getVelocidad());
+        consumoMedio.calcular();
+        manejadorNotificaciones.actualizar(controlVelocidad.getVueltasTotales());
     }
 
     public int getVelocidadMedia() {
-            return velocidadMedia.getVelocidadMedia();
+        return velocidadMedia.getVelocidadMedia();
     }
 
     public double getConsumoMedio() {
-            return consumoMedio.getConsumoMedio();
+        return consumoMedio.getConsumoMedio();
     }
 
     public boolean notificarAceite() {
-            return manejadorNotificaciones.notificarAceite();
+        return manejadorNotificaciones.notificarAceite();
     }
 
     public boolean notificarPastillas() {
-            return manejadorNotificaciones.notificarPastillas();
+        return manejadorNotificaciones.notificarPastillas();
     }
 
     public boolean notificarRevision() {
-            return manejadorNotificaciones.notificarRevision();
+        return manejadorNotificaciones.notificarRevision();
     }
 
     public double getNivelDeposito() {
-            return deposito.getNivel();
+        return deposito.getNivel();
     }
 
     public void repostar() {
-            this.deposito.repostar();
+        this.deposito.repostar();
     }
 
     public double getTopeDeposito() {
-            return this.deposito.getTope();
+        return this.deposito.getTope();
     }
 
     public double getVueltasAceite() {
-            return manejadorNotificaciones.getVueltasAceite();
+        return manejadorNotificaciones.getVueltasAceite();
     }
 
     public double getVueltasPastillas() {
-            return manejadorNotificaciones.getVueltasPastillas();
+        return manejadorNotificaciones.getVueltasPastillas();
     }
 
     public double getVueltasRevision() {
-            return manejadorNotificaciones.getVueltasRevision();
+        return manejadorNotificaciones.getVueltasRevision();
     }
 
     public void cambioAceite() {
-            manejadorNotificaciones.cambioAceite();
+        manejadorNotificaciones.cambioAceite();
     }
 
     public void cambioPastillas() {
-            manejadorNotificaciones.cambioPastillas();;
+        manejadorNotificaciones.cambioPastillas();;
     }
 
     public void cambioRevision() {
-            manejadorNotificaciones.cambioRevision();
+        manejadorNotificaciones.cambioRevision();
     }
 }

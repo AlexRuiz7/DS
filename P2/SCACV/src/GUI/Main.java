@@ -1,6 +1,5 @@
 package GUI;
 
-import javax.swing.JApplet;
 
 import controlVelocidad.ControlVelocidad;
 import monitorizacion.Monitor;
@@ -12,20 +11,20 @@ import monitorizacion.Monitor;
 
 public class Main extends javax.swing.JApplet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-        
-	public void init() {
-		setSize(780, 400);
-		ControlVelocidad controlVelocidad = new ControlVelocidad(500);
-		Monitor monitor = new Monitor(controlVelocidad, 500);
-		Interfaz display = new Interfaz(controlVelocidad, monitor);
-		display.setVisible(true);
-		
-		add(display);
-		
-		controlVelocidad.start();
-		monitor.start();
-		display.thr.start();
-	}
+
+    public void init() {
+        setSize(780, 400);
+        ControlVelocidad controlVelocidad = new ControlVelocidad(500);
+        Monitor monitor = new Monitor(controlVelocidad, 500);
+        Interfaz display = new Interfaz(controlVelocidad, monitor);
+        display.setVisible(true);
+
+        add(display);
+
+        controlVelocidad.start();
+        monitor.start();
+        display.thr.start();
+    }
 }

@@ -9,17 +9,16 @@ public class Registro {
     private Eje eje;
 
     public Registro(Eje eje) {
-            velocidadConstante = 0;
-            this.eje = eje;
+        velocidadConstante = 0;
+        this.eje = eje;
     }
-
 
 
     public void registrarVelocidad() { 
-            velocidadConstante = eje.getVelocidad();
+        velocidadConstante = eje.getVelocidad();
     }
 
     public int getVelocidadConstante() {
-            return velocidadConstante;
+        return velocidadConstante;
     }
 }

@@ -10,14 +10,14 @@ public final class Motor {
 	private boolean estado;
 	
 	public Motor() {
-		estado = false;
+            estado = false;
 	}
 	
 	public boolean getEstado() {
-		return estado;
+            return estado;
 	}
 	
 	public void cambiarEstado() {
-		estado = !estado;
+            estado = !estado;
 	}
 }
