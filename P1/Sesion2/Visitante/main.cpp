@@ -41,8 +41,8 @@ int main(int argc, char** argv) {
     /**/
     cout << "Equipo 2: \n";
     equipo = new Equipo( Bus("Bus", 15), Disco("Disco", 60), Tarjeta("Tarjeta", 600) );
-    vp = new VisitantePrecio;
-    vpd = new VisitantePrecioDetalle;
+//    vp = new VisitantePrecio;
+//    vpd = new VisitantePrecioDetalle;
     vp->setCliente(tc2);
     
     equipo->aceptar(*vp);
