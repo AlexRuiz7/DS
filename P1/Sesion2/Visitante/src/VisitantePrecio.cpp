@@ -9,7 +9,7 @@ float VisitantePrecio::obtenerPrecioTotal() const {
 
 void VisitantePrecio::setCliente(const TipoCliente & cliente) {
     descuento = cliente*0.01;
-    return descuento;
+    //return descuento;
 }
 
 void VisitantePrecio::visitarBus(const Bus & bus) {
