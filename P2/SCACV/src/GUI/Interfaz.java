@@ -28,6 +28,9 @@ public class Interfaz extends JPanel implements Runnable {
 
     private static final long serialVersionUID = 1L;
     private static DecimalFormat df2 = new DecimalFormat(".##");
+    //Velocimetro
+    private eu.hansolo.steelseries.gauges.Radial2Lcd radial2Lcd1;
+    private eu.hansolo.steelseries.gauges.Radial1Square radial1Square2;
     
     // Labels
     private JLabel
@@ -175,7 +178,7 @@ public class Interfaz extends JPanel implements Runnable {
             }
         });
 
-        cambioRevision = new JButton("Revision");
+        cambioRevision = new JButton("Revisión");
         cambioRevision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cambioRevisionActionPerformed(evt);
@@ -211,7 +214,7 @@ public class Interfaz extends JPanel implements Runnable {
 
         panelMecanico = new JPanel();
         panelMecanico.setBackground(Color.WHITE);
-        panelMecanico.setBorder(new TitledBorder(new EtchedBorder(), "Meconico"));
+        panelMecanico.setBorder(new TitledBorder(new EtchedBorder(), "Mecánico"));
 
         panel.add(panelMecanico);
         panelMecanico.add(vueltasAceite);
@@ -223,12 +226,31 @@ public class Interfaz extends JPanel implements Runnable {
 
         panelInforMec = new JPanel();
         panelInforMec.setBackground(Color.WHITE);
-        panelInforMec.setBorder(new TitledBorder(new EtchedBorder(), "Informacion Meconico"));
+        panelInforMec.setBorder(new TitledBorder(new EtchedBorder(), "Informacion Mecánico"));
 
         infor1 = new JPanel();
         infor1.setBackground(Color.WHITE);
         infor1.setLayout(new BoxLayout(infor1, BoxLayout.PAGE_AXIS));
+        
+        //Velocimetro
+        radial2Lcd1 = new eu.hansolo.steelseries.gauges.Radial2Lcd();
 
+        radial2Lcd1.setMaxValue(150.0);
+        radial2Lcd1.setValue(10.0);
+        radial2Lcd1.setTitle("Velocidad");
+        radial2Lcd1.setUnitString("km/h");
+        radial2Lcd1.setValueTickPeriod(20);
+        panel.add(radial2Lcd1, java.awt.BorderLayout.CENTER);
+        
+        //Combustible
+        radial1Square2 = new eu.hansolo.steelseries.gauges.Radial1Square();
+        
+        radial1Square2.setMaxValue(500.0);
+        radial1Square2.setTickLabelPeriod(100);
+        radial1Square2.setTitle("Combustible");
+        radial1Square2.setUnitString("litros");
+        panel.add(radial1Square2);
+        
         panel.add(panelInforMec);
         panelInforMec.add(infor1, BorderLayout.EAST);
         infor1.add(vueltasDesde);
@@ -378,7 +400,14 @@ public class Interfaz extends JPanel implements Runnable {
     public void run() {
         while (true) {
             velocidad.setText("Velocidad: " + String.valueOf((int) controlVelocidad.getVelocidad()) + " km/h");
+            //Manillas Velocimetro
+            radial2Lcd1.setValue(controlVelocidad.getVelocidad());
+            
             combustible.setText("Combustible: " + df2.format(monitor.getNivelDeposito()));
+            //Manillas combustible
+            this.radial1Square2.setValue(monitor.getNivelDeposito());
+            this.radial1Square2.setSize(100, 100);
+            
             distancia.setText("Distancia recorrida: " + df2.format(controlVelocidad.getDistancia()) + " m");
             velocidad_media.setText("Velocidad media: " + monitor.getVelocidadMedia());
             consumo_medio.setText("Consumo medio: " + df2.format(monitor.getConsumoMedio()));
