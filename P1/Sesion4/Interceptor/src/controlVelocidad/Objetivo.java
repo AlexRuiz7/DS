@@ -44,7 +44,7 @@ public class Objetivo extends Observable {
     /**************************/
         
     private void setVelocidadLineal() {
-        velocidad = 2*Math.PI*R * RPM * (60*0.001);
+        velocidad = 2 * Math.PI * R * RPM * (60*0.001);
     }
     
     private void setDistanciaRecorrida() {

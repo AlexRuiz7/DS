@@ -6,7 +6,7 @@ package controlVelocidad;
  */
 public final class Eje {
 
-    private final double radio = 0.5; //metros
+    private final double radio = 0.15; //metros
     private double vueltas;
     private final int  MAXVUELTAS = 8;
     private int velocidad;

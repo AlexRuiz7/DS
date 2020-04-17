@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import eu.hansolo.steelseries.gauges.*;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -29,7 +30,7 @@ public class Interfaz extends JPanel implements Runnable {
     private static final long serialVersionUID = 1L;
     private static DecimalFormat df2 = new DecimalFormat(".##");
     //Velocimetro
-    private eu.hansolo.steelseries.gauges.Radial2Lcd radial2Lcd1;
+    private final eu.hansolo.steelseries.gauges.Radial2Lcd radial2Lcd1;
     //Pantalla distancia
     private eu.hansolo.steelseries.gauges.DisplaySingle displayDistancia; 
     //Medidor combustible
@@ -84,13 +85,13 @@ public class Interfaz extends JPanel implements Runnable {
 	
     public Interfaz(ControlVelocidad controlVelocidad, Monitor monitor) {
         
-        this.setPreferredSize(new java.awt.Dimension(1200, 600));
+        this.setPreferredSize(new java.awt.Dimension(1100, 600));
         this.setBackground(Color.WHITE);
         this.setLayout(new java.awt.BorderLayout());
         
         //Panel BASE sobre el que se añaden el resto de componentes
         panel = new JPanel();
-        panel.setPreferredSize(new java.awt.Dimension(1200, 600));
+        panel.setPreferredSize(new java.awt.Dimension(1100, 600));
         panel.setBackground(Color.WHITE);
         panel.setLayout(new java.awt.GridLayout(2, 2));
         add(panel);
@@ -102,7 +103,7 @@ public class Interfaz extends JPanel implements Runnable {
         alertaAceite = new JLabel("Alerta aceite: CORRECTO");
         alertaPastillas = new JLabel("Alerta pastillas: CORRECTO");
         alertaRevision = new JLabel("Alerta revision: CORRECTO");
-        distancia = new JLabel();
+        distancia = new JLabel("Distancia recorrida:");
         velocidad_media = new JLabel();
         consumo_medio = new JLabel();
         
@@ -248,7 +249,7 @@ public class Interfaz extends JPanel implements Runnable {
         
         //Velocimetro
         radial2Lcd1 = new eu.hansolo.steelseries.gauges.Radial2Lcd();
-        radial2Lcd1.setSize(100,100);
+        //radial2Lcd1.setSize(100,100);
         radial2Lcd1.setMaxValue(150.0);
         radial2Lcd1.setValue(10.0);
         radial2Lcd1.setTitle("Velocidad");
@@ -270,7 +271,8 @@ public class Interfaz extends JPanel implements Runnable {
          */
         panel_principal = new JPanel();
         panel_principal.setMinimumSize(new java.awt.Dimension(600, 400));
-        //Layout
+        //Sin Layout funciona
+        panel_principal.setLayout(new java.awt.FlowLayout());
         panel_principal.setBorder(new TitledBorder(new EtchedBorder(), "Panel principal"));
         panel_principal.setBackground(Color.WHITE);
         
@@ -292,6 +294,7 @@ public class Interfaz extends JPanel implements Runnable {
         //Subpanel B para la distancia recorrida
         subpanelVelocidadB = new JPanel();
         subpanelVelocidadB.setBackground(Color.WHITE);
+        subpanelVelocidadB.add(distancia);
         subpanelVelocidadB.add(displayDistancia);
         panelVelocidad.add(subpanelVelocidadB, java.awt.BorderLayout.SOUTH);
         
@@ -312,6 +315,7 @@ public class Interfaz extends JPanel implements Runnable {
         panelCombustible.add(subpanelCombustibleA, java.awt.BorderLayout.NORTH);
         //Subpanel B para cifra de combustible y boton repostar
         subpanelCombustibleB = new JPanel();
+        subpanelCombustibleB.setLayout(new java.awt.FlowLayout());
         subpanelCombustibleB.setBackground(Color.WHITE);
         subpanelCombustibleB.add(displayCombustible);
         subpanelCombustibleB.add(repostar);
@@ -540,7 +544,7 @@ public class Interfaz extends JPanel implements Runnable {
             //Display litros combustible
             this.displayCombustible.setValue(monitor.getNivelDeposito());
             
-            distancia.setText("Distancia recorrida: " + df2.format(controlVelocidad.getDistancia()) + " m");
+            //distancia.setText("Distancia recorrida: " + df2.format(controlVelocidad.getDistancia()) + " m");
             velocidad_media.setText("Velocidad media: " + monitor.getVelocidadMedia());
             consumo_medio.setText("Consumo medio: " + df2.format(monitor.getConsumoMedio()));
 
