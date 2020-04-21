@@ -26,17 +26,18 @@ public class Objetivo extends Observable {
     public Objetivo() {
         velocidad = distancia_recorrida = distancia_reciente = consumo = 0;
         RPM = rotaciones = rots_aceite = rots_frenos = rots_revision = 0;
-        repostar();
+         repostar();
+//        combustible = 0.01;
     }
 
     
     void ejecutar(int revoluciones, EstadoMotor estadoMotor) {
         estado = estadoMotor;       // Actualizar estado del motor
         RPM    = revoluciones;      // Actualizar Velocidad Angular
+        actualizarCombustible();    // Actualizar combustible
         actualizarRotacionesEje();  // Actualizar rotaciones
         setVelocidadLineal();       // Calcular Velocidad Lineal
         setDistanciaRecorrida();    // Calcular Distancia recorrida
-        actualizarCombustible();    // Actualizar combustible
 
         if(estado == EstadoMotor.APAGADO)
             distancia_reciente = 0;
@@ -45,8 +46,8 @@ public class Objetivo extends Observable {
         // System.out.println("RPM: " + RPM );
         // System.out.println("Vel.: " + velocidad );
         // System.out.println("Distancia: " + distancia_recorrida );
-        System.out.println("Rotaciones eje: " + rotaciones );
-        System.out.println("Combustible: " + getCombustible() + " l");
+        // System.out.println("Rotaciones eje: " + rotaciones );
+        // System.out.println("Combustible: " + getCombustible() + " l");
         
         // Notificar observadores (GUI) para actualicen su estados
         this.setChanged();
@@ -70,8 +71,8 @@ public class Objetivo extends Observable {
     
     private void actualizarCombustible() {
         consumo = RPM * Math.pow(10, -6);
-        combustible -= Math.max(0, consumo);
-        System.out.println("Consumo: " + getConsumo() + " l/100Km");
+        combustible = Math.max(0, combustible - consumo);
+        // System.out.println("Consumo: " + getConsumo() + " l/100Km");
         
         if (combustible <= 0)
             this.estado = EstadoMotor.APAGADO;
@@ -86,7 +87,7 @@ public class Objetivo extends Observable {
         rots_aceite += rots_timestamp;
         rots_frenos += rots_timestamp;
         rots_revision += rots_timestamp;
-        System.out.println("Aceite|Frenos|Revision: " + rots_aceite+"|"+rots_frenos+"|"+rots_revision);
+        // System.out.println("Aceite|Frenos|Revision: " + rots_aceite+"|"+rots_frenos+"|"+rots_revision);
     }
     
     /**

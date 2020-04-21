@@ -17,7 +17,7 @@ public class FiltroCalcularRPM implements Filtro {
             return Math.min(MAX_RPM, revoluciones + 100); // Evitar RPM > MAX_RPM
         
         if (estadoMotor == EstadoMotor.FRENANDO)
-            return Math.max(0, revoluciones - 100); // Evitar RPM < 0
+            return Math.max(0, revoluciones - 150); // Evitar RPM < 0
 
         return revoluciones;    // En otro caso, no hacer nada
     }

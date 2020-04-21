@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI.MonitorMecanico;
 
 import GUI.ObservadorMotor;
+import controlVelocidad.EstadoMotor;
+import java.awt.Color;
 import java.util.Observable;
 
 /**
@@ -13,13 +10,14 @@ import java.util.Observable;
  * @author alex
  */
 public class Combustible extends ObservadorMotor {
-    
+    private boolean motorParado;
 
     /**
      * Creates new form Combustible
      */
     public Combustible() {
         initComponents();
+        boton.setEnabled(false);
     }
     
     @Override
@@ -27,8 +25,36 @@ public class Combustible extends ObservadorMotor {
         textoVar.setText( ""+miObservable.getConsumo() );
         combustibleBarra.setValue((int) miObservable.getCombustible());
         combustibleBarra.setString(miObservable.getCombustible() + " litros");
+        setColorBarra();
+        
+        motorParado = (miObservable.getEstadoMotor()==EstadoMotor.APAGADO) && (miObservable.getRPM() == 0);
+        if (miObservable.getCombustible() < 10) {
+            if (motorParado)
+                boton.setEnabled(true);
+            else
+                boton.setEnabled(false);
+        }
     }
-
+    
+    
+    void setColorBarra() {
+        double perc = combustibleBarra.getPercentComplete();
+        int green = (int) (255*perc);           // 100% verde
+        int red = (int) (255 - (255*perc));     // 100% rojo
+        
+        combustibleBarra.setForeground(
+                Color.getHSBColor(
+                        Color.RGBtoHSB(red, green, 0, null)[0], 
+                        Color.RGBtoHSB(red, green, 0, null)[1], 
+                        Color.RGBtoHSB(red, green, 0, null)[2])
+        );
+    }
+    
+    
+    void resetBoton () {
+        boton.setEnabled(false);
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,8 +85,18 @@ public class Combustible extends ObservadorMotor {
         add(combustibleBarra);
 
         boton.setText("Respostar");
+        boton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActionPerformed(evt);
+            }
+        });
         add(boton);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
+        miObservable.repostar();
+        resetBoton();
+    }//GEN-LAST:event_botonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton;

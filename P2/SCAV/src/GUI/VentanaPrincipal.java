@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
+import GUI.SCAV.ControlesSCAV;
+import controlAutomatico.ControlAutomatico;
 import controlVelocidad.Filtros.FiltroCalcularRPM;
 import controlVelocidad.Filtros.FiltroRozamiento;
 import controlVelocidad.Cliente;
@@ -39,7 +36,12 @@ public class VentanaPrincipal extends javax.swing.JPanel {
         salpicadero.setObjetivo(motor);        
         controles.setControlador(controlador);
         monitorMecanico.setObjetivo(motor);
+        
         /****/
+        
+        ControlAutomatico scav = ControlAutomatico.getInstancia(controles);
+        scav.setObservable(motor);
+        controlesSCAV.setObservable(scav);
     }
 
     /**
@@ -56,6 +58,7 @@ public class VentanaPrincipal extends javax.swing.JPanel {
         salpicadero = new GUI.Salpicadero();
         controles = new GUI.Controles();
         monitorMecanico = new GUI.MonitorMecanico.MonitorMecanico();
+        controlesSCAV = new GUI.SCAV.ControlesSCAV();
         medidoresPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1024, 768));
@@ -66,6 +69,7 @@ public class VentanaPrincipal extends javax.swing.JPanel {
         swingPanel.add(salpicadero, java.awt.BorderLayout.CENTER);
         swingPanel.add(controles, java.awt.BorderLayout.PAGE_START);
         swingPanel.add(monitorMecanico, java.awt.BorderLayout.LINE_END);
+        swingPanel.add(controlesSCAV, java.awt.BorderLayout.PAGE_END);
 
         tabsPanel.addTab("Swing", null, swingPanel, "Interfaz con componentes Swing");
         swingPanel.getAccessibleContext().setAccessibleName("");
@@ -78,6 +82,7 @@ public class VentanaPrincipal extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.Controles controles;
+    private GUI.SCAV.ControlesSCAV controlesSCAV;
     private javax.swing.JPanel medidoresPanel;
     private GUI.MonitorMecanico.MonitorMecanico monitorMecanico;
     private GUI.Salpicadero salpicadero;

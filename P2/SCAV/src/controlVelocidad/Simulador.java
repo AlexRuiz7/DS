@@ -6,6 +6,8 @@ import GUI.Salpicadero;
 import GUI.Ventana;
 import GUI.Controles;
 import GUI.MonitorMecanico.MonitorMecanico;
+import GUI.SCAV.ControlesSCAV;
+import controlAutomatico.ControlAutomatico;
 import java.io.IOException;
 
 /**
@@ -45,8 +47,19 @@ public class Simulador {
         Ventana ventana_controles = new Ventana(controles, "Controles");
         
         /****/
+        
         MonitorMecanico monitor = new MonitorMecanico();
         monitor.setObjetivo(motor);
         Ventana ventana_monitor = new Ventana(monitor, "Monitor Mecánico");
+        
+        /****/
+        
+        ControlAutomatico scav = ControlAutomatico.getInstancia(controles);
+        scav.setObservable(motor);
+        
+        ControlesSCAV controles_scav = new ControlesSCAV();
+        controles_scav.setObservable(scav);
+        scav.addObserver(controles_scav);
+        Ventana ventana_controles_scav = new Ventana(controles_scav, "Control Automático");
     }
 }
