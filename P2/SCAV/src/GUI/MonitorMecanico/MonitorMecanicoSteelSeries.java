@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI.MonitorMecanico;
 
 import controlVelocidad.Objetivo;
@@ -11,12 +7,12 @@ import controlVelocidad.Objetivo;
  *
  * @author alex
  */
-public class MonitorMecanico extends javax.swing.JPanel {
+public class MonitorMecanicoSteelSeries extends javax.swing.JPanel {
 
     /**
      * Creates new form MonitorMecanico
      */
-    public MonitorMecanico() {
+    public MonitorMecanicoSteelSeries() {
         initComponents();
     }
     
@@ -24,7 +20,7 @@ public class MonitorMecanico extends javax.swing.JPanel {
         panelAceite.setObservable(motor);
         panelFrenos.setObservable(motor);
         panelRevision.setObservable(motor);
-        panelCombustible.setObservable(motor);
+        this.combustibleSteelSeries.setObservable(motor);
     }
 
     /**
@@ -40,7 +36,7 @@ public class MonitorMecanico extends javax.swing.JPanel {
         panelAceite = new GUI.MonitorMecanico.ControlAceite();
         panelFrenos = new GUI.MonitorMecanico.ControlFrenos();
         panelRevision = new GUI.MonitorMecanico.ControlRevision();
-        panelCombustible = new GUI.MonitorMecanico.Combustible();
+        combustibleSteelSeries = new GUI.MonitorMecanico.CombustibleSteelSeries();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Monitorización"));
         setLayout(new java.awt.GridLayout(2, 1));
@@ -52,15 +48,13 @@ public class MonitorMecanico extends javax.swing.JPanel {
         panelMecanica.add(panelRevision);
 
         add(panelMecanica);
-
-        panelCombustible.setBorder(javax.swing.BorderFactory.createTitledBorder("Combustible"));
-        add(panelCombustible);
+        add(combustibleSteelSeries);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GUI.MonitorMecanico.CombustibleSteelSeries combustibleSteelSeries;
     private GUI.MonitorMecanico.ControlAceite panelAceite;
-    private GUI.MonitorMecanico.Combustible panelCombustible;
     private GUI.MonitorMecanico.ControlFrenos panelFrenos;
     private javax.swing.JPanel panelMecanica;
     private GUI.MonitorMecanico.ControlRevision panelRevision;

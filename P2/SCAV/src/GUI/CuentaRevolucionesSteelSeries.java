@@ -6,17 +6,18 @@ import java.util.Observable;
  *
  * @author pablorobles
  */
-public class CuentaRevoluciones extends ObservadorMotor {
+public class CuentaRevolucionesSteelSeries extends ObservadorMotor {
 
     
-    public CuentaRevoluciones() {
+    public CuentaRevolucionesSteelSeries() {
         initComponents();
     }
 
     
     @Override
     public void update(Observable o, Object arg) {        
-        etiqueta_rpm.setText( String.format("%d", miObservable.getRPM()) );
+        //etiqueta_rpm.setText( String.format("%d", miObservable.getRPM()) );
+        this.displayRPM.setValue(miObservable.getRPM());
     }
     
     /**
@@ -29,7 +30,7 @@ public class CuentaRevoluciones extends ObservadorMotor {
     private void initComponents() {
 
         panel_RPM = new javax.swing.JPanel();
-        etiqueta_rpm = new javax.swing.JLabel();
+        displayRPM = new eu.hansolo.steelseries.gauges.DisplaySingle();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentarrevoluciones"));
         setLayout(new java.awt.BorderLayout());
@@ -37,15 +38,15 @@ public class CuentaRevoluciones extends ObservadorMotor {
         panel_RPM.setBorder(javax.swing.BorderFactory.createTitledBorder("RPM"));
         panel_RPM.setLayout(new java.awt.BorderLayout());
 
-        etiqueta_rpm.setText("00.00");
-        panel_RPM.add(etiqueta_rpm, java.awt.BorderLayout.CENTER);
+        displayRPM.setUnitString("RPM");
+        panel_RPM.add(displayRPM, java.awt.BorderLayout.CENTER);
 
         add(panel_RPM, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel etiqueta_rpm;
+    private eu.hansolo.steelseries.gauges.DisplaySingle displayRPM;
     private javax.swing.JPanel panel_RPM;
     // End of variables declaration//GEN-END:variables
 }

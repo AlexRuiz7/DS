@@ -33,15 +33,33 @@ public class VentanaPrincipal extends javax.swing.JPanel {
         
         /****/
         
+        /*
+        
+        //Las siguientes lineas estan comentadas 
+        //porque afectan a la pestaña Steelseries
+        
+        
         salpicadero.setObjetivo(motor);        
         controles.setControlador(controlador);
         monitorMecanico.setObjetivo(motor);
+        */
+        this.salpicaderoSteelSeries.setObjetivo(motor);
+        this.controles_SteelSeries.setControlador(controlador);
+        this.monitorMecanicoSteelSeries.setObjetivo(motor);
         
         /****/
+        /*
+        
+        //Las siguientes lineas estan comentadas 
+        //porque afectan a la pestaña Steelseries
         
         ControlAutomatico scav = ControlAutomatico.getInstancia(controles);
         scav.setObservable(motor);
         controlesSCAV.setObservable(scav);
+        */
+        ControlAutomatico scav_ss = ControlAutomatico.getInstancia(controles_SteelSeries);
+        scav_ss.setObservable(motor);
+        this.controlesSCAV_SteelSeries.setObservable(scav_ss);
     }
 
     /**
@@ -55,37 +73,51 @@ public class VentanaPrincipal extends javax.swing.JPanel {
 
         tabsPanel = new javax.swing.JTabbedPane();
         swingPanel = new javax.swing.JPanel();
-        salpicadero = new GUI.Salpicadero();
         controles = new GUI.Controles();
-        monitorMecanico = new GUI.MonitorMecanico.MonitorMecanico();
         controlesSCAV = new GUI.SCAV.ControlesSCAV();
-        medidoresPanel = new javax.swing.JPanel();
+        salpicadero = new GUI.Salpicadero();
+        monitorMecanico = new GUI.MonitorMecanico.MonitorMecanico();
+        SteelSeriesPanel = new javax.swing.JPanel();
+        controles_SteelSeries = new GUI.Controles();
+        monitorMecanicoSteelSeries = new GUI.MonitorMecanico.MonitorMecanicoSteelSeries();
+        controlesSCAV_SteelSeries = new GUI.SCAV.ControlesSCAV();
+        salpicaderoSteelSeries = new GUI.SalpicaderoSteelSeries();
 
         setPreferredSize(new java.awt.Dimension(1024, 768));
         setLayout(new java.awt.BorderLayout());
 
         swingPanel.setPreferredSize(new java.awt.Dimension(1024, 768));
         swingPanel.setLayout(new java.awt.BorderLayout());
-        swingPanel.add(salpicadero, java.awt.BorderLayout.CENTER);
         swingPanel.add(controles, java.awt.BorderLayout.PAGE_START);
-        swingPanel.add(monitorMecanico, java.awt.BorderLayout.LINE_END);
         swingPanel.add(controlesSCAV, java.awt.BorderLayout.PAGE_END);
+        swingPanel.add(salpicadero, java.awt.BorderLayout.CENTER);
+        swingPanel.add(monitorMecanico, java.awt.BorderLayout.LINE_END);
 
         tabsPanel.addTab("Swing", null, swingPanel, "Interfaz con componentes Swing");
         swingPanel.getAccessibleContext().setAccessibleName("");
 
-        tabsPanel.addTab("SteelSeries", medidoresPanel);
+        SteelSeriesPanel.setLayout(new java.awt.BorderLayout());
+        SteelSeriesPanel.add(controles_SteelSeries, java.awt.BorderLayout.PAGE_START);
+        SteelSeriesPanel.add(monitorMecanicoSteelSeries, java.awt.BorderLayout.LINE_END);
+        SteelSeriesPanel.add(controlesSCAV_SteelSeries, java.awt.BorderLayout.PAGE_END);
+        SteelSeriesPanel.add(salpicaderoSteelSeries, java.awt.BorderLayout.CENTER);
+
+        tabsPanel.addTab("SteelSeries", SteelSeriesPanel);
 
         add(tabsPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel SteelSeriesPanel;
     private GUI.Controles controles;
     private GUI.SCAV.ControlesSCAV controlesSCAV;
-    private javax.swing.JPanel medidoresPanel;
+    private GUI.SCAV.ControlesSCAV controlesSCAV_SteelSeries;
+    private GUI.Controles controles_SteelSeries;
     private GUI.MonitorMecanico.MonitorMecanico monitorMecanico;
+    private GUI.MonitorMecanico.MonitorMecanicoSteelSeries monitorMecanicoSteelSeries;
     private GUI.Salpicadero salpicadero;
+    private GUI.SalpicaderoSteelSeries salpicaderoSteelSeries;
     private javax.swing.JPanel swingPanel;
     private javax.swing.JTabbedPane tabsPanel;
     // End of variables declaration//GEN-END:variables

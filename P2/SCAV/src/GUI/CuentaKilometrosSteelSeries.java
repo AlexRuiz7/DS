@@ -6,22 +6,18 @@ import java.util.Observable;
  *
  * @author pablorobles
  */
-public class CuentaKilometros extends ObservadorMotor {
+public class CuentaKilometrosSteelSeries extends ObservadorMotor {
 
 
-    public CuentaKilometros() {
+    public CuentaKilometrosSteelSeries() {
         initComponents();
     }
 
     
     @Override
     public void update(Observable o, Object arg) {        
-        etiqueta_km_total.setText(
-                String.format("%.2f", miObservable.getDistanciaRecorrida())
-        );
-        etiqueta_km_rec.setText(
-                String.format("%.2f", miObservable.getDistanciaReciente())
-        );
+        this.displayKm_rec.setValue(miObservable.getDistanciaRecorrida());
+        this.displayKm_total.setValue(miObservable.getDistanciaRecorrida());
     }
     
     
@@ -36,9 +32,9 @@ public class CuentaKilometros extends ObservadorMotor {
     private void initComponents() {
 
         panel_cuentaRec = new javax.swing.JPanel();
-        etiqueta_km_rec = new javax.swing.JLabel();
+        displayKm_rec = new eu.hansolo.steelseries.gauges.DisplaySingle();
         panel_cuentaTotal = new javax.swing.JPanel();
-        etiqueta_km_total = new javax.swing.JLabel();
+        displayKm_total = new eu.hansolo.steelseries.gauges.DisplaySingle();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentakilómetros"));
         setLayout(new java.awt.GridLayout(2, 1));
@@ -46,24 +42,24 @@ public class CuentaKilometros extends ObservadorMotor {
         panel_cuentaRec.setBorder(javax.swing.BorderFactory.createTitledBorder("Contador reciente"));
         panel_cuentaRec.setLayout(new java.awt.BorderLayout());
 
-        etiqueta_km_rec.setText("00.00");
-        panel_cuentaRec.add(etiqueta_km_rec, java.awt.BorderLayout.CENTER);
+        displayKm_rec.setUnitString("km");
+        panel_cuentaRec.add(displayKm_rec, java.awt.BorderLayout.PAGE_END);
 
         add(panel_cuentaRec);
 
         panel_cuentaTotal.setBorder(javax.swing.BorderFactory.createTitledBorder("Contador total"));
         panel_cuentaTotal.setLayout(new java.awt.BorderLayout());
 
-        etiqueta_km_total.setText("00.00");
-        panel_cuentaTotal.add(etiqueta_km_total, java.awt.BorderLayout.CENTER);
+        displayKm_total.setUnitString("km");
+        panel_cuentaTotal.add(displayKm_total, java.awt.BorderLayout.PAGE_END);
 
         add(panel_cuentaTotal);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel etiqueta_km_rec;
-    private javax.swing.JLabel etiqueta_km_total;
+    private eu.hansolo.steelseries.gauges.DisplaySingle displayKm_rec;
+    private eu.hansolo.steelseries.gauges.DisplaySingle displayKm_total;
     private javax.swing.JPanel panel_cuentaRec;
     private javax.swing.JPanel panel_cuentaTotal;
     // End of variables declaration//GEN-END:variables

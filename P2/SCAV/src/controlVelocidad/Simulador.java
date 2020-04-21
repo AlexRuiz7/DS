@@ -2,7 +2,7 @@ package controlVelocidad;
 
 import controlVelocidad.Filtros.FiltroCalcularRPM;
 import controlVelocidad.Filtros.FiltroRozamiento;
-import GUI.Salpicadero;
+import GUI.SalpicaderoSteelSeries;
 import GUI.Ventana;
 import GUI.Controles;
 import GUI.MonitorMecanico.MonitorMecanico;
@@ -34,7 +34,7 @@ public class Simulador {
         
         /****/
         
-        Salpicadero salpicadero = new Salpicadero();
+        SalpicaderoSteelSeries salpicadero = new SalpicaderoSteelSeries();
         salpicadero.setObjetivo(motor);
         salpicadero.setLocation(200, 200);
         Ventana ventana_salpicadero = new Ventana(salpicadero, "Salpicadero");

@@ -9,13 +9,13 @@ import java.util.Observable;
  *
  * @author alex
  */
-public class Combustible extends ObservadorMotor {
+public class CombustibleSteelSeries extends ObservadorMotor {
     private boolean motorParado;
 
     /**
      * Creates new form Combustible
      */
-    public Combustible() {
+    public CombustibleSteelSeries() {
         initComponents();
         boton.setEnabled(false);
     }
@@ -23,10 +23,7 @@ public class Combustible extends ObservadorMotor {
     @Override
     public void update(Observable o, Object arg) {
         textoVar.setText( ""+miObservable.getConsumo() );
-        combustibleBarra.setValue((int) miObservable.getCombustible());
-        combustibleBarra.setString(miObservable.getCombustible() + " litros");
-        setColorBarra();
-        
+        this.radial1Square1.setValue(miObservable.getCombustible());
         motorParado = (miObservable.getEstadoMotor()==EstadoMotor.APAGADO) && (miObservable.getRPM() == 0);
         if (miObservable.getCombustible() < 10) {
             if (motorParado)
@@ -35,21 +32,6 @@ public class Combustible extends ObservadorMotor {
                 boton.setEnabled(false);
         }
     }
-    
-    
-    void setColorBarra() {
-        double perc = combustibleBarra.getPercentComplete();
-        int green = (int) (255*perc);           // 100% verde
-        int red = (int) (255 - (255*perc));     // 100% rojo
-        
-        combustibleBarra.setForeground(
-                Color.getHSBColor(
-                        Color.RGBtoHSB(red, green, 0, null)[0], 
-                        Color.RGBtoHSB(red, green, 0, null)[1], 
-                        Color.RGBtoHSB(red, green, 0, null)[2])
-        );
-    }
-    
     
     void resetBoton () {
         boton.setEnabled(false);
@@ -67,8 +49,8 @@ public class Combustible extends ObservadorMotor {
         textFijo = new javax.swing.JLabel();
         textoVar = new javax.swing.JLabel();
         textUnidad = new javax.swing.JLabel();
-        combustibleBarra = new javax.swing.JProgressBar();
         boton = new javax.swing.JButton();
+        radial1Square1 = new eu.hansolo.steelseries.gauges.Radial1Square();
 
         textFijo.setText("Consumo: ");
         add(textFijo);
@@ -79,11 +61,6 @@ public class Combustible extends ObservadorMotor {
         textUnidad.setText("l/100Km");
         add(textUnidad);
 
-        combustibleBarra.setMaximum(75);
-        combustibleBarra.setToolTipText("");
-        combustibleBarra.setStringPainted(true);
-        add(combustibleBarra);
-
         boton.setText("Respostar");
         boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +68,14 @@ public class Combustible extends ObservadorMotor {
             }
         });
         add(boton);
+
+        radial1Square1.setMaxValue(80.0);
+        radial1Square1.setMaximumSize(new java.awt.Dimension(100, 100));
+        radial1Square1.setMinMeasuredValueVisible(true);
+        radial1Square1.setTickLabelPeriod(10);
+        radial1Square1.setTitle("Combustible");
+        radial1Square1.setUnitString("litros");
+        add(radial1Square1);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
@@ -100,7 +85,7 @@ public class Combustible extends ObservadorMotor {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton;
-    private javax.swing.JProgressBar combustibleBarra;
+    private eu.hansolo.steelseries.gauges.Radial1Square radial1Square1;
     private javax.swing.JLabel textFijo;
     private javax.swing.JLabel textUnidad;
     private javax.swing.JLabel textoVar;
