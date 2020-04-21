@@ -39,6 +39,7 @@ public class ControlAutomatico extends Observable implements Runnable, Observer 
         estado_motor = EstadoMotor.APAGADO;
         velocidad_guardada = velocidad_actual = 0;
         hebra = new Thread(this, "Contro automático");
+        hebra.start();
     }
     
     /**
@@ -47,17 +48,16 @@ public class ControlAutomatico extends Observable implements Runnable, Observer 
      * @return 
      */
     public static ControlAutomatico getInstancia(Controles c) {
-        if (INSTANCIA == null) 
+        if (INSTANCIA == null) {
             INSTANCIA = new ControlAutomatico(c);
+        }
         return INSTANCIA;        
     }
     
     
     public void setObservable(Objetivo obs) {
         motor = obs;
-        motor.addObserver(this);
-        
-        hebra.start();
+        motor.addObserver(this);        
     } 
 
     /**
