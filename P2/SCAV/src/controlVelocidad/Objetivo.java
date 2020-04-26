@@ -14,9 +14,14 @@ public class Objetivo extends Observable {
     private final float R = 0.15f;
     /* Práctica 2: SCAV */
     final int MAX_COMBUSTIBLE   = 75;
-    final int MAX_ACEITE        = (int) (5 * Math.pow(10, 6));
-    final int MAX_FRENOS        = (int) (Math.pow(10, 8));
-    final int MAX_REVISION      = (int) (Math.pow(10, 9));
+//    final int MAX_ACEITE        = (int) (5 * Math.pow(10, 6));
+//    final int MAX_FRENOS        = (int) (Math.pow(10, 8));
+//    final int MAX_REVISION      = (int) (Math.pow(10, 9));
+    
+    final int MAX_ACEITE        = (int) (5 * Math.pow(10, 2));
+    final int MAX_FRENOS        = (int) (Math.pow(10, 3));
+    final int MAX_REVISION      = (int) (2 * Math.pow(10, 3));
+    
     double combustible, consumo;
     int rotaciones;
     long timestamp_previo;
@@ -26,9 +31,10 @@ public class Objetivo extends Observable {
     public Objetivo() {
         velocidad = distancia_recorrida = distancia_reciente = consumo = 0;
         RPM = rotaciones = rots_aceite = rots_frenos = rots_revision = 0;
-         repostar();
-//        combustible = 0.01;
+//         repostar();
+        combustible = 0;
     }
+
 
     
     void ejecutar(int revoluciones, EstadoMotor estadoMotor) {

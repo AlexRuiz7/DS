@@ -93,8 +93,9 @@ public class ControlAutomatico extends Observable implements Runnable, Observer 
     public void run() {
         while(true) {
             // Si el motor se apaga de forma manual, el SCAV se apaga también.
-            //  if (estado_motor == EstadoMotor.APAGADO)
-            //      estado = EstadoSCAV.APAGADO;
+            if (estado_motor == EstadoMotor.APAGADO)
+                estado = EstadoSCAV.APAGADO;
+
             switch(estado) {
                 case ACELERAR:
                     controles.setEstado(EstadoMotor.ACELERANDO);

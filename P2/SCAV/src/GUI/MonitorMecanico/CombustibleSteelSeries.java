@@ -1,40 +1,26 @@
 package GUI.MonitorMecanico;
 
-import GUI.ObservadorMotor;
-import controlVelocidad.EstadoMotor;
-import java.awt.Color;
 import java.util.Observable;
 
 /**
  *
  * @author alex
  */
-public class CombustibleSteelSeries extends ObservadorMotor {
-    private boolean motorParado;
+public class CombustibleSteelSeries extends Combustible {
 
     /**
      * Creates new form Combustible
      */
     public CombustibleSteelSeries() {
+        super();
         initComponents();
-        boton.setEnabled(false);
+        ocultarBarra();
     }
     
     @Override
     public void update(Observable o, Object arg) {
-        textoVar.setText( ""+miObservable.getConsumo() );
-        this.radial1Square1.setValue(miObservable.getCombustible());
-        motorParado = (miObservable.getEstadoMotor()==EstadoMotor.APAGADO) && (miObservable.getRPM() == 0);
-        if (miObservable.getCombustible() < 10) {
-            if (motorParado)
-                boton.setEnabled(true);
-            else
-                boton.setEnabled(false);
-        }
-    }
-    
-    void resetBoton () {
-        boton.setEnabled(false);
+        super.update(o, arg);
+        radial1Square1.setValue(miObservable.getCombustible());
     }
    
     /**
@@ -46,28 +32,7 @@ public class CombustibleSteelSeries extends ObservadorMotor {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textFijo = new javax.swing.JLabel();
-        textoVar = new javax.swing.JLabel();
-        textUnidad = new javax.swing.JLabel();
-        boton = new javax.swing.JButton();
         radial1Square1 = new eu.hansolo.steelseries.gauges.Radial1Square();
-
-        textFijo.setText("Consumo: ");
-        add(textFijo);
-
-        textoVar.setText("00.00");
-        add(textoVar);
-
-        textUnidad.setText("l/100Km");
-        add(textUnidad);
-
-        boton.setText("Respostar");
-        boton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActionPerformed(evt);
-            }
-        });
-        add(boton);
 
         radial1Square1.setMaxValue(80.0);
         radial1Square1.setMaximumSize(new java.awt.Dimension(100, 100));
@@ -78,16 +43,7 @@ public class CombustibleSteelSeries extends ObservadorMotor {
         add(radial1Square1);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
-        miObservable.repostar();
-        resetBoton();
-    }//GEN-LAST:event_botonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton;
     private eu.hansolo.steelseries.gauges.Radial1Square radial1Square1;
-    private javax.swing.JLabel textFijo;
-    private javax.swing.JLabel textUnidad;
-    private javax.swing.JLabel textoVar;
     // End of variables declaration//GEN-END:variables
 }

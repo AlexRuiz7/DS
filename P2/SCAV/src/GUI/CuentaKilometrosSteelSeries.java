@@ -37,21 +37,28 @@ public class CuentaKilometrosSteelSeries extends ObservadorMotor {
         displayKm_total = new eu.hansolo.steelseries.gauges.DisplaySingle();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentakilómetros"));
-        setLayout(new java.awt.GridLayout(2, 1));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
         panel_cuentaRec.setBorder(javax.swing.BorderFactory.createTitledBorder("Contador reciente"));
-        panel_cuentaRec.setLayout(new java.awt.BorderLayout());
+        panel_cuentaRec.setDoubleBuffered(false);
+        panel_cuentaRec.setFocusable(false);
+        panel_cuentaRec.setRequestFocusEnabled(false);
+        panel_cuentaRec.setVerifyInputWhenFocusTarget(false);
+        panel_cuentaRec.setLayout(new javax.swing.BoxLayout(panel_cuentaRec, javax.swing.BoxLayout.LINE_AXIS));
 
-        displayKm_rec.setUnitString("km");
-        panel_cuentaRec.add(displayKm_rec, java.awt.BorderLayout.PAGE_END);
+        displayKm_rec.setLcdDecimals(2);
+        displayKm_rec.setUnitString("Km");
+        panel_cuentaRec.add(displayKm_rec);
 
         add(panel_cuentaRec);
 
         panel_cuentaTotal.setBorder(javax.swing.BorderFactory.createTitledBorder("Contador total"));
-        panel_cuentaTotal.setLayout(new java.awt.BorderLayout());
+        panel_cuentaTotal.setDoubleBuffered(false);
+        panel_cuentaTotal.setLayout(new javax.swing.BoxLayout(panel_cuentaTotal, javax.swing.BoxLayout.LINE_AXIS));
 
-        displayKm_total.setUnitString("km");
-        panel_cuentaTotal.add(displayKm_total, java.awt.BorderLayout.PAGE_END);
+        displayKm_total.setLcdDecimals(2);
+        displayKm_total.setUnitString("Km");
+        panel_cuentaTotal.add(displayKm_total);
 
         add(panel_cuentaTotal);
     }// </editor-fold>//GEN-END:initComponents
