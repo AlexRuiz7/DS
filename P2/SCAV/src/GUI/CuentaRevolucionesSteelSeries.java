@@ -29,24 +29,17 @@ public class CuentaRevolucionesSteelSeries extends ObservadorMotor {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel_RPM = new javax.swing.JPanel();
         displayRPM = new eu.hansolo.steelseries.gauges.DisplaySingle();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentarrevoluciones"));
-        setLayout(new java.awt.BorderLayout());
-
-        panel_RPM.setBorder(javax.swing.BorderFactory.createTitledBorder("RPM"));
-        panel_RPM.setLayout(new java.awt.BorderLayout());
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         displayRPM.setUnitString("RPM");
-        panel_RPM.add(displayRPM, java.awt.BorderLayout.CENTER);
-
-        add(panel_RPM, java.awt.BorderLayout.CENTER);
+        add(displayRPM);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private eu.hansolo.steelseries.gauges.DisplaySingle displayRPM;
-    private javax.swing.JPanel panel_RPM;
     // End of variables declaration//GEN-END:variables
 }

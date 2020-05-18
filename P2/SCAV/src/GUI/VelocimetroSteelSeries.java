@@ -10,13 +10,14 @@ public class VelocimetroSteelSeries extends ObservadorMotor {
     
     
     public VelocimetroSteelSeries() {
-        initComponents();        
+        super();
+        initComponents();
     }
 
     
     @Override
     public void update(Observable o, Object arg) {
-        this.radial2Lcd1.setValue(miObservable.getVelocidad());
+        radial2Lcd1.setValue(miObservable.getVelocidad());
     }
     
     /**
@@ -35,16 +36,16 @@ public class VelocimetroSteelSeries extends ObservadorMotor {
         setMaximumSize(new java.awt.Dimension(250, 250));
         setMinimumSize(new java.awt.Dimension(250, 250));
         setPreferredSize(new java.awt.Dimension(250, 250));
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        radial2Lcd1.setMaxValue(150.0);
+        radial2Lcd1.setMaxValue(250.0);
         radial2Lcd1.setMinimumSize(null);
         radial2Lcd1.setTitle("Velocidad");
-        radial2Lcd1.setUnitString("km/h");
-        radial2Lcd1.setValueTickPeriod(20);
+        radial2Lcd1.setUnitString("Km/h");
+        radial2Lcd1.setValueTickPeriod(40);
         subpanelVelocidadA.add(radial2Lcd1);
 
-        add(subpanelVelocidadA, java.awt.BorderLayout.CENTER);
+        add(subpanelVelocidadA);
     }// </editor-fold>//GEN-END:initComponents
 
 

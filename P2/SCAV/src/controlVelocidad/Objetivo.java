@@ -17,9 +17,17 @@ public class Objetivo extends Observable {
 //    final int MAX_ACEITE        = (int) (5 * Math.pow(10, 6));
 //    final int MAX_FRENOS        = (int) (Math.pow(10, 8));
 //    final int MAX_REVISION      = (int) (Math.pow(10, 9));
+<<<<<<< HEAD
     final int MAX_ACEITE        = 10;
     final int MAX_FRENOS        = 15;
     final int MAX_REVISION      = 20;
+=======
+    
+    final int MAX_ACEITE        = (int) (5 * Math.pow(10, 2));
+    final int MAX_FRENOS        = (int) (Math.pow(10, 3));
+    final int MAX_REVISION      = (int) (2 * Math.pow(10, 3));
+    
+>>>>>>> e3dac43ef3f9c08dcfebe54936c6137d5b7830e1
     double combustible, consumo;
     int rotaciones;
     long timestamp_previo;
@@ -30,8 +38,13 @@ public class Objetivo extends Observable {
         velocidad = distancia_recorrida = distancia_reciente = consumo = 0;
         RPM = rotaciones = rots_aceite = rots_frenos = rots_revision = 0;
 //         repostar();
+<<<<<<< HEAD
         combustible = 0.2;
+=======
+        combustible = 0;
+>>>>>>> e3dac43ef3f9c08dcfebe54936c6137d5b7830e1
     }
+
 
     
     void ejecutar(int revoluciones, EstadoMotor estadoMotor) {

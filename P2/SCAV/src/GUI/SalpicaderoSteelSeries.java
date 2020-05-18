@@ -41,14 +41,16 @@ public class SalpicaderoSteelSeries extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(250, 600));
         setMinimumSize(new java.awt.Dimension(250, 600));
         setPreferredSize(new java.awt.Dimension(250, 600));
-        setLayout(new java.awt.GridLayout(2, 1));
-        add(velocimetroSteelSeries);
+        setLayout(new java.awt.BorderLayout());
+
+        velocimetroSteelSeries.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        add(velocimetroSteelSeries, java.awt.BorderLayout.NORTH);
 
         subpanelA.setLayout(new java.awt.BorderLayout());
-        subpanelA.add(cuentaRevolucionesSteelSeries, java.awt.BorderLayout.PAGE_START);
+        subpanelA.add(cuentaRevolucionesSteelSeries, java.awt.BorderLayout.NORTH);
         subpanelA.add(cuentaKilometrosSteelSeries, java.awt.BorderLayout.CENTER);
 
-        add(subpanelA);
+        add(subpanelA, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 

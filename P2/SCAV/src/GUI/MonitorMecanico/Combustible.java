@@ -10,7 +10,7 @@ import java.util.Observable;
  * @author alex
  */
 public class Combustible extends ObservadorMotor {
-    private boolean motorParado;
+    protected boolean motorParado;
 
     /**
      * Creates new form Combustible
@@ -53,6 +53,10 @@ public class Combustible extends ObservadorMotor {
     
     void resetBoton () {
         boton.setEnabled(false);
+    }
+    
+    void ocultarBarra() {
+        combustibleBarra.setVisible(false);
     }
    
     /**
