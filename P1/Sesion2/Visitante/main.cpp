@@ -21,32 +21,34 @@ int main(int argc, char** argv) {
     VisitantePrecio * vp;
     VisitantePrecioDetalle * vpd;
     Equipo * equipo;
-    TipoCliente tc = estudiante; 
+    TipoCliente tc1 = estudiante; 
+    TipoCliente tc2 = mayorista; 
     
     /**/
     
+    cout << "Equipo 1: \n";
     equipo = new Equipo( Bus("Bus", 5), Disco("Disco", 30), Tarjeta("Tarjeta", 100) );
     vp = new VisitantePrecio;
     vpd = new VisitantePrecioDetalle;
-    vp->setCliente(tc);
+    vp->setCliente(tc1);
     
     equipo->aceptar(*vp);
     equipo->aceptar(*vpd);
     
-    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << "€ (-" << tc << "%)";
+    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << "€ (-" << tc1 << "%)";
     cout << endl << endl;
     
     /**/
-    
+    cout << "Equipo 2: \n";
     equipo = new Equipo( Bus("Bus", 15), Disco("Disco", 60), Tarjeta("Tarjeta", 600) );
-    vp = new VisitantePrecio;
-    vpd = new VisitantePrecioDetalle;
-    vp->setCliente(tc);
+//    vp = new VisitantePrecio;
+//    vpd = new VisitantePrecioDetalle;
+    vp->setCliente(tc2);
     
     equipo->aceptar(*vp);
     equipo->aceptar(*vpd);
     
-    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << "€ (-" << tc << "%)";
+    cout << "  -  Precio total: " << vp->obtenerPrecioTotal() << "€ (-" << tc2 << "%)";
     cout << endl << endl;
     
     /**/
