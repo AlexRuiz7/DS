@@ -20,7 +20,7 @@
       <!-- Opciones de usuario -->
       <v-list dense>
 
-        <v-list-item link>
+        <v-list-item link @click="irA('/crear-plataforma')">
           <v-list-item-icon>
             <v-icon>mdi-plus</v-icon>
           </v-list-item-icon>
