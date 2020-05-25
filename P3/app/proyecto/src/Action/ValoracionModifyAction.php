@@ -2,26 +2,26 @@
 
 namespace App\Action;
 
-use App\Domain\Valorable\Data\ValorableData;
-use App\Domain\Valorable\Service\ValorableModifier;
+use App\Domain\Valoracion\Data\ValoracionData;
+use App\Domain\Valoracion\Service\ValoracionModifier;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class ValorableModifyAction {
+final class ValoracionModifyAction {
     /**
      * Servicio
      *
-     * @var ValorableModifier servicio para consultar Valorables
+     * @var ValoracionModifier servicio para consultar Valoracions
      */
-    private $ValorableModifier;
+    private $ValoracionModifier;
 
     /**
      * El constructor
      *
-     * @param ValorableModifier $ValorableModifier
+     * @param ValoracionModifier $ValoracionModifier
      */
-    public function __construct(ValorableModifier $ValorableModifier) {
-        $this->ValorableModifier = $ValorableModifier;
+    public function __construct(ValoracionModifier $ValoracionModifier) {
+        $this->ValoracionModifier = $ValoracionModifier;
     }
 
     /**
@@ -36,15 +36,16 @@ final class ValorableModifyAction {
         $data = (array)$request->getParsedBody();
 
         // Mapping
-        $Valorable = new ValorableData();
-        $Valorable->entidadesId = $data['entidadesId'];
-        $Valorable->id = $data['id'];
-        $Valorable->titulo = $data['titulo'];
-        $Valorable->descripcion = $data['descripcion'];
-        $Valorable->imagen = $data['imagen'];
+        $Valoracion = new ValoracionData();
+        $Valoracion->valorablesEntidadesId = $data['valorablesEntidadesId'];
+        $Valoracion->valorablesId = $data['valorablesId'];
+        $Valoracion->usuariosNombre = $data['usuariosNombre'];
+        $Valoracion->puntuacion = $data['puntuacion'];
+        $Valoracion->comentario = $data['comentario'];
+        $Valoracion->fecha = $data['fecha'];
 
         // Obtener el resultado de la operación y generar código de respuesta
-        $resultado = (bool) $this->ValorableModifier->modificarValorable($Valorable);
+        $resultado = (bool) $this->ValoracionModifier->modificarValoracion($Valoracion);
         ($resultado) ? $status = 200 : $status = 409;
         
         // Construir la respuesta HTTP

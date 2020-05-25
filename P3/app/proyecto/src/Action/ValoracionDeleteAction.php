@@ -2,26 +2,26 @@
 
 namespace App\Action;
 
-use App\Domain\Valorable\Data\ValorableData;
-use App\Domain\Valorable\Service\ValorableDeleter;
+use App\Domain\Valoracion\Data\ValoracionData;
+use App\Domain\Valoracion\Service\ValoracionDeleter;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class ValorableDeleteAction {
+final class ValoracionDeleteAction {
     /**
      * Servicio
      *
-     * @var ValorableDeleter servicio para eliminar Valorables
+     * @var ValoracionDeleter servicio para eliminar Valoracions
      */
-    private $ValorableDeleter;
+    private $ValoracionDeleter;
 
     /**
      * El constructor
      *
-     * @param ValorableDeleter $ValorableDeleter
+     * @param ValoracionDeleter $ValoracionDeleter
      */
-    public function __construct(ValorableDeleter $ValorableDeleter) {
-        $this->ValorableDeleter = $ValorableDeleter;
+    public function __construct(ValoracionDeleter $ValoracionDeleter) {
+        $this->ValoracionDeleter = $ValoracionDeleter;
     }
 
     /**
@@ -36,12 +36,13 @@ final class ValorableDeleteAction {
         $data = (array)$request->getParsedBody();
 
         // Mapping
-        $Valorable = new ValorableData();
-        $Valorable->entidadesId = $data['entidadesId'];
-        $Valorable->id = $data['id'];
+        $Valoracion = new ValoracionData();
+        $Valoracion->valorablesEntidadesId = $data['valorablesEntidadesId'];
+        $Valoracion->valorablesId = $data['valorablesId'];
+        $Valoracion->usuariosNombre = $data['usuariosNombre'];
 
         // Obtener el resultado de la operación y generar código de respuesta
-        $resultado = (bool) $this->ValorableDeleter->eliminarValorable($Valorable);
+        $resultado = (bool) $this->ValoracionDeleter->eliminarValoracion($Valoracion);
         ($resultado) ? $status = 200 : $status = 409;
         
         // Construir la respuesta HTTP
