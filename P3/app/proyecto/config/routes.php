@@ -6,17 +6,7 @@ use Slim\App;
 use Slim\Exception\HttpNotFoundException;
 
 return function (App $app) {
-    $app->setBasePath('/api');
-    
-
-    $app->add(function ($request, $handler) {
-        $response = $handler->handle($request);
-        return $response
-            ->withHeader('Access-Control-Allow-Origin', 'localhost:8081')
-            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
-            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    });
-    
+    $app->setBasePath('/api'); 
     $app->get('/', \App\Action\HomeAction::class);
     
 
@@ -27,6 +17,10 @@ return function (App $app) {
     $app->post('/usuarios',     \App\Action\UsuarioCreateAction::class);
     $app->put('/usuarios',      \App\Action\UsuarioModifyAction::class);
     $app->delete('/usuarios',   \App\Action\UsuarioDeleteAction::class);
+    // Allow preflight requests for /api/users
+    // Due to the behaviour of browsers when sending a request,
+    // you must add the OPTIONS method.
+    $app->options('/usuarios', PreflightAction::class);
 
     /**
      * Rutas de entidades
@@ -35,6 +29,7 @@ return function (App $app) {
     $app->post('/entidades',     \App\Action\EntidadCreateAction::class);
     $app->put('/entidades',      \App\Action\EntidadModifyAction::class);
     $app->delete('/entidades',   \App\Action\EntidadDeleteAction::class);
+    $app->options('/entidades',   PreflightAction::class);
 
     /**
      * Rutas de admins
@@ -43,6 +38,7 @@ return function (App $app) {
     $app->post('/admins',     \App\Action\AdminCreateAction::class);
     $app->put('/admins',      \App\Action\AdminModifyAction::class);
     $app->delete('/admins',   \App\Action\AdminDeleteAction::class);
+    $app->options('/admins',   PreflightAction::class);
 
     /**
      * Rutas de superadmins
@@ -51,6 +47,7 @@ return function (App $app) {
     $app->post('/superadmins',     \App\Action\SuperAdminCreateAction::class);
     $app->put('/superadmins',      \App\Action\SuperAdminModifyAction::class);
     $app->delete('/superadmins',   \App\Action\SuperAdminDeleteAction::class);
+    $app->options('/superadmins',   PreflightAction::class);
 
     /**
      * Rutas de valorables
@@ -59,6 +56,7 @@ return function (App $app) {
     $app->post('/valorables',     \App\Action\ValorableCreateAction::class);
     $app->put('/valorables',      \App\Action\ValorableModifyAction::class);
     $app->delete('/valorables',   \App\Action\ValorableDeleteAction::class);
+    $app->options('/valorables',   PreflightAction::class);
     
     /**
      * Rutas de valoraciones
@@ -67,6 +65,7 @@ return function (App $app) {
     $app->post('/valoraciones',     \App\Action\ValoracionCreateAction::class);
     $app->put('/valoraciones',      \App\Action\ValoracionModifyAction::class);
     $app->delete('/valoraciones',   \App\Action\ValoracionDeleteAction::class);
+    $app->options('/valoraciones',   PreflightAction::class);
 
     /**
      * Catch-all route to serve a 404 Not Found page if none of the routes match
