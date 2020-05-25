@@ -53,13 +53,15 @@ class ValoracionRepository {
     public function insertValoracion(ValoracionData $Valoracion): int {
 
         $fila = [
-            'entidadesId' => $Valoracion->entidadesId,
-            'titulo' => $Valoracion->titulo,
-            'descripcion' => $Valoracion->descripcion,
-            'imagen' => $Valoracion->imagen
+            'valorablesEntidadesId' => $Valoracion->valorablesEntidadesId,
+            'valorablesId' => $Valoracion->valorablesId,
+            'usuariosNombre' => $Valoracion->usuariosNombre,
+            'puntuacion' => $Valoracion->puntuacion,
+            'comentario' => $Valoracion->comentario,
+            'fecha' => $Valoracion->fecha
         ];
 
-        $sql = "INSERT IGNORE INTO Valoraciones (EntidadesID, titulo, descripcion, imagen) VALUES (:entidadesId, :titulo, :descripcion, :imagen)";
+        $sql = "INSERT IGNORE INTO Valoraciones (ValorablesEntidadesId, ValorablesID, UsuariosNombre, puntuacion, comentario, fecha) VALUES (:valorablesEntidadesId, :valorablesId, :usuariosNombre, :puntuacion, :comentario, :fecha)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -75,10 +77,11 @@ class ValoracionRepository {
      */
     public function deleteValoracion(ValoracionData $Valoracion) : int {
         $fila = [
-            'entidadesId' => $Valoracion->entidadesId,
-            'id' => $Valoracion->id,
+            'valorablesEntidadesId' => $Valoracion->valorablesEntidadesId,
+            'valorablesId' => $Valoracion->valorablesId,
+            'usuariosNombre' => $Valoracion->usuariosNombre
         ];
-        $sql = "DELETE FROM Valoraciones WHERE EntidadesID=:entidadesId AND ID=:id";
+        $sql = "DELETE FROM Valoraciones WHERE ValorablesEntidadesID=:valorablesEntidadesId AND ValorablesID=:valorablesId AND Usuariosnombre=:usuariosNombre";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -94,14 +97,15 @@ class ValoracionRepository {
      */
     public function updateValoracion(ValoracionData $Valoracion) : int {
         $fila = [
-            'entidadesId' => $Valoracion->entidadesId,
-            'id' => $Valoracion->id,
-            'titulo' => $Valoracion->titulo,
-            'descripcion' => $Valoracion->descripcion,
-            'imagen' => $Valoracion->imagen
+            'valorablesEntidadesId' => $Valoracion->valorablesEntidadesId,
+            'valorablesId' => $Valoracion->valorablesId,
+            'usuariosNombre' => $Valoracion->usuariosNombre,
+            'puntuacion' => $Valoracion->puntuacion,
+            'comentario' => $Valoracion->comentario,
+            'fecha' => $Valoracion->fecha
         ];
 
-        $sql = "UPDATE Valoraciones SET titulo=:titulo, descripcion=:descripcion, imagen=:imagen WHERE EntidadesID=:entidadesId AND ID=:id";
+        $sql = "UPDATE Valoraciones SET puntuacion=:puntuacion, comentario=:comentario, fecha=:fecha WHERE ValorablesEntidadesID=:valorablesEntidadesId AND ValorablesID=:valorablesId AND Usuariosnombre=:usuariosNombre";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();

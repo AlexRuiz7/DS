@@ -40,7 +40,7 @@ final class ValoracionGetAction {
         $Valoracion = new ValoracionData();
         $Valoracion->valorablesEntidadesId = $params['valorablesEntidadesId'];
         $Valoracion->valorablesId = $data['valorablesId'];
-        $Valoracion->Usuariosnombre = $data['usuariosNombre'];
+        $Valoracion->usuariosNombre = $data['usuariosNombre'];
         
         $resultado = $this->ValoracionGetter->getValoracion($Valoracion);
         

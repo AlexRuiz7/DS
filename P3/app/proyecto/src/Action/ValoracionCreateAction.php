@@ -21,6 +21,7 @@ final class ValoracionCreateAction {
         // Mapping
         $Valoracion = new ValoracionData();
         $Valoracion->valorablesEntidadesId = $data['valorablesEntidadesId'];
+        $Valoracion->valorablesId = $data['valorablesId'];
         $Valoracion->usuariosNombre = $data['usuariosNombre'];
         $Valoracion->puntuacion = $data['puntuacion'];
         $Valoracion->comentario = $data['comentario'];
