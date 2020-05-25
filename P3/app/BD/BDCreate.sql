@@ -28,8 +28,10 @@ CREATE TABLE IF NOT EXISTS Admins (
   EntidadesID    int NOT NULL, 
   Usuariosnombre varchar(30) NOT NULL, 
   PRIMARY KEY (EntidadesID, Usuariosnombre),
-  FOREIGN KEY (EntidadesID)     REFERENCES Entidades(ID),
+  FOREIGN KEY (EntidadesID)     REFERENCES Entidades(ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (Usuariosnombre)  REFERENCES Usuarios(nombre)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 ----
@@ -38,8 +40,10 @@ CREATE TABLE IF NOT EXISTS Superadmins (
   EntidadesID    int NOT NULL, 
   Usuariosnombre varchar(30) NOT NULL UNIQUE, 
   PRIMARY KEY (EntidadesID),
-  FOREIGN KEY (EntidadesID)     REFERENCES Entidades(ID),
+  FOREIGN KEY (EntidadesID)     REFERENCES Entidades(ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (Usuariosnombre)  REFERENCES Usuarios(nombre)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 ----
@@ -51,7 +55,7 @@ CREATE TABLE IF NOT EXISTS Valorables (
   descripcion varchar(250), 
   imagen      varchar(255),
   PRIMARY KEY (EntidadesID, ID),
-  FOREIGN KEY (EntidadesID) REFERENCES Entidades(ID)
+  FOREIGN KEY (EntidadesID) REFERENCES Entidades(ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 ----
@@ -64,6 +68,8 @@ CREATE TABLE IF NOT EXISTS Valoraciones (
   comentario            varchar(255), 
   fecha                 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
   PRIMARY KEY (ValorablesEntidadesID, ValorablesID, Usuariosnombre),
-  FOREIGN KEY (ValorablesEntidadesID, ValorablesID) REFERENCES Valorables(EntidadesID, ID),
+  FOREIGN KEY (ValorablesEntidadesID, ValorablesID) REFERENCES Valorables(EntidadesID, ID)
+    ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (Usuariosnombre) REFERENCES Usuarios(nombre)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
