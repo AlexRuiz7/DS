@@ -2,6 +2,9 @@
 
 use Slim\App;
 
+#Para el CORS
+use Slim\Exception\HttpNotFoundException;
+
 return function (App $app) {
     $app->setBasePath('/api');
     
@@ -64,6 +67,15 @@ return function (App $app) {
     $app->post('/valoraciones',     \App\Action\ValoracionCreateAction::class);
     $app->put('/valoraciones',      \App\Action\ValoracionModifyAction::class);
     $app->delete('/valoraciones',   \App\Action\ValoracionDeleteAction::class);
+
+    /**
+     * Catch-all route to serve a 404 Not Found page if none of the routes match
+     * NOTE: make sure this route is defined last
+     */
+    $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
+        throw new HttpNotFoundException($request);
+    });
+
 };
 
 ?>
