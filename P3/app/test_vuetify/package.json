@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "cp -r dist/* ../proyecto/public"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "@mdi/font": "^3.6.95",
+    "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
