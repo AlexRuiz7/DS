@@ -4,7 +4,7 @@
     <v-card class="elevation-12">
     
     <v-toolbar color="secondary" dark flat>
-        <v-toolbar-title>Iniciar sesión</v-toolbar-title>
+        <v-toolbar-title>Crea plataforma</v-toolbar-title>
     </v-toolbar>
     
     <v-card-text>
