@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1 v-text="encabezado"></h1>
+    <h1 v-text="encabezado"></h1>
     <h1>NUEVA Plataforma</h1>
     <CreaPlataformaForm/>
   </div>
