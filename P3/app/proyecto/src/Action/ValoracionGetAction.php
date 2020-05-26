@@ -37,16 +37,16 @@ final class ValoracionGetAction {
 
         if(isset($params['id'])) {
             $Valoracion = new ValoracionData();
-            $Valoracion->valorablesEntidadesId = $params['entidadID'];
-            $Valoracion->valorablesId = $params['valorableID'];
-            $Valoracion->usuariosNombre = $params['id'];
+            $Valoracion->entidadID = $params['entidadID'];
+            $Valoracion->valorableID = $params['valorableID'];
+            $Valoracion->usuarioID = $params['id'];
             
             $resultado = $this->ValoracionGetter->getValoracion($Valoracion);
         }
         else {
             $Valoracion = new ValoracionData();
-            $Valoracion->valorablesEntidadesId = $params['entidadID'];
-            $Valoracion->valorablesId = $params['valorableID'];
+            $Valoracion->entidadID = $params['entidadID'];
+            $Valoracion->valorableID = $params['valorableID'];
             
             $resultado = $this->ValoracionGetter->getValoraciones($Valoracion);
         }

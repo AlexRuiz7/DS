@@ -40,11 +40,7 @@ final class EntidadGetter {
         }
 
         // Obtener datos de Entidad
-        $Entidad = $this->repository->selectEntidad($Entidad);
-
-        // Logging here: Entidad created successfully
-
-        return $Entidad;
+        return $this->repository->selectEntidad($Entidad);
     }
 
 

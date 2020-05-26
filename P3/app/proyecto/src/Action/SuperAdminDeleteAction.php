@@ -37,8 +37,8 @@ final class SuperAdminDeleteAction {
 
         // Mapping
         $SuperAdmin = new SuperAdminData();
-        $SuperAdmin->entidadesId = $data['entidadesId'];
-        $SuperAdmin->usuariosNombre = $data['usuariosNombre'];
+        $SuperAdmin->entidadID = $data['entidadID'];
+        $SuperAdmin->usuarioID = $data['usuarioID'];
 
         // Obtener el resultado de la operación y generar código de respuesta
         $resultado = (bool) $this->SuperAdminDeleter->eliminarSuperAdmin($SuperAdmin);

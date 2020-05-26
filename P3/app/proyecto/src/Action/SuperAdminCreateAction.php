@@ -20,8 +20,8 @@ final class SuperAdminCreateAction {
 
         // Mapping
         $SuperAdmin = new SuperAdminData();
-        $SuperAdmin->entidadesId = $data['entidadesId'];
-        $SuperAdmin->usuariosNombre = $data['usuariosNombre'];
+        $SuperAdmin->entidadID = $data['entidadID'];
+        $SuperAdmin->usuarioID = $data['usuarioID'];
 
         // Invocar a la capa de lógica Domain con los datos de entrada, y obtener el resultado
         $resultado = (bool) $this->SuperAdminCreator->crearSuperAdmin($SuperAdmin);

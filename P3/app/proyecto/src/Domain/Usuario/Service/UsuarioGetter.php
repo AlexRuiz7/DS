@@ -40,11 +40,7 @@ final class UsuarioGetter {
         }
 
         // Obtener datos de usuario
-        $usuario = $this->repository->selectUsuario($usuario);
-
-        // Logging here: User created successfully
-
-        return $usuario;
+        return $this->repository->selectUsuario($usuario);
     }
 }
 

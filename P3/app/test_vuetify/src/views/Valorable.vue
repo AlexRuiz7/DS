@@ -28,7 +28,7 @@
     </v-card>
 
    
-    <formulario/>
+    <formulario @enviar-comentario="comentar"/>
 
     <v-divider/>
 
@@ -99,7 +99,17 @@ export default {
       console.log(data)
       this.comentarios = data;
     },
-
+    comentar(valoracion) {
+        var datos = {
+            comentario: valoracion[0],
+            puntuacion: valoracion[1],
+            valorablesEntidadesId: this.entidadID,
+            valorablesId: this.id,
+            usuariosNombre: this.$store.getters.userName,
+        }
+        console.log(datos);
+        EntidadesRepository.enviarComentario(this.entidadID, this.id, datos)
+    }
   }
 }
 

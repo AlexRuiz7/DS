@@ -35,19 +35,15 @@ final class SuperAdminCreator {
      */
     public function crearSuperAdmin(SuperAdminData $SuperAdmin): int {
         // Validation
-        if (empty($SuperAdmin->entidadesId)) {
-            throw new InvalidArgumentException('Hace falta un Id de entidad');
+        if (empty($SuperAdmin->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($SuperAdmin->usuariosNombre)) {
-            throw new InvalidArgumentException('Hace falta un nombre de usuario');
+        if (empty($SuperAdmin->usuarioID)) {
+            throw new InvalidArgumentException('ID usuario');
         }
 
         // Insert SuperAdmin
-        $SuperAdminId = $this->repository->insertSuperAdmin($SuperAdmin);
-
-        // Logging here: SuperAdmin created successfully
-
-        return $SuperAdminId;
+        return $this->repository->insertSuperAdmin($SuperAdmin);
     }
 }
 

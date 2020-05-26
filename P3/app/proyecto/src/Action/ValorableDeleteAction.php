@@ -37,8 +37,8 @@ final class ValorableDeleteAction {
 
         // Mapping
         $Valorable = new ValorableData();
-        $Valorable->entidadesId = $data['entidadesId'];
-        $Valorable->id = $data['id'];
+        $Valorable->entidadID = $data['entidadID'];
+        $Valorable->ID = $data['id'];
 
         // Obtener el resultado de la operación y generar código de respuesta
         $resultado = (bool) $this->ValorableDeleter->eliminarValorable($Valorable);

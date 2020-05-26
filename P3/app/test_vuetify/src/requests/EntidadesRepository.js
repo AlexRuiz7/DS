@@ -23,5 +23,9 @@ export default {
 
     getComentarios(entidadID, ID) {
         return Repository.get(`${resource}/${entidadID}/${subresource}/${ID}/valoraciones`);
+    },
+
+    enviarComentario(entidadID, ID, datos) {
+        return Repository.post(`${resource}/${entidadID}/${subresource}/${ID}/valoraciones`, datos);
     }
 }

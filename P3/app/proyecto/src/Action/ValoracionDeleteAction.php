@@ -33,16 +33,18 @@ final class ValoracionDeleteAction {
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
         // Obtener parámetros de la ruta
+        $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
+        // Recolectar datos de entrada desde la petición HTTP
         $data = (array)$request->getParsedBody();
 
         // Mapping
-        $Valoracion = new ValoracionData();
-        $Valoracion->valorablesEntidadesId = $data['valorablesEntidadesId'];
-        $Valoracion->valorablesId = $data['valorablesId'];
-        $Valoracion->usuariosNombre = $data['usuariosNombre'];
+        $valoracion = new ValoracionData();
+        $valoracion->entidadID = $params['entidadID'];
+        $valoracion->valorableID = $params['valorableID'];
+        $valoracion->usuarioID = $data['usuarioID'];
 
         // Obtener el resultado de la operación y generar código de respuesta
-        $resultado = (bool) $this->ValoracionDeleter->eliminarValoracion($Valoracion);
+        $resultado = (bool) $this->ValoracionDeleter->eliminarValoracion($valoracion);
         ($resultado) ? $status = 200 : $status = 409;
         
         // Construir la respuesta HTTP

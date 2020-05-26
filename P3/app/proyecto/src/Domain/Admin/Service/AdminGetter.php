@@ -35,18 +35,12 @@ final class AdminGetter {
      */
     public function getAdmin(AdminData $Admin): array {
         // Validation
-        if (empty($Admin->entidadesId)) {
-            throw new InvalidArgumentException('Es necesario un ID de entidad');
+        if (empty($Admin->entidadID) && empty($Admin->usuarioID)) {
+            throw new InvalidArgumentException('Es necesario un ID (entidad o usuario)');
         }
-        if (empty($Admin->usuariosNombre)) {
-            throw new InvalidArgumentException('Es necesario un nombre de usuario');
-        }
+
         // Obtener datos de Admin
-        $Admin = $this->repository->selectAdmin($Admin);
-
-        // Logging here: Admin created successfully
-
-        return $Admin;
+        return $this->repository->selectAdmin($Admin);
     }
 }
 

@@ -32,16 +32,14 @@ final class AdminDeleter {
     */
     public function eliminarAdmin(AdminData $Admin): int {
         // Validation
-        if (empty($Admin->entidadesId)) {
-            throw new InvalidArgumentException('Es necesario un ID de entidad');
+        if (empty($Admin->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($Admin->usuariosNombre)) {
-            throw new InvalidArgumentException('Es necesario un nombre de usuario');
+        if (empty($Admin->usuarioID)) {
+            throw new InvalidArgumentException('ID usuario');
         }
         // Obtener datos de Admin
-        $resultado = $this->repository->deleteAdmin($Admin);
-
-        return $resultado;
+        return $this->repository->deleteAdmin($Admin);
     }
 }
 

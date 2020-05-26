@@ -15,21 +15,22 @@ final class ValoracionCreateAction {
     }
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
+        // Obtener parámetros de la ruta
+        $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
         // Recolectar datos de entrada desde la petición HTTP
         $data = (array)$request->getParsedBody();
 
         // Mapping
-        $Valoracion = new ValoracionData();
-        $Valoracion->valorablesEntidadesId = $data['valorablesEntidadesId'];
-        $Valoracion->valorablesId = $data['valorablesId'];
-        $Valoracion->usuariosNombre = $data['usuariosNombre'];
-        $Valoracion->puntuacion = $data['puntuacion'];
-        $Valoracion->comentario = $data['comentario'];
-        $Valoracion->fecha = $data['fecha'];
+        $valoracion = new ValoracionData();
+        $valoracion->entidadID = $params['entidadID'];
+        $valoracion->valorableID = $params['valorableID'];
+        $valoracion->usuarioID = $data['usuarioID'];
+        $valoracion->puntuacion = $data['puntuacion'];
+        $valoracion->comentario = $data['comentario'];
 
         // Invocar a la capa de lógica Domain con los datos de entrada, y obtener el resultado
-        $resultado = (bool) $this->ValoracionCreator->crearValoracion($Valoracion);
-        ($resultado) ? $status = 201 : $status = 409;
+        $resultado = (bool) $this->ValoracionCreator->crearValoracion($valoracion);
+        ($resultado) ? $status = 200 : $status = 409;
 
         // Construir la respuesta HTTP
         $response->getBody()->write((string)json_encode(['success' => $resultado]));

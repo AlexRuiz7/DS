@@ -6,16 +6,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLogged: true,
-    validUser: {
-      email: 'defaultUser@domain.com',
-      password: 'user',
+    isLogged: false,
+    user: {
+      name: 'defaultUser@domain.com',
+      email: 'user',
     }
   },
 
   mutations: {
-    login(state) {
+    login(state, user) {
       state.isLogged = true;
+      state.user.name = user.nombre;
+      state.user.email = user.correo;
     },
 
     logout(state) {
@@ -24,9 +26,9 @@ export default new Vuex.Store({
   },
 
   actions: {
-    login(context) {
-        context.commit('login');
-        router.replace('/');
+    login(context, user) {
+      context.commit('login', user);
+      router.replace('/');
     },
 
     logout(context) {
@@ -38,6 +40,12 @@ export default new Vuex.Store({
   getters: {
     isLogged: (state) => {
       return state.isLogged;
+    },
+    userName: (state) => {
+      return state.user.name;
+    },
+    userEmail: (state) => {
+      return state.user.email;
     }
   }
 })

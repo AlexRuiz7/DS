@@ -35,6 +35,6 @@ INSERT IGNORE INTO Valorables (entidadID, titulo, descripcion) VALUES
     (3, 'Reservoir Dogs', 'Tarantino plasmó en esta película las consecuencias de un atraco frustrado a través de un estilo narrativo sorprendente, arrebatador y nada habitual hasta entonces.')
 ;
 
-INSERT IGNORE INTO Valoraciones (ValorablesEntidadesID, ValorablesID, Usuariosnombre, puntuacion, comentario) VALUES
+INSERT IGNORE INTO Valoraciones (entidadID, valorableID, usuarioID, puntuacion, comentario) VALUES
     (3, 5, 'Usuario', 8, 'Genial película, me encanta la temáatica cyberpunk')
 ;

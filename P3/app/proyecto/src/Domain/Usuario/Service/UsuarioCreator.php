@@ -40,11 +40,7 @@ final class UsuarioCreator {
         }
 
         // Insert usuario
-        $userId = $this->repository->insertUsuario($usuario);
-
-        // Logging here: User created successfully
-
-        return $userId;
+        return $this->repository->insertUsuario($usuario);
     }
 }
 

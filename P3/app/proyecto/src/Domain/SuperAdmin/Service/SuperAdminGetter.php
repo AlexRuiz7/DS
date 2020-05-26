@@ -35,18 +35,11 @@ final class SuperAdminGetter {
      */
     public function getSuperAdmin(SuperAdminData $SuperAdmin): array {
         // Validation
-        if (empty($SuperAdmin->entidadesId)) {
-            throw new InvalidArgumentException('Es necesario un ID de entidad');
-        }
-        if (empty($SuperAdmin->usuariosNombre)) {
-            throw new InvalidArgumentException('Es necesario un nombre de usuario');
+        if (empty($SuperAdmin->entidadID) && empty($SuperAdmin->usuarioID)) {
+            throw new InvalidArgumentException('Es necesario un ID (entidad o usuario)');
         }
         // Obtener datos de SuperAdmin
-        $SuperAdmin = $this->repository->selectSuperAdmin($SuperAdmin);
-
-        // Logging here: SuperAdmin created successfully
-
-        return $SuperAdmin;
+        return $this->repository->selectSuperAdmin($SuperAdmin);
     }
 }
 

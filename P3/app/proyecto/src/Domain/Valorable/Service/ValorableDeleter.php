@@ -32,16 +32,14 @@ final class ValorableDeleter {
     */
     public function eliminarValorable(ValorableData $Valorable): int {
         // Validation
-        if (empty($Valorable->entidadesId)) {
+        if (empty($Valorable->entidadID)) {
             throw new InvalidArgumentException('Hace falta un id de la entidad');
         }
-        if (empty($Valorable->id)){
-            throw new InvalidArgumentException('Es necesario un Id');
+        if (empty($Valorable->ID)){
+            throw new InvalidArgumentException('Es necesario un ID');
         }
         // Obtener datos de Valorable
-        $resultado = $this->repository->deleteValorable($Valorable);
-
-        return $resultado;
+        return $this->repository->deleteValorable($Valorable);
     }
 }
 

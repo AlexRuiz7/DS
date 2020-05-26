@@ -33,19 +33,20 @@ final class ValoracionModifyAction {
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
         // Obtener parámetros de la ruta
+        $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
+        // Recolectar datos de entrada desde la petición HTTP
         $data = (array)$request->getParsedBody();
 
         // Mapping
-        $Valoracion = new ValoracionData();
-        $Valoracion->valorablesEntidadesId = $data['valorablesEntidadesId'];
-        $Valoracion->valorablesId = $data['valorablesId'];
-        $Valoracion->usuariosNombre = $data['usuariosNombre'];
-        $Valoracion->puntuacion = $data['puntuacion'];
-        $Valoracion->comentario = $data['comentario'];
-        $Valoracion->fecha = $data['fecha'];
+        $valoracion = new ValoracionData();
+        $valoracion->entidadID = $params['entidadID'];
+        $valoracion->valorableID = $params['valorableID'];
+        $valoracion->usuarioID = $data['usuarioID'];
+        $valoracion->puntuacion = $data['puntuacion'];
+        $valoracion->comentario = $data['comentario'];
 
         // Obtener el resultado de la operación y generar código de respuesta
-        $resultado = (bool) $this->ValoracionModifier->modificarValoracion($Valoracion);
+        $resultado = (bool) $this->ValoracionModifier->modificarValoracion($valoracion);
         ($resultado) ? $status = 200 : $status = 409;
         
         // Construir la respuesta HTTP

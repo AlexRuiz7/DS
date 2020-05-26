@@ -37,8 +37,8 @@ final class AdminDeleteAction {
 
         // Mapping
         $Admin = new AdminData();
-        $Admin->entidadesId = $data['entidadesId'];
-        $Admin->usuariosNombre = $data['usuariosNombre'];
+        $Admin->entidadID = $data['entidadID'];
+        $Admin->usuarioID = $data['usuarioID'];
 
         // Obtener el resultado de la operación y generar código de respuesta
         $resultado = (bool) $this->AdminDeleter->eliminarAdmin($Admin);

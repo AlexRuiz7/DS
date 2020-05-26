@@ -32,16 +32,14 @@ final class SuperAdminModifier {
     */
     public function modificarSuperAdmin(SuperAdminData $SuperAdmin): int {
         // Validation
-        if (empty($SuperAdmin->entidadesId)) {
+        if (empty($SuperAdmin->entidadID)) {
             throw new InvalidArgumentException('Hace falta un Id de entidad');
         }
-        if (empty($SuperAdmin->usuariosNombre)) {
+        if (empty($SuperAdmin->usuarioID)) {
             throw new InvalidArgumentException('Hace falta un nombre de usuario');
         }
         // Obtener datos de SuperAdmin
-        $resultado = $this->repository->updateSuperAdmin($SuperAdmin);
-
-        return $resultado;
+        return $this->repository->updateSuperAdmin($SuperAdmin);
     }
 }
 

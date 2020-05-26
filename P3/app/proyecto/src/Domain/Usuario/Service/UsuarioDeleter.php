@@ -40,9 +40,7 @@ final class UsuarioDeleter {
             throw new InvalidArgumentException('Password required');
 
         // Obtener datos de usuario
-        $resultado = $this->repository->deleteUsuario($usuario);
-
-        return $resultado;
+        return $this->repository->deleteUsuario($usuario);
     }
 }
 

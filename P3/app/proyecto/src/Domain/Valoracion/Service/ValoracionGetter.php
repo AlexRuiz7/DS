@@ -35,21 +35,17 @@ final class ValoracionGetter {
      */
     public function getValoracion(ValoracionData $Valoracion): array {
         // Validation
-        if (empty($Valoracion->valorablesEntidadesId)) {
-            throw new InvalidArgumentException('Es necesario un Id de la entidad del valorable');
+        if (empty($Valoracion->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($Valoracion->valorablesId)) {
-            throw new InvalidArgumentException('Es necesario un id de Valorable');
+        if (empty($Valoracion->valorableID)) {
+            throw new InvalidArgumentException('ID valorable');
         }
-        if (empty($Valoracion->usuariosNombre)) {
-            throw new InvalidArgumentException('Es necesario un nombre de usuario');
+        if (empty($Valoracion->usuarioID)) {
+            throw new InvalidArgumentException('ID usuario');
         }
         // Obtener datos de Valoracion
-        $Valoracion = $this->repository->selectValoracion($Valoracion);
-
-        // Logging here: Valoracion created successfully
-
-        return $Valoracion;
+        return $this->repository->selectValoracion($Valoracion);
     }
 
     /**
@@ -60,11 +56,11 @@ final class ValoracionGetter {
      */
     public function getValoraciones(ValoracionData $Valoracion): array {
         // Validation
-        if (empty($Valoracion->valorablesEntidadesId)) {
-            throw new InvalidArgumentException('Es necesario un Id de la entidad del valorable');
+        if (empty($Valoracion->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($Valoracion->valorablesId)) {
-            throw new InvalidArgumentException('Es necesario un id de Valorable');
+        if (empty($Valoracion->valorableID)) {
+            throw new InvalidArgumentException('ID valorable');
         }
 
         // Obtener datos de Valoracion

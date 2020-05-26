@@ -32,14 +32,11 @@ final class SuperAdminGetAction {
      * @return ResponseInterface
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
-        // Recolectar datos del request
-        $data = (array)$request->getParsedBody();
         // Obtener parámetros de la ruta
         $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
 
         $SuperAdmin = new SuperAdminData();
-        $SuperAdmin->entidadesId = $params['entidadesId'];
-        $SuperAdmin->usuariosNombre = $data['usuariosNombre'];
+        $SuperAdmin->usuarioID = $params['id'];
         
         $resultado = $this->SuperAdminGetter->getSuperAdmin($SuperAdmin);
         

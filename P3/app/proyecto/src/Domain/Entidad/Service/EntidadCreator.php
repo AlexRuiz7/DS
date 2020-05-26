@@ -40,11 +40,7 @@ final class EntidadCreator {
         }
 
         // Insert Entidad
-        $entidadId = $this->repository->insertEntidad($Entidad);
-
-        // Logging here: Entidad created successfully
-
-        return $entidadId;
+        return $this->repository->insertEntidad($Entidad);
     }
 }
 

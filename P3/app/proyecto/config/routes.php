@@ -35,16 +35,16 @@ return function (App $app) {
     /**
      * Rutas de admins
      */
-    $app->get('/admins/{entidadesId}', \App\Action\AdminGetAction::class); //Pasamos id
-    $app->post('/admins',     \App\Action\AdminCreateAction::class);
-    $app->put('/admins',      \App\Action\AdminModifyAction::class);
-    $app->delete('/admins',   \App\Action\AdminDeleteAction::class);
-    $app->options('/admins',   PreflightAction::class);
+    $app->get('/admins/{id}',    \App\Action\AdminGetAction::class);
+    $app->post('/admins',               \App\Action\AdminCreateAction::class);
+    $app->put('/admins',                \App\Action\AdminModifyAction::class);
+    $app->delete('/admins',             \App\Action\AdminDeleteAction::class);
+    $app->options('/admins',            PreflightAction::class);
 
     /**
      * Rutas de superadmins
      */
-    $app->get('/superadmins/{entidadesId}', \App\Action\SuperAdminGetAction::class); //Pasamos id
+    $app->get('/superadmins/{id}', \App\Action\SuperAdminGetAction::class); //Pasamos id
     $app->post('/superadmins',     \App\Action\SuperAdminCreateAction::class);
     $app->put('/superadmins',      \App\Action\SuperAdminModifyAction::class);
     $app->delete('/superadmins',   \App\Action\SuperAdminDeleteAction::class);
@@ -55,19 +55,20 @@ return function (App $app) {
      */
     $app->get('/entidades/{entidadID}/valorables',                  \App\Action\ValorableGetAction::class);
     $app->get('/entidades/{entidadID}/valorables/{valorableID}',    \App\Action\ValorableGetAction::class); //Pasamos id
-    $app->post('/entidades/{entidadID}/valorables/{valorableID}',   \App\Action\ValorableCreateAction::class);
-    $app->put('/entidades/{entidadID}/valorables/{valorableID}',    \App\Action\ValorableModifyAction::class);
-    $app->delete('/entidades/{entidadID}/valorables/{valorableID}', \App\Action\ValorableDeleteAction::class);
+    $app->post('/entidades/{entidadID}/valorables',                 \App\Action\ValorableCreateAction::class);
+    $app->put('/entidades/{entidadID}/valorables',                  \App\Action\ValorableModifyAction::class);
+    $app->delete('/entidades/{entidadID}/valorables',               \App\Action\ValorableDeleteAction::class);
     $app->options('/entidades/{entidadID}/valorables/{valorableID}',PreflightAction::class);
     
     /**
      * Rutas de valoraciones
      */
-    $app->get('/entidades/{entidadID}/valorables/{valorableID}/valoraciones',        \App\Action\ValoracionGetAction::class);
+    $app->get('/entidades/{entidadID}/valorables/{valorableID}/valoraciones',         \App\Action\ValoracionGetAction::class);
     $app->get('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',    \App\Action\ValoracionGetAction::class);
-    $app->post('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',   \App\Action\ValoracionCreateAction::class);
-    $app->put('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',    \App\Action\ValoracionModifyAction::class);
-    $app->delete('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}', \App\Action\ValoracionDeleteAction::class);
+    $app->post('/entidades/{entidadID}/valorables/{valorableID}/valoraciones',        \App\Action\ValoracionCreateAction::class);
+    $app->put('/entidades/{entidadID}/valorables/{valorableID}/valoraciones',         \App\Action\ValoracionModifyAction::class);
+    $app->delete('/entidades/{entidadID}/valorables/{valorableID}/valoraciones',      \App\Action\ValoracionDeleteAction::class);
+    $app->options('/entidades/{entidadID}/valorables/{valorableID}/valoraciones',     PreflightAction::class);
     $app->options('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',PreflightAction::class);
 
     /**

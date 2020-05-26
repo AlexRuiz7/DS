@@ -4,13 +4,13 @@ namespace App\Domain\Valoracion\Data;
 
 final class ValoracionData {
     /** @var int */
-    public $valorablesEntidadesId;
+    public $entidadID;
 
     /** @var int */
-    public $valorablesId;
+    public $valorableID;
 
     /** @var string */
-    public $usuariosNombre;
+    public $usuarioID;
 
     /** @var int */
     public $puntuacion;

@@ -38,8 +38,7 @@ final class AdminGetAction {
         $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
 
         $Admin = new AdminData();
-        $Admin->entidadesId = $params['entidadesId'];
-        $Admin->usuariosNombre = $data['usuariosNombre'];
+        $Admin->usuarioID = $params['id'];
         
         $resultado = $this->AdminGetter->getAdmin($Admin);
         

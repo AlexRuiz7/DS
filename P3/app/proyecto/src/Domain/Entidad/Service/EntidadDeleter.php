@@ -33,14 +33,10 @@ final class EntidadDeleter {
     public function eliminarEntidad(EntidadData $Entidad): int {
         // Validation
         if (empty($Entidad->id))
-            throw new InvalidArgumentException('Es necesario un Id');
-        if (empty($Entidad->titulo))
-            throw new InvalidArgumentException('Es necesario un titulo');
+            throw new InvalidArgumentException('ID entidad');;
 
         // Obtener datos de Entidad
-        $resultado = $this->repository->deleteEntidad($Entidad);
-
-        return $resultado;
+        return $this->repository->deleteEntidad($Entidad);
     }
 }
 

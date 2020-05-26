@@ -35,24 +35,15 @@ final class ValorableCreator {
      */
     public function crearValorable(ValorableData $Valorable): int {
         // Validation
-        if (empty($Valorable->entidadesId)) {
+        if (empty($Valorable->entidadID)) {
             throw new InvalidArgumentException('Hace falta un id de la entidad');
         }
         if (empty($Valorable->titulo)) {
             throw new InvalidArgumentException('Hace falta un titulo');
         }
-        if (empty($Valorable->descripcion)) {
-            throw new InvalidArgumentException('Hace falta una descripcion');
-        }
-        if (empty($Valorable->imagen)) {
-            throw new InvalidArgumentException('Hace falta una imagen');
-        }
+
         // Insert Valorable
-        $ValorableId = $this->repository->insertValorable($Valorable);
-
-        // Logging here: Valorable created successfully
-
-        return $ValorableId;
+        return $this->repository->insertValorable($Valorable);
     }
 }
 

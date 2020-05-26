@@ -25,40 +25,31 @@ final class ValoracionCreator {
     }
 
     /**
-     * Crea una nueva Valoracion.
+     * Crea una nueva valoracion.
      *
-     * @param ValoracionData $Valoracion The Valoracion data
+     * @param ValoracionData $valoracion The valoracion data
      *
      * @throws InvalidArgumentException
      *
-     * @return int The new Valoracion ID
+     * @return int The new valoracion ID
      */
-    public function crearValoracion(ValoracionData $Valoracion): int {
+    public function crearValoracion(ValoracionData $valoracion): int {
         // Validation
-        if (empty($Valoracion->valorablesEntidadesId)) {
-            throw new InvalidArgumentException('Hace falta un id de la entidad del valorable');
+        if (empty($valoracion->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($Valoracion->valorablesId)) {
-            throw new InvalidArgumentException('Hace falta un id del valorable');
+        if (empty($valoracion->valorableID)) {
+            throw new InvalidArgumentException('ID valorable');
         }
-        if (empty($Valoracion->usuariosNombre)) {
-            throw new InvalidArgumentException('Hace falta un nombre de usuario');
+        if (empty($valoracion->usuarioID)) {
+            throw new InvalidArgumentException('ID usuario');
         }
-        if (empty($Valoracion->puntuacion)) {
-            throw new InvalidArgumentException('Hace falta una puntuacion');
+        if (empty($valoracion->puntuacion)) {
+            throw new InvalidArgumentException('Valoración numérica');
         }
-        if (empty($Valoracion->comentario)) {
-            throw new InvalidArgumentException('Hace falta un comentario');
-        }
-        if (empty($Valoracion->fecha)) {
-            throw new InvalidArgumentException('Hace falta una fecha');
-        }
-        // Insert Valoracion
-        $ValoracionId = $this->repository->insertValoracion($Valoracion);
 
-        // Logging here: Valoracion created successfully
-
-        return $ValoracionId;
+        // Insert valoracion
+        return $this->repository->insertValoracion($valoracion);
     }
 }
 

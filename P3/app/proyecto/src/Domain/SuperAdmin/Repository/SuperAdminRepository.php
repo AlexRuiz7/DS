@@ -32,11 +32,11 @@ class SuperAdminRepository {
     public function selectSuperAdmin(SuperAdminData $SuperAdmin) : array {
 
         $fila = [
-            'entidadesId' => $SuperAdmin->entidadesId,
-            'usuariosNombre' => $SuperAdmin->usuariosNombre,
+            'entidadID' => $SuperAdmin->usuarioID,
+            'usuarioID' => $SuperAdmin->usuarioID,
         ];
 
-        $sql = "SELECT * FROM Superadmins WHERE EntidadesID=:entidadesId AND Usuariosnombre=:usuariosNombre";
+        $sql = "SELECT * FROM Superadmins WHERE entidadID=:entidadID OR usuarioID=:usuarioID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $datos = $stmt->fetchAll();
@@ -54,11 +54,11 @@ class SuperAdminRepository {
     public function insertSuperAdmin(SuperAdminData $SuperAdmin): int {
 
         $fila = [
-            'entidadesId' => $SuperAdmin->entidadesId,
-            'usuariosNombre' => $SuperAdmin->usuariosNombre,
+            'entidadID' => $SuperAdmin->entidadID,
+            'usuarioID' => $SuperAdmin->usuarioID,
         ];
 
-        $sql = "INSERT IGNORE INTO Superadmins (EntidadesID, Usuariosnombre) VALUES (:entidadesId, :usuariosNombre)";
+        $sql = "INSERT IGNORE INTO Superadmins (entidadID, usuarioID) VALUES (:entidadID, :usuarioID)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -74,10 +74,10 @@ class SuperAdminRepository {
      */
     public function deleteSuperAdmin(SuperAdminData $SuperAdmin) : int {
         $fila = [
-            'entidadesId' => $SuperAdmin->entidadesId,
-            'usuariosNombre' => $SuperAdmin->usuariosNombre,
+            'entidadID' => $SuperAdmin->entidadID,
+            'usuarioID' => $SuperAdmin->usuarioID,
         ];
-        $sql = "DELETE FROM Superadmins WHERE EntidadesID=:entidadesId AND Usuariosnombre=:usuariosNombre";
+        $sql = "DELETE FROM Superadmins WHERE entidadID=:entidadID AND usuarioID=:usuarioID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -93,11 +93,11 @@ class SuperAdminRepository {
      */
     public function updateSuperAdmin(SuperAdminData $SuperAdmin) : int {
         $fila = [
-            'entidadesId' => $SuperAdmin->entidadesId,
-            'usuariosNombre' => $SuperAdmin->usuariosNombre,
+            'entidadID' => $SuperAdmin->entidadID,
+            'usuarioID' => $SuperAdmin->usuarioID,
         ];
 
-        $sql = "UPDATE Superadmins SET Usuariosnombre=:usuariosNombre WHERE EntidadesID=:entidadesId";
+        $sql = "UPDATE Superadmins SET usuarioID=:usuarioID WHERE entidadID=:entidadID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();

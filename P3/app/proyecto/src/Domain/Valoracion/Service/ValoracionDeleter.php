@@ -32,14 +32,14 @@ final class ValoracionDeleter {
     */
     public function eliminarValoracion(ValoracionData $Valoracion): int {
         // Validation
-        if (empty($Valoracion->valorablesEntidadesId)) {
-            throw new InvalidArgumentException('Es necesario un Id de la entidad del Valoracion');
+        if (empty($Valoracion->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($Valoracion->valorablesId)) {
-            throw new InvalidArgumentException('Es necesario un id de Valoracion');
+        if (empty($Valoracion->valorableID)) {
+            throw new InvalidArgumentException('ID valoración');
         }
-        if (empty($Valoracion->usuariosNombre)) {
-            throw new InvalidArgumentException('Es necesario un nombre de usuario');
+        if (empty($Valoracion->usuarioID)) {
+            throw new InvalidArgumentException('Id usuario');
         }
         // Obtener datos de Valoracion
         $resultado = $this->repository->deleteValoracion($Valoracion);

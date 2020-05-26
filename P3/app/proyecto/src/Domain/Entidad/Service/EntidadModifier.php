@@ -40,9 +40,7 @@ final class EntidadModifier {
             throw new InvalidArgumentException('Es necesario una imagen');
 
         // Obtener datos de Entidad
-        $resultado = $this->repository->updateEntidad($Entidad);
-
-        return $resultado;
+        return $this->repository->updateEntidad($Entidad);
     }
 }
 

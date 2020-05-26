@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS Usuarios (
 
 CREATE TABLE IF NOT EXISTS Admins (
   entidadID    int NOT NULL, 
-  Usuariosnombre varchar(30) NOT NULL, 
-  PRIMARY KEY (entidadID, Usuariosnombre),
+  usuarioID varchar(30) NOT NULL, 
+  PRIMARY KEY (entidadID, usuarioID),
   FOREIGN KEY (entidadID)     REFERENCES Entidades(ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (Usuariosnombre)  REFERENCES Usuarios(nombre)
+  FOREIGN KEY (usuarioID)  REFERENCES Usuarios(nombre)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS Admins (
 
 CREATE TABLE IF NOT EXISTS Superadmins (
   entidadID    int NOT NULL, 
-  Usuariosnombre varchar(30) NOT NULL UNIQUE, 
+  usuarioID varchar(30) NOT NULL UNIQUE, 
   PRIMARY KEY (entidadID),
   FOREIGN KEY (entidadID)     REFERENCES Entidades(ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (Usuariosnombre)  REFERENCES Usuarios(nombre)
+  FOREIGN KEY (usuarioID)  REFERENCES Usuarios(nombre)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -61,15 +61,15 @@ CREATE TABLE IF NOT EXISTS Valorables (
 ----
 
 CREATE TABLE IF NOT EXISTS Valoraciones (
-  ValorablesEntidadesID int NOT NULL, 
-  ValorablesID          int NOT NULL, 
-  Usuariosnombre        varchar(30) NOT NULL, 
+  entidadID             int NOT NULL, 
+  valorableID           int NOT NULL, 
+  usuarioID             varchar(30) NOT NULL, 
   puntuacion            tinyint NOT NULL, 
   comentario            varchar(255), 
   fecha                 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-  PRIMARY KEY (ValorablesEntidadesID, ValorablesID, Usuariosnombre),
-  FOREIGN KEY (ValorablesEntidadesID, ValorablesID) REFERENCES Valorables(entidadID, ID)
+  PRIMARY KEY (entidadID, valorableID, usuarioID),
+  FOREIGN KEY (entidadID, valorableID) REFERENCES Valorables(entidadID, ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (Usuariosnombre) REFERENCES Usuarios(nombre)
+  FOREIGN KEY (usuarioID) REFERENCES Usuarios(nombre)
     ON DELETE CASCADE ON UPDATE CASCADE
 );

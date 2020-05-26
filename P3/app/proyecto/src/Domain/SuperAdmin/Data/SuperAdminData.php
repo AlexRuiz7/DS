@@ -4,10 +4,10 @@ namespace App\Domain\SuperAdmin\Data;
 
 final class SuperAdminData {
     /** @var int */
-    public $entidadesId;
+    public $entidadID;
 
     /** @var string */
-    public $usuariosNombre;
+    public $usuarioID;
 }
 
 ?>

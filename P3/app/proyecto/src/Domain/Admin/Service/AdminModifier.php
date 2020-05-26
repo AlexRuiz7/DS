@@ -32,16 +32,14 @@ final class AdminModifier {
     */
     public function modificarAdmin(AdminData $Admin): int {
         // Validation
-        if (empty($Admin->entidadesId)) {
+        if (empty($Admin->entidadID)) {
             throw new InvalidArgumentException('Hace falta un Id de entidad');
         }
-        if (empty($Admin->usuariosNombre)) {
+        if (empty($Admin->usuarioID)) {
             throw new InvalidArgumentException('Hace falta un nombre de usuario');
         }
         // Obtener datos de Admin
-        $resultado = $this->repository->updateAdmin($Admin);
-
-        return $resultado;
+        return $this->repository->updateAdmin($Admin);
     }
 }
 

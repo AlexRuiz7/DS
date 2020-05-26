@@ -20,8 +20,8 @@ final class AdminCreateAction {
 
         // Mapping
         $Admin = new AdminData();
-        $Admin->entidadesId = $data['entidadesId'];
-        $Admin->usuariosNombre = $data['usuariosNombre'];
+        $Admin->entidadID = $data['entidadID'];
+        $Admin->usuarioID = $data['usuarioID'];
 
         // Invocar a la capa de lógica Domain con los datos de entrada, y obtener el resultado
         $resultado = (bool) $this->AdminCreator->crearAdmin($Admin);

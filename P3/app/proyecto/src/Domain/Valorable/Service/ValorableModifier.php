@@ -32,25 +32,15 @@ final class ValorableModifier {
     */
     public function modificarValorable(ValorableData $Valorable): int {
         // Validation
-        if (empty($Valorable->entidadesId)) {
-            throw new InvalidArgumentException('Hace falta un id de la entidad');
+        if (empty($Valorable->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($Valorable->id)){
-            throw new InvalidArgumentException('Es necesario un Id');
+        if (empty($Valorable->ID)){
+            throw new InvalidArgumentException('ID valorable');
         }
-        if (empty($Valorable->titulo)) {
-            throw new InvalidArgumentException('Hace falta un titulo');
-        }
-        if (empty($Valorable->descripcion)) {
-            throw new InvalidArgumentException('Hace falta una descripcion');
-        }
-        if (empty($Valorable->imagen)) {
-            throw new InvalidArgumentException('Hace falta una imagen');
-        }
-        // Obtener datos de Valorable
-        $resultado = $this->repository->updateValorable($Valorable);
 
-        return $resultado;
+        // Obtener datos de Valorable
+        return $this->repository->updateValorable($Valorable);
     }
 }
 

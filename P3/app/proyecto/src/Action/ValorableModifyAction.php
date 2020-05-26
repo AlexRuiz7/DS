@@ -37,8 +37,8 @@ final class ValorableModifyAction {
 
         // Mapping
         $Valorable = new ValorableData();
-        $Valorable->entidadesId = $data['entidadesId'];
-        $Valorable->id = $data['id'];
+        $Valorable->entidadID = $data['entidadID'];
+        $Valorable->ID = $data['id'];
         $Valorable->titulo = $data['titulo'];
         $Valorable->descripcion = $data['descripcion'];
         $Valorable->imagen = $data['imagen'];

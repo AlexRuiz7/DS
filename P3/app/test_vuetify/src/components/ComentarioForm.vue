@@ -31,7 +31,7 @@ export default {
 
     methods: {
         enviar() {
-            alert(this.comentario + " rating: " + this.rating)
+            this.$emit('enviar-comentario', [this.comentario, this.rating]);
         }
     }
 }

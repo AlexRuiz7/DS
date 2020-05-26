@@ -55,7 +55,7 @@ final class ValorableGetter {
     public function getValorables(ValorableData $Valorable): array {
         // Validation
         if (empty($Valorable->entidadID)) {
-            throw new InvalidArgumentException('Es necesario un Id de la entidad');
+            throw new InvalidArgumentException('ID de entidad');
         }
 
         // Obtener datos de Valorable

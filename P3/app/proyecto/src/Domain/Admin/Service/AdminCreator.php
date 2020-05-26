@@ -35,19 +35,15 @@ final class AdminCreator {
      */
     public function crearAdmin(AdminData $Admin): int {
         // Validation
-        if (empty($Admin->entidadesId)) {
-            throw new InvalidArgumentException('Hace falta un Id de entidad');
+        if (empty($Admin->entidadID)) {
+            throw new InvalidArgumentException('ID entidad');
         }
-        if (empty($Admin->usuariosNombre)) {
-            throw new InvalidArgumentException('Hace falta un nombre de usuario');
+        if (empty($Admin->usuarioID)) {
+            throw new InvalidArgumentException('ID usuario');
         }
 
         // Insert Admin
-        $AdminId = $this->repository->insertAdmin($Admin);
-
-        // Logging here: Admin created successfully
-
-        return $AdminId;
+        return $this->repository->insertAdmin($Admin);
     }
 }
 

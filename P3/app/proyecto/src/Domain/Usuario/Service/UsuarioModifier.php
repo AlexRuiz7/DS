@@ -40,9 +40,7 @@ final class UsuarioModifier {
             throw new InvalidArgumentException('Password required');
 
         // Obtener datos de usuario
-        $resultado = $this->repository->updateUsuario($usuario);
-
-        return $resultado;
+        return $this->repository->updateUsuario($usuario);
     }
 }
 

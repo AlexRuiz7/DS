@@ -20,7 +20,7 @@ final class ValorableCreateAction {
 
         // Mapping
         $Valorable = new ValorableData();
-        $Valorable->entidadesId = $data['entidadesId'];
+        $Valorable->entidadID = $data['entidadID'];
         $Valorable->titulo = $data['titulo'];
         $Valorable->descripcion = $data['descripcion'];
         $Valorable->imagen = $data['imagen'];

@@ -44,7 +44,7 @@ export default {
 
             if (this.usuario !== undefined) {
                 if (this.password == this.usuario.contraseña)
-                    this.$store.dispatch('login')
+                    this.$store.dispatch('login', this.usuario)
                 else
                     alert('Wrong password');
             }

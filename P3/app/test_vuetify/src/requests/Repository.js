@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const baseDomain = 'http://lvh.me:8081';
+const baseDomain = 'http://localhost:8081';
 const baseURL = `${baseDomain}/api`;
 
 export default axios.create({

@@ -32,11 +32,11 @@ class AdminRepository {
     public function selectAdmin(AdminData $Admin) : array {
 
         $fila = [
-            'entidadesId' => $Admin->entidadesId,
-            'usuariosNombre' => $Admin->usuariosNombre,
+            'entidadID' => $Admin->usuarioID,
+            'id' => $Admin->usuarioID,
         ];
 
-        $sql = "SELECT * FROM Admins WHERE EntidadesID=:entidadesId AND Usuariosnombre=:usuariosNombre";
+        $sql = "SELECT * FROM Admins WHERE entidadID=:entidadID OR usuarioID=:id";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $datos = $stmt->fetchAll();
@@ -54,11 +54,11 @@ class AdminRepository {
     public function insertAdmin(AdminData $Admin): int {
 
         $fila = [
-            'entidadesId' => $Admin->entidadesId,
-            'usuariosNombre' => $Admin->usuariosNombre,
+            'entidadID' => $Admin->entidadID,
+            'usuarioID' => $Admin->usuarioID,
         ];
 
-        $sql = "INSERT IGNORE INTO Admins (EntidadesID, Usuariosnombre) VALUES (:entidadesId, :usuariosNombre)";
+        $sql = "INSERT IGNORE INTO Admins (entidadID, usuarioID) VALUES (:entidadID, :usuarioID)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -74,10 +74,10 @@ class AdminRepository {
      */
     public function deleteAdmin(AdminData $Admin) : int {
         $fila = [
-            'entidadesId' => $Admin->entidadesId,
-            'usuariosNombre' => $Admin->usuariosNombre,
+            'entidadID' => $Admin->entidadID,
+            'usuarioID' => $Admin->usuarioID,
         ];
-        $sql = "DELETE FROM Admins WHERE EntidadesID=:entidadesId AND Usuariosnombre=:usuariosNombre";
+        $sql = "DELETE FROM Admins WHERE entidadID=:entidadID AND usuarioID=:usuarioID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -93,11 +93,11 @@ class AdminRepository {
      */
     public function updateAdmin(AdminData $Admin) : int {
         $fila = [
-            'entidadesId' => $Admin->entidadesId,
-            'usuariosNombre' => $Admin->usuariosNombre,
+            'entidadID' => $Admin->entidadID,
+            'usuarioID' => $Admin->usuarioID,
         ];
 
-        $sql = "UPDATE Admins SET Usuariosnombre=:usuariosNombre WHERE EntidadesID=:entidadesId";
+        $sql = "UPDATE Admins SET usuarioID=:usuarioID WHERE entidadID=:entidadID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
