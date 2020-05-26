@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLogged: false,
+    isLogged: true,
     validUser: {
       email: 'defaultUser@domain.com',
       password: 'user',
@@ -24,15 +24,9 @@ export default new Vuex.Store({
   },
 
   actions: {
-    login(context, user) {
-      if ((user.email == this.state.validUser.email) &&
-        (user.password == this.state.validUser.password)) {
+    login(context) {
         context.commit('login');
         router.replace('/');
-      }
-      else {
-        alert('Wrong email or password');
-      }
     },
 
     logout(context) {

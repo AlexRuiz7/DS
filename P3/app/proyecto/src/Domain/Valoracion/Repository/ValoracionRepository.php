@@ -44,6 +44,25 @@ class ValoracionRepository {
     }
 
     /**
+     * Undocumented function
+     *
+     * @param ValoracionData $Valoracion
+     * @return array
+     */
+    public function selectValoraciones(ValoracionData $Valoracion) : array {
+        $fila = [
+            'valorablesEntidadesId' => $Valoracion->valorablesEntidadesId,
+            'valorablesId' => $Valoracion->valorablesId,
+        ];
+        $sql = "SELECT * FROM Valoraciones WHERE ValorablesEntidadesID=:valorablesEntidadesId AND ValorablesID=:valorablesId";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($fila);
+        $datos = $stmt->fetchAll();
+
+        return $datos;
+    }
+
+    /**
      * Inserta Valoracion.
      *
      * @param ValoracionCreateData $Valoracion la Valoracion

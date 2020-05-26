@@ -32,16 +32,21 @@ final class ValorableGetAction {
      * @return ResponseInterface
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
-        // Recolectar datos del request
-        $data = (array)$request->getParsedBody();
         // Obtener parámetros de la ruta
         $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
 
-        $Valorable = new ValorableData();
-        $Valorable->entidadesId = $params['entidadesId'];
-        $Valorable->id = $data['id'];
-        
-        $resultado = $this->ValorableGetter->getValorable($Valorable);
+        if (isset($params['valorableID'])) {
+            $Valorable = new ValorableData();
+            $Valorable->entidadID = $params['entidadID'];
+            $Valorable->ID = $params['valorableID'];
+            
+            $resultado = $this->ValorableGetter->getValorable($Valorable);
+        }
+        else if (isset($params['entidadID']) ) {
+            $Valorable = new ValorableData();
+            $Valorable->entidadID = $params['entidadID'];
+            $resultado = $this->ValorableGetter->getValorables($Valorable);
+        }
         
         // Construir la respuesta HTTP
         $response->getBody()->write((string)json_encode($resultado, JSON_UNESCAPED_UNICODE));

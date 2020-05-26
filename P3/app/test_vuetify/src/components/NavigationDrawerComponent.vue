@@ -16,11 +16,10 @@
         </v-list-item>
 
       </v-list>
-
       <!-- Opciones de usuario -->
       <v-list dense>
 
-        <v-list-item link @click="irA('/crear-plataforma')">
+        <v-list-item link @click="crearPlataforma()">
           <v-list-item-icon>
             <v-icon>mdi-plus</v-icon>
           </v-list-item-icon>
@@ -94,12 +93,17 @@
 
 <script>
 import router from '@/router/index.js'
+import Dialog from './DialogComponent'
 
 export default {
   name: 'Drawer',
 
+  components: {
+    Dialog
+  },
+
   data: () => ({
-      drawer: null,
+      drawer: false,
       opciones_usuario: [
           {
             texto: "Inicio",

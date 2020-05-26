@@ -25,7 +25,7 @@ INSERT IGNORE INTO Superadmins VALUES
     (3, 'Superadmin')
 ;
 
-INSERT IGNORE INTO Valorables (EntidadesID, titulo, descripcion) VALUES
+INSERT IGNORE INTO Valorables (entidadID, titulo, descripcion) VALUES
     (1, 'Catedral de Granada', 'Situada en el corazón de la ciudad, el templo es una de las obras cumbres del Renacimiento español'),
     (1, 'Parque de las Ciencias', 'El Parque de las Ciencias de Granada es el primer museo interactivo de ciencia de Andalucía. Fue inaugurado en mayo de 1995​ ocupando en la actualidad 70 000 m². Está situado en una zona céntrica de Granada y se ha convertido en uno de los principales reclamos turísticos de la ciudad'),
     (1, 'Barrio del Albayzín', 'El barrio del Albaicín, declarado Patrimonio de la Humanidad en 1984, fue el germen de la actual ciudad de Granada y conserva aún toda la magia de su pasado árabe.'),

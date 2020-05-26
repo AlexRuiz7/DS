@@ -1,30 +1,6 @@
 <template>
 <v-container>
-    <v-row>
-      <v-col cols="12">
-        <v-card
-          class="mx-auto"
-          outlined
-        >
-          <v-list-item three-line>
-            <v-list-item-content>
-              <v-list-item-title class="headline mb-1 text-center">Objeto valorable #1</v-list-item-title>
-              <v-list-item-title class="headline mb-1">Puntuacion media:</v-list-item-title>
-            </v-list-item-content>
-            <v-list-item-avatar
-              tile
-              size="80"
-              color="grey"
-            ></v-list-item-avatar>
-          </v-list-item>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text >Editar</v-btn>
-            <v-btn color="green darken-1" text >Eliminar</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
+    
     <v-row>
       <v-col cols="12">
         <v-card

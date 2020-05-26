@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import CrearPlataforma from "../views/CrearPlataforma.vue";
+import Entidad from '../views/Entidad.vue'
+import Valorable from '../views/Valorable.vue'
 import store from '@/store/index.js'
 
 Vue.use(VueRouter)
@@ -22,11 +23,18 @@ Vue.use(VueRouter)
       component: Login,
     },
     {
-      path: "/crear-plataforma",
-      name: "CrearPlataforma",
-      component: CrearPlataforma,
+      path: "/entidades/:id",
+      name: "Entidad",
+      component: Entidad,
+      props: true
     },
-    // { path: '*', redirect: '/' }
+    {
+      path: "/entidades/:entidadID/valorables/:id",
+      name: "Valorable",
+      component: Valorable,
+      props: true
+    },
+    { path: '*', redirect: '/' }
   ];
 
 const router = new VueRouter({

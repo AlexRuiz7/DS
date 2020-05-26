@@ -32,17 +32,24 @@ final class ValoracionGetAction {
      * @return ResponseInterface
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
-        // Recolectar datos del request
-        $data = (array)$request->getParsedBody();
         // Obtener parámetros de la ruta
         $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
 
-        $Valoracion = new ValoracionData();
-        $Valoracion->valorablesEntidadesId = $params['valorablesEntidadesId'];
-        $Valoracion->valorablesId = $data['valorablesId'];
-        $Valoracion->usuariosNombre = $data['usuariosNombre'];
-        
-        $resultado = $this->ValoracionGetter->getValoracion($Valoracion);
+        if(isset($params['id'])) {
+            $Valoracion = new ValoracionData();
+            $Valoracion->valorablesEntidadesId = $params['entidadID'];
+            $Valoracion->valorablesId = $params['valorableID'];
+            $Valoracion->usuariosNombre = $params['id'];
+            
+            $resultado = $this->ValoracionGetter->getValoracion($Valoracion);
+        }
+        else {
+            $Valoracion = new ValoracionData();
+            $Valoracion->valorablesEntidadesId = $params['entidadID'];
+            $Valoracion->valorablesId = $params['valorableID'];
+            
+            $resultado = $this->ValoracionGetter->getValoraciones($Valoracion);
+        }
         
         // Construir la respuesta HTTP
         $response->getBody()->write((string)json_encode($resultado, JSON_UNESCAPED_UNICODE));

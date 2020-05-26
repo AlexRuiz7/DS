@@ -31,10 +31,31 @@ class ValorableRepository {
      */
     public function selectValorable(ValorableData $Valorable) : array {
         $fila = [
-            'entidadesId' => $Valorable->entidadesId,
-            'id' => $Valorable->id,
+            'entidadID' => $Valorable->entidadID,
+            'ID' => $Valorable->ID,
         ];
-        $sql = "SELECT * FROM Valorables WHERE EntidadesID=:entidadesId AND ID=:id";
+
+        $sql = "SELECT * FROM Valorables WHERE entidadID=:entidadID AND ID=:ID";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($fila);
+        $datos = $stmt->fetchAll();
+
+        return $datos[0];
+    }
+
+
+    /**
+     * Undocumented function
+     *
+     * @param ValorableData $Valorable
+     * @return array
+     */
+    public function selectValorables(ValorableData $Valorable) : array {
+        $fila = [
+            'entidadID' => $Valorable->entidadID,
+        ];
+
+        $sql = "SELECT * FROM Valorables WHERE entidadID=:entidadID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $datos = $stmt->fetchAll();
@@ -52,13 +73,13 @@ class ValorableRepository {
     public function insertValorable(ValorableData $Valorable): int {
 
         $fila = [
-            'entidadesId' => $Valorable->entidadesId,
+            'entidadID' => $Valorable->entidadID,
             'titulo' => $Valorable->titulo,
             'descripcion' => $Valorable->descripcion,
             'imagen' => $Valorable->imagen
         ];
 
-        $sql = "INSERT IGNORE INTO Valorables (EntidadesID, titulo, descripcion, imagen) VALUES (:entidadesId, :titulo, :descripcion, :imagen)";
+        $sql = "INSERT IGNORE INTO Valorables (entidadID, titulo, descripcion, imagen) VALUES (:entidadID, :titulo, :descripcion, :imagen)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -74,10 +95,10 @@ class ValorableRepository {
      */
     public function deleteValorable(ValorableData $Valorable) : int {
         $fila = [
-            'entidadesId' => $Valorable->entidadesId,
-            'id' => $Valorable->id,
+            'entidadID' => $Valorable->entidadID,
+            'ID' => $Valorable->ID,
         ];
-        $sql = "DELETE FROM Valorables WHERE EntidadesID=:entidadesId AND ID=:id";
+        $sql = "DELETE FROM Valorables WHERE entidadID=:entidadID AND ID=:ID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();
@@ -93,14 +114,14 @@ class ValorableRepository {
      */
     public function updateValorable(ValorableData $Valorable) : int {
         $fila = [
-            'entidadesId' => $Valorable->entidadesId,
-            'id' => $Valorable->id,
+            'entidadID' => $Valorable->entidadID,
+            'ID' => $Valorable->ID,
             'titulo' => $Valorable->titulo,
             'descripcion' => $Valorable->descripcion,
             'imagen' => $Valorable->imagen
         ];
 
-        $sql = "UPDATE Valorables SET titulo=:titulo, descripcion=:descripcion, imagen=:imagen WHERE EntidadesID=:entidadesId AND ID=:id";
+        $sql = "UPDATE Valorables SET titulo=:titulo, descripcion=:descripcion, imagen=:imagen WHERE entidadID=:entidadID AND ID=:ID";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($fila);
         $estado = $stmt->rowCount();

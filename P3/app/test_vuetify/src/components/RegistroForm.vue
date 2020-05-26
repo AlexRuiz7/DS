@@ -4,7 +4,6 @@
         
         <v-toolbar color="secondary" dark flat>
           <v-toolbar-title>Nuevo registro</v-toolbar-title>
-          <v-spacer></v-spacer>
         </v-toolbar>
 
         <v-card-text>
@@ -28,6 +27,10 @@
 </template>
 
 <script>
+
+import { RepositoryFactory } from './../requests/RepositoryFactory'
+const UserRepository = RepositoryFactory.get('users')
+
 export default {
     name: "FormularioRegistro",
     
@@ -41,6 +44,7 @@ export default {
     methods: {
         registrar() {
             console.log("Nombre: " + this.nombre + " Pass: " + this.pass);
+            
             // this.$store.dispatch('registrar');
         }
     }

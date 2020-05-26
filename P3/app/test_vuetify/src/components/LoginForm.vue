@@ -24,34 +24,32 @@
 
 <script>
 
+import { RepositoryFactory } from './../requests/RepositoryFactory'
+const UserRepository = RepositoryFactory.get('usuarios')
+
 export default {
     name: "FormularioInicio",
 
     data: () => ({
         nombre: '',
         password: '',
-        usuario: []
+        usuario: {}
     }),
     
     methods: {
-        login() {
-            this.$http
-                .get('http://localhost:8081/api/usuarios/' + this.nombre)
-                .then(response => this.usuario = response.data[0])
-                .catch(error => {
-                    if (error.response.status == 404)
-                        alert("Usuario no encontrado")
-                })
+        async login() {
+            const { data } = await UserRepository.get(this.nombre)
+            this.usuario = data[0];
+            console.log(JSON.stringify(this.usuario))
 
-                if (this.usuario != undefined) {
-                    console.log(this.usuario.nombre + "," + this.usuario.correo + ", " + this.usuario.contraseña)
-
-                    var user = {
-                        email: this.nombre,
-                        password: this.password
-                    };
-                    this.$store.dispatch('login', user);
-                }
+            if (this.usuario !== undefined) {
+                if (this.password == this.usuario.contraseña)
+                    this.$store.dispatch('login')
+                else
+                    alert('Wrong password');
+            }
+            else
+                alert('Wrong username');
         }
     }
 }

@@ -25,6 +25,7 @@ return function (App $app) {
     /**
      * Rutas de entidades
      */
+    $app->get('/entidades',      \App\Action\EntidadGetAction::class);
     $app->get('/entidades/{id}', \App\Action\EntidadGetAction::class);
     $app->post('/entidades',     \App\Action\EntidadCreateAction::class);
     $app->put('/entidades',      \App\Action\EntidadModifyAction::class);
@@ -52,20 +53,22 @@ return function (App $app) {
     /**
      * Rutas de valorables
      */
-    $app->get('/valorables/{entidadesId}', \App\Action\ValorableGetAction::class); //Pasamos id
-    $app->post('/valorables',     \App\Action\ValorableCreateAction::class);
-    $app->put('/valorables',      \App\Action\ValorableModifyAction::class);
-    $app->delete('/valorables',   \App\Action\ValorableDeleteAction::class);
-    $app->options('/valorables',   PreflightAction::class);
+    $app->get('/entidades/{entidadID}/valorables',                  \App\Action\ValorableGetAction::class);
+    $app->get('/entidades/{entidadID}/valorables/{valorableID}',    \App\Action\ValorableGetAction::class); //Pasamos id
+    $app->post('/entidades/{entidadID}/valorables/{valorableID}',   \App\Action\ValorableCreateAction::class);
+    $app->put('/entidades/{entidadID}/valorables/{valorableID}',    \App\Action\ValorableModifyAction::class);
+    $app->delete('/entidades/{entidadID}/valorables/{valorableID}', \App\Action\ValorableDeleteAction::class);
+    $app->options('/entidades/{entidadID}/valorables/{valorableID}',PreflightAction::class);
     
     /**
      * Rutas de valoraciones
      */
-    $app->get('/valoraciones/{valorablesEntidadesId}', \App\Action\ValoracionGetAction::class); //Pasamos id
-    $app->post('/valoraciones',     \App\Action\ValoracionCreateAction::class);
-    $app->put('/valoraciones',      \App\Action\ValoracionModifyAction::class);
-    $app->delete('/valoraciones',   \App\Action\ValoracionDeleteAction::class);
-    $app->options('/valoraciones',   PreflightAction::class);
+    $app->get('/entidades/{entidadID}/valorables/{valorableID}/valoraciones',        \App\Action\ValoracionGetAction::class);
+    $app->get('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',    \App\Action\ValoracionGetAction::class);
+    $app->post('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',   \App\Action\ValoracionCreateAction::class);
+    $app->put('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',    \App\Action\ValoracionModifyAction::class);
+    $app->delete('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}', \App\Action\ValoracionDeleteAction::class);
+    $app->options('/entidades/{entidadID}/valorables/{valorableID}/valoraciones/{id}',PreflightAction::class);
 
     /**
      * Catch-all route to serve a 404 Not Found page if none of the routes match

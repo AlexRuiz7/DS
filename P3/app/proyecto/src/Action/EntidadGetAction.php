@@ -35,10 +35,15 @@ final class EntidadGetAction {
         // Obtener parámetros de la ruta
         $params = \Slim\Routing\RouteContext::fromRequest($request)->getRoute()->getArguments();
 
-        $Entidad = new EntidadData();
-        $Entidad->id = $params['id'];
+        if (isset($params['id'])) {
+            $Entidad = new EntidadData();
+            $Entidad->id = $params['id'];
+            $resultado = $this->EntidadGetter->getEntidad($Entidad);
+        }
+        else {
+            $resultado = $this->EntidadGetter->getEntidades();
+        }
         
-        $resultado = $this->EntidadGetter->getEntidad($Entidad);
         
         // Construir la respuesta HTTP
         $response->getBody()->write((string)json_encode($resultado, JSON_UNESCAPED_UNICODE));

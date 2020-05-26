@@ -4,10 +4,10 @@ namespace App\Domain\Valorable\Data;
 
 final class ValorableData {
     /** @var int */
-    public $entidadesId;
+    public $entidadID;
 
     /** @var int */
-    public $id;
+    public $ID;
 
     /** @var string */
     public $titulo;

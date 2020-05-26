@@ -51,6 +51,25 @@ final class ValoracionGetter {
 
         return $Valoracion;
     }
+
+    /**
+     * Undocumented function
+     *
+     * @param ValoracionData $Valoracion
+     * @return array
+     */
+    public function getValoraciones(ValoracionData $Valoracion): array {
+        // Validation
+        if (empty($Valoracion->valorablesEntidadesId)) {
+            throw new InvalidArgumentException('Es necesario un Id de la entidad del valorable');
+        }
+        if (empty($Valoracion->valorablesId)) {
+            throw new InvalidArgumentException('Es necesario un id de Valorable');
+        }
+
+        // Obtener datos de Valoracion
+        return $this->repository->selectValoraciones($Valoracion);
+    }
 }
 
 ?>

@@ -35,19 +35,31 @@ final class ValorableGetter {
      */
     public function getValorable(ValorableData $Valorable): array {
         // Validation
-        if (empty($Valorable->entidadesId)) {
+        if (empty($Valorable->entidadID)) {
             throw new InvalidArgumentException('Es necesario un Id de la entidad');
         }
-        if (empty($Valorable->id)) {
+        if (empty($Valorable->ID)) {
             throw new InvalidArgumentException('Es necesario un id de valorable');
         }
 
         // Obtener datos de Valorable
-        $Valorable = $this->repository->selectValorable($Valorable);
+        return $this->repository->selectValorable($Valorable);
+    }
 
-        // Logging here: Valorable created successfully
+    /**
+     * Undocumented function
+     *
+     * @param ValorableData $Valorable
+     * @return array
+     */
+    public function getValorables(ValorableData $Valorable): array {
+        // Validation
+        if (empty($Valorable->entidadID)) {
+            throw new InvalidArgumentException('Es necesario un Id de la entidad');
+        }
 
-        return $Valorable;
+        // Obtener datos de Valorable
+        return $this->repository->selectValorables($Valorable);
     }
 }
 

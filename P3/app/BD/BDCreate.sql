@@ -9,7 +9,7 @@ USE DS;
 CREATE TABLE IF NOT EXISTS Entidades (
   ID     int NOT NULL AUTO_INCREMENT, 
   titulo varchar(30) NOT NULL,
-  imagen varchar(255),
+  imagen varchar(255) DEFAULT "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
   PRIMARY KEY (ID)
 );
 
@@ -25,10 +25,10 @@ CREATE TABLE IF NOT EXISTS Usuarios (
 ----
 
 CREATE TABLE IF NOT EXISTS Admins (
-  EntidadesID    int NOT NULL, 
+  entidadID    int NOT NULL, 
   Usuariosnombre varchar(30) NOT NULL, 
-  PRIMARY KEY (EntidadesID, Usuariosnombre),
-  FOREIGN KEY (EntidadesID)     REFERENCES Entidades(ID)
+  PRIMARY KEY (entidadID, Usuariosnombre),
+  FOREIGN KEY (entidadID)     REFERENCES Entidades(ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (Usuariosnombre)  REFERENCES Usuarios(nombre)
     ON DELETE CASCADE ON UPDATE CASCADE
@@ -37,10 +37,10 @@ CREATE TABLE IF NOT EXISTS Admins (
 ----
 
 CREATE TABLE IF NOT EXISTS Superadmins (
-  EntidadesID    int NOT NULL, 
+  entidadID    int NOT NULL, 
   Usuariosnombre varchar(30) NOT NULL UNIQUE, 
-  PRIMARY KEY (EntidadesID),
-  FOREIGN KEY (EntidadesID)     REFERENCES Entidades(ID)
+  PRIMARY KEY (entidadID),
+  FOREIGN KEY (entidadID)     REFERENCES Entidades(ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (Usuariosnombre)  REFERENCES Usuarios(nombre)
     ON DELETE CASCADE ON UPDATE CASCADE
@@ -49,13 +49,13 @@ CREATE TABLE IF NOT EXISTS Superadmins (
 ----
 
 CREATE TABLE IF NOT EXISTS Valorables (
-  EntidadesID int NOT NULL, 
+  entidadID int NOT NULL, 
   ID          int NOT NULL AUTO_INCREMENT UNIQUE, 
   titulo      varchar(30) NOT NULL, 
   descripcion varchar(250), 
-  imagen      varchar(255),
-  PRIMARY KEY (EntidadesID, ID),
-  FOREIGN KEY (EntidadesID) REFERENCES Entidades(ID) ON DELETE CASCADE ON UPDATE CASCADE
+  imagen      varchar(255) DEFAULT "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+  PRIMARY KEY (entidadID, ID),
+  FOREIGN KEY (entidadID) REFERENCES Entidades(ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 ----
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS Valoraciones (
   comentario            varchar(255), 
   fecha                 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
   PRIMARY KEY (ValorablesEntidadesID, ValorablesID, Usuariosnombre),
-  FOREIGN KEY (ValorablesEntidadesID, ValorablesID) REFERENCES Valorables(EntidadesID, ID)
+  FOREIGN KEY (ValorablesEntidadesID, ValorablesID) REFERENCES Valorables(entidadID, ID)
     ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (Usuariosnombre) REFERENCES Usuarios(nombre)
     ON DELETE CASCADE ON UPDATE CASCADE

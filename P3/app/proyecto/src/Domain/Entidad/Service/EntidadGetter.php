@@ -46,6 +46,16 @@ final class EntidadGetter {
 
         return $Entidad;
     }
+
+
+    /**
+     * Undocumented function
+     *
+     * @return array
+     */
+    public function getEntidades() : array {
+        return $this->repository->selectEntidades();
+    }
 }
 
 ?>

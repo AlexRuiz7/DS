@@ -30,7 +30,6 @@ import Navegacion from '@/components/NavigationDrawerComponent.vue'
     },
 
     data: () => ({
-      drawer: null,
     }),
 
     created () {

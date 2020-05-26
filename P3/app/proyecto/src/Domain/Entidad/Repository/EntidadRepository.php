@@ -40,6 +40,21 @@ class EntidadRepository {
     }
 
     /**
+     * Undocumented function
+     *
+     * @param EntidadData $Entidad
+     * @return array
+     */
+    public function selectEntidades() : array {
+        $sql = "SELECT * FROM Entidades";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $datos = $stmt->fetchAll();
+
+        return $datos;
+    }
+
+    /**
      * Inserta Entidad.
      *
      * @param EntidadCreateData $Entidad la Entidad

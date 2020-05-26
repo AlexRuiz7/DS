@@ -1,16 +1,16 @@
 <template>
-  <v-app>
-
-    <v-content class="mt-5">
-      
-    </v-content>
-  </v-app>
+  <Entidades/>
 </template>
 
 <script>
-// @ is an alias to /src
+
+import Entidades from '@/components/ListaEntidades.vue'
 
 export default {
+  name: 'Inicio',
 
+  components: {
+    Entidades
+  },
 }
 </script>
