@@ -45,7 +45,7 @@
         </v-card-title>
         <v-divider class="mb-6"/>
         <!-- <v-card-title color="secondary" v-text="comentario.Usuariosnombre"/> -->
-        <v-card-subtile v-text="comentario.comentario"/>
+        <h4 v-text="comentario.comentario"/>
         <v-rating :value="comentario.puntuacion" readonly/>
         <v-card-text v-text="comentario.fecha"/>
     </v-card>
